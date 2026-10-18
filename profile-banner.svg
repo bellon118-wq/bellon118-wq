@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 340" role="img" aria-labelledby="title desc">
+  <title id="title">Daniel Bellon — AI, games, and creative worlds</title>
+  <desc id="desc">A twilight teal landscape with a small glowing pavilion, crescent moon, and lantern lights.</desc>
+  <defs>
+    <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#101a25"/><stop offset="1" stop-color="#18382f"/></linearGradient>
+    <linearGradient id="water" x2="0" y2="1"><stop stop-color="#235747"/><stop offset="1" stop-color="#10221f"/></linearGradient>
+    <linearGradient id="window" x2="0" y2="1"><stop stop-color="#ffe8a2"/><stop offset="1" stop-color="#e6a94f"/></linearGradient>
+    <pattern id="stars" width="97" height="71" patternUnits="userSpaceOnUse"><circle cx="12" cy="15" r="1.4" fill="#e8e1c4" opacity=".7"/><circle cx="66" cy="48" r="1" fill="#8ed9c3" opacity=".68"/><circle cx="89" cy="9" r=".8" fill="#fff" opacity=".55"/></pattern>
+  </defs>
+  <rect width="1200" height="340" rx="22" fill="url(#sky)"/>
+  <rect width="1200" height="205" rx="22" fill="url(#stars)" opacity=".85"/>
+  <circle cx="1010" cy="82" r="43" fill="#e7dfbd" opacity=".92"/>
+  <circle cx="1028" cy="66" r="42" fill="#14232a"/>
+  <path d="M0 213 Q170 173 327 211T654 203T934 207T1200 188V340H0Z" fill="#1d3d33"/>
+  <path d="M0 254 Q190 230 388 254T779 246T1200 256V340H0Z" fill="url(#water)"/>
+  <path d="M0 292 Q210 272 425 295T837 289T1200 294" fill="none" stroke="#69cbb3" stroke-opacity=".25" stroke-width="2"/>
+  <g fill="#172923">
+    <path d="M55 225 95 138l40 87h-25l34 48H45l34-48z"/><path d="m155 220 34-75 35 75h-20l27 39h-84l28-39z"/>
+    <path d="m1077 218 42-98 42 98h-24l34 52h-105l34-52z"/><path d="m1130 230 29-66 30 66h-17l23 35h-71l23-35z"/>
+  </g>
+  <g transform="translate(765 110)">
+    <path d="m-10 96 120-78 142 78-16 17L110 43 5 113z" fill="#536e7a" stroke="#172225" stroke-width="9" stroke-linejoin="round"/>
+    <path d="M9 107h194v105H9z" fill="#d4bd8c" stroke="#211f20" stroke-width="9"/>
+    <path d="M20 117h170v85H20z" fill="#f0ddb3"/>
+    <path d="M20 117v85m55-85v85m57-85v85m58-85v85" stroke="#332824" stroke-width="9"/>
+    <path d="M31 131h31v48H31zm57-3h31v52H88zm59 4h30v47h-30z" fill="url(#window)"/>
+    <path d="m-35 211 255 1 44 26H-3z" fill="#3c3029" stroke="#1d2020" stroke-width="8"/>
+    <path d="M-3 237v42m62-41v44m65-44v44m64-43v42" stroke="#302722" stroke-width="9"/>
+    <path d="M72 17V-8h30v43" fill="#9f4941" stroke="#211f20" stroke-width="6"/>
+  </g>
+  <g fill="#f1c879"><circle cx="736" cy="245" r="4"/><circle cx="1040" cy="232" r="3"/><circle cx="692" cy="275" r="3"/></g>
+  <text x="74" y="133" fill="#f3eee1" font-family="Georgia,serif" font-size="58" letter-spacing="1">Daniel Bellon</text>
+  <text x="78" y="180" fill="#8fe0c7" font-family="Arial,sans-serif" font-size="20" letter-spacing="5">AI · GAMES · CREATIVE WORLDS</text>
+  <path d="M78 206h270" stroke="#efbd72" stroke-width="2" opacity=".8"/>
+  <text x="78" y="245" fill="#d6dfd4" font-family="Arial,sans-serif" font-size="17">Curiosity turns ideas into places to explore.</text>
+</svg>
