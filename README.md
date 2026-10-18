@@ -8,11 +8,18 @@
 
 I love turning curiosity into things people can explore: imaginative worlds, helpful AI systems, memorable characters, and experiences that feel good to spend time in. I'm especially drawn to cozy-futuristic design, creative freedom, and adventures with a sense of discovery.
 
+## A few worlds I'm building and exploring
+
+| MyBlin9 · Live site | DragonAI7 · Blog | Witchlight House · Concept |
+| --- | --- | --- |
+| <a href="https://myblin9.com"><img src="showcase/myblin9.svg" alt="MyBlin9 virtual-idol stage artwork" width="100%"></a> | <a href="https://dragonai7.blogspot.com/"><img src="showcase/dragonai7.svg" alt="DragonAI7 moonlit waterfront sanctuary artwork" width="100%"></a> | <a href="showcase/witchlight-pavilion.svg"><img src="showcase/witchlight-pavilion.svg" alt="Original cutaway pavilion dollhouse concept art inspired by my Pinterest pin" width="100%"></a> |
+| An AI-entertainment platform centered on virtual idols and immersive fan interaction. [Visit the site ↗](https://myblin9.com) | My creative blog about AI, gaming, and ideas for imaginative worlds. [Visit DragonAI7 ↗](https://dragonai7.blogspot.com/) | An early fantasy-home idea inspired by a miniature pavilion pin. This is concept artwork, not a finished home or live interactive demo. [See the artwork ↗](showcase/witchlight-pavilion.svg) · [Style inspiration ↗](https://www.pinterest.com/pin/745908757044638843/) |
+
 ## Things I'm imagining and exploring
 
 | Project | What it is |
 | --- | --- |
-| [MyBlin9](https://myblin9.com) | An AI-entertainment platform concept focused on virtual idols and immersive fan interaction. [Website](https://myblin9.com) · [GitHub fork](https://github.com/bellon118-wq/myblin9) |
+| [MyBlin9](https://myblin9.com) | An AI-entertainment platform concept focused on virtual idols and immersive fan interaction. [GitHub fork](https://github.com/bellon118-wq/myblin9) |
 | [DragonAI7](https://dragonai7.blogspot.com/) | My blog about AI, gaming, creative technology, and the worlds those ideas can unlock. |
 | **AI_Workspace** | A personal workspace for AI agents, personas, and custom creative workflows. |
 | **AstraeaNPCProject** | A game-world concept exploring NPC personalities, dialogue, and behavior. |
