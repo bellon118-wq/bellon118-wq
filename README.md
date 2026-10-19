@@ -43,6 +43,6 @@ These are **forks**, shared here as projects I'm learning from and following—n
 
 ## Find me around the web
 
-[MyBlin9](https://myblin9.com) · [DragonAI7 blog](https://dragonai7.blogspot.com/) · [GitHub repositories](https://github.com/bellon118-wq?tab=repositories) · [YouTube Community](https://youtube.com/@DanielBellon108/community)
+[MyBlin9](https://myblin9.com) · [DragonAI7 blog](https://dragonai7.blogspot.com/) · [Personal portfolio](https://bellon118-wq.github.io/bellon118-wq/) · [GitHub repositories](https://github.com/bellon118-wq?tab=repositories) · [YouTube Community](https://youtube.com/@DanielBellon108/community)
 
 <p align="center"><sub>Always collecting ideas. Always building toward the next world.</sub></p>
