@@ -29,7 +29,7 @@ I love turning curiosity into things people can explore: imaginative worlds, hel
 
 ## Worlds I love exploring
 
-**Aion 2** · **Once Human** · **Neverness to Everness (NTE)** · **Infinity Nikki** · **The Witcher**
+**Aion 2** · **Once Human** · **Neverness to Everness (NTE)** · **Zenless Zone Zero** · **Infinity Nikki** · **The Witcher**
 
 I enjoy beautiful worlds, base-building, customization, companions, lore, and relaxed exploration as much as the technology behind them.
 
