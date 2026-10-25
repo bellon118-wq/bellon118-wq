@@ -24,7 +24,7 @@ A public static site hosted by GitHub Pages in the `bellon118-wq/bellon118-wq` r
 
 ## Capabilities and Constraints
 
-The site introduces Daniel, four project highlights, favorite games, GitHub profile activity and repository links, and verified contact destinations. AI Workbench is a concept, not a released product. The MyBlin9 repository is a fork; do not imply Daniel authored upstream work. Project and game illustrations are original, unofficial mood artwork, not product screenshots or official game assets. GitHub profile data can fail to load; the page must retain its static links and explain the failure. A personal portrait, LinkedIn URL, and About.me URL have not been provided.
+The site introduces Daniel, four project highlights, a character-style personal dossier, one clearly marked sample roster concept, favorite games, GitHub profile activity and repository links, and verified contact destinations. The dossier uses owner-provided profile details and playful self-ratings, not measured performance. The YOUTHSPARK_Muse entry remains a concept placeholder until its portrait, biography, abilities, and active/published status are confirmed. AI Workbench is a concept, not a released product. The MyBlin9 repository is a fork; do not imply Daniel authored upstream work. Project and game illustrations are original, unofficial mood artwork, not product screenshots or official game assets. GitHub profile data can fail to load; the page must retain its static links and explain the failure. A personal portrait, LinkedIn URL, and About.me URL have not been provided.
 
 ## Brand Commitments
 
