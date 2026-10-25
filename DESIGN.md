@@ -40,6 +40,8 @@ Project cards use original inline SVG artwork rather than external hotlinked scr
 - **Project card:** original art, title, short description, and factual status/link treatment.
 - **World card:** atmospheric art with game title, genre, and personal-interest copy.
 - **GitHub activity:** achievement-like summary and profile/repository actions; live public stats are supplementary, not required for navigation.
+- **Character dossier:** a profile sheet with the existing original DB monogram (not a portrait), owner-provided profile details, accessible self-rating bars labeled as playful, and current-focus quests.
+- **Character roster entry:** an original YM emblem rather than fabricated portrait art; concept/status and missing biography/skills are explicit, with no fake profile link or nonfunctional search/filter.
 - **Connect/footer:** only verified destinations; unavailable profile destinations remain clearly unlinked.
 
 ## Interaction and accessibility
