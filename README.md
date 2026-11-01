@@ -2,40 +2,76 @@
   <img src="profile-banner.svg" alt="Moonlit fantasy castle above a flower-lined river, with a warm lantern beside a stone path" width="100%">
 </p>
 
-<h1 align="center">Hey, I'm Daniel 👋</h1>
+<h1 align="center">Daniel Bellon</h1>
 
-<p align="center"><strong>Creative builder · AI explorer · lifelong gamer</strong></p>
+<p align="center"><strong>AI Creator · Gamer · Digital Worldbuilder</strong></p>
 
-I love turning curiosity into things people can explore: imaginative worlds, helpful AI systems, memorable characters, and experiences that feel good to spend time in. I'm especially drawn to cozy-futuristic design, creative freedom, and adventures with a sense of discovery.
+<p align="center">
+  I turn curiosity into creative tools, virtual entertainment, memorable characters, and worlds worth exploring.
+</p>
 
-## A few worlds I'm building and exploring
+<p align="center">
+  <a href="https://bellon118-wq.github.io/bellon118-wq/">✦ Enter Mayflower Sanctuary</a>
+  &nbsp;·&nbsp;
+  <a href="https://x.com/danielbellon108">Follow on X</a>
+  &nbsp;·&nbsp;
+  <a href="https://github.com/bellon118-wq?tab=repositories">Browse my repositories</a>
+</p>
+
+<h2 align="center">✧ CREATOR DOSSIER ✧</h2>
+
+<table>
+  <tr>
+    <td><strong>CLASS</strong><br>AI Creator</td>
+    <td><strong>FACTION</strong><br>MYBLIN9</td>
+    <td><strong>HOME BASE</strong><br>Boston, MA</td>
+    <td><strong>CURRENT MODE</strong><br>Building & exploring</td>
+  </tr>
+</table>
+
+## Active quests
+
+| Quest log | Current focus |
+| --- | --- |
+| **MYBLIN9** | Exploring virtual idols and immersive fan experiences. |
+| **DragonAI7** | Writing about AI, gaming, creative technology, and imaginative worlds. |
+| **Website development** | Growing Mayflower Sanctuary into a game-inspired creative portfolio. |
+| **AI character creation** | Developing character and NPC concepts; concepts are labeled as such. |
+
+## Worlds and projects
 
 | MyBlin9 · Live site | DragonAI7 · Blog | Witchlight House · Concept |
 | --- | --- | --- |
-| <a href="https://myblin9.com"><img src="showcase/myblin9.svg" alt="MyBlin9 virtual-idol stage artwork" width="100%"></a> | <a href="https://dragonai7.blogspot.com/"><img src="showcase/dragonai7.svg" alt="DragonAI7 moonlit waterfront sanctuary artwork" width="100%"></a> | <a href="showcase/witchlight-pavilion.svg"><img src="showcase/witchlight-pavilion.svg" alt="Original cutaway pavilion dollhouse concept art inspired by my Pinterest pin" width="100%"></a> |
-| An AI-entertainment platform centered on virtual idols and immersive fan interaction. [Visit the site ↗](https://myblin9.com) | My creative blog about AI, gaming, and ideas for imaginative worlds. [Visit DragonAI7 ↗](https://dragonai7.blogspot.com/) | An early fantasy-home idea inspired by a miniature pavilion pin. This is concept artwork, not a finished home or live interactive demo. [See the artwork ↗](showcase/witchlight-pavilion.svg) · [Style inspiration ↗](https://www.pinterest.com/pin/745908757044638843/) |
+| <a href="https://myblin9.com"><img src="showcase/myblin9.svg" alt="Original MyBlin9 virtual-idol stage artwork" width="100%"></a> | <a href="https://dragonai7.blogspot.com/"><img src="showcase/dragonai7.svg" alt="Original DragonAI7 moonlit waterfront sanctuary artwork" width="100%"></a> | <a href="showcase/witchlight-pavilion.svg"><img src="showcase/witchlight-pavilion.svg" alt="Original cutaway pavilion dollhouse concept artwork" width="100%"></a> |
+| An AI-entertainment platform centered on virtual idols and immersive fan interaction. [Visit MyBlin9 ↗](https://myblin9.com) | My creative blog about AI, gaming, and ideas for imaginative worlds. [Visit DragonAI7 ↗](https://dragonai7.blogspot.com/) | An early fantasy-home idea inspired by a miniature pavilion pin—not a finished home or live demo. [View the concept ↗](showcase/witchlight-pavilion.svg) |
 
-## Things I'm imagining and exploring
+**Other concepts in my notebook:** AI_Workspace (agents, personas, and creative workflows) · AstraeaNPCProject (NPC personalities and behavior) · VISTAChain (a prompt-to-video workflow concept).
 
-| Project | What it is |
-| --- | --- |
-| [MyBlin9](https://myblin9.com) | An AI-entertainment platform concept focused on virtual idols and immersive fan interaction. [GitHub fork](https://github.com/bellon118-wq/myblin9) |
-| [DragonAI7](https://dragonai7.blogspot.com/) | My blog about AI, gaming, creative technology, and the worlds those ideas can unlock. |
-| **AI_Workspace** | A personal workspace for AI agents, personas, and custom creative workflows. |
-| **AstraeaNPCProject** | A game-world concept exploring NPC personalities, dialogue, and behavior. |
-| **VISTAChain** | A prompt-to-video workflow concept for shaping an idea into a visual story. |
-
-<sub>Some entries are concepts or personal workspaces, not finished or publicly released products.</sub>
+<p align="center">
+  <a href="https://bellon118-wq.github.io/bellon118-wq/">Explore the Mayflower Sanctuary portfolio ↗</a>
+</p>
 
 ## Worlds I love exploring
 
-**Aion 2** · **Once Human** · **Neverness to Everness (NTE)** · **Zenless Zone Zero** · **Infinity Nikki** · **The Witcher**
+**Aion 2** · **Once Human** · **Neverness to Everness** · **Zenless Zone Zero** · **Infinity Nikki** · **The Witcher**
 
-I enjoy beautiful worlds, base-building, customization, companions, lore, and relaxed exploration as much as the technology behind them.
+Beautiful worlds, customization, companions, lore, base-building, and relaxed exploration are all part of the adventure.
 
-## Open-source projects I'm exploring
+## Creator attributes
 
-These are **forks**, shared here as projects I'm learning from and following—not work I claim to have authored:
+<sub>Playful self-ratings—not measured performance.</sub>
+
+| Creativity | Worldbuilding | Technical skills | Marketing | Community |
+| ---: | ---: | ---: | ---: | ---: |
+| 95 | 90 | 88 | 92 | 85 |
+
+## Current loadout
+
+GitHub Copilot · VS Code · Windows 11 · RTX gaming PC · Creative AI tools
+
+## Open-source worlds I'm exploring
+
+These are **forks and projects I follow**, not work I claim to have authored:
 
 - [MOSS-Image](https://github.com/OpenMOSS/MOSS-Image) — text-aware image generation and layout tools
 - [WorldPlay2](https://github.com/WorldPlay2/WorldPlay2) — real-time interactive world models
@@ -43,9 +79,6 @@ These are **forks**, shared here as projects I'm learning from and following—n
 
 ## Find me around the web
 
-[MyBlin9](https://myblin9.com) · [DragonAI7 blog](https://dragonai7.blogspot.com/) · [Personal portfolio](https://bellon118-wq.github.io/bellon118-wq/) · [Website specification](https://github.com/bellon118-wq/bellon118-wq/blob/main/COPILOT_WEBSITE_SPEC.md) · [GitHub repositories](https://github.com/bellon118-wq?tab=repositories) · [YouTube Community](https://youtube.com/@DanielBellon108/community)
+[Mayflower Sanctuary](https://bellon118-wq.github.io/bellon118-wq/) · [MyBlin9](https://myblin9.com) · [DragonAI7 blog](https://dragonai7.blogspot.com/) · [X](https://x.com/danielbellon108) · [YouTube Community](https://youtube.com/@DanielBellon108/community) · [GitHub repositories](https://github.com/bellon118-wq?tab=repositories) · [Website specification](https://github.com/bellon118-wq/bellon118-wq/blob/main/COPILOT_WEBSITE_SPEC.md)
 
 <p align="center"><sub>Always collecting ideas. Always building toward the next world.</sub></p>
-## Mayflower Sanctuary website
-
-The site now has separate home, character profile, roster, gallery, games, projects, DragonAI7, and contact pages. Shared styles and interactions are in assets/css and assets/js; editable roster and game content is in assets/data. Character search, faction filtering, game search, and gallery filtering/lightbox work without a backend. Missing portraits and official game art are clearly labeled. See COPILOT_WEBSITE_SPEC.md for the complete direction and roadmap.
