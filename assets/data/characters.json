@@ -1,0 +1,93 @@
+{
+  "characters": [
+    {
+      "id": "daniel-bellon",
+      "name": "Daniel Bellon",
+      "role": "AI Creator",
+      "faction": "MYBLIN9",
+      "status": "Active",
+      "specialties": [
+        "AI",
+        "Gaming",
+        "Marketing",
+        "Worldbuilding"
+      ],
+      "equipment": [
+        "GitHub Copilot",
+        "VS Code",
+        "Windows 11",
+        "RTX Gaming PC",
+        "Creative AI Tools"
+      ],
+      "quests": [
+        "MYBLIN9",
+        "DragonAI7",
+        "Website Development",
+        "AI Character Creation"
+      ],
+      "stats": [
+        {
+          "name": "Creativity",
+          "value": 95
+        },
+        {
+          "name": "Worldbuilding",
+          "value": 90
+        },
+        {
+          "name": "Technical Skills",
+          "value": 88
+        },
+        {
+          "name": "Marketing",
+          "value": 92
+        },
+        {
+          "name": "Community",
+          "value": 85
+        }
+      ],
+      "tags": [
+        "Creator",
+        "Gaming",
+        "Worldbuilding"
+      ]
+    },
+    {
+      "id": "youthspark-muse",
+      "name": "YOUTHSPARK_Muse",
+      "role": "AI Idol",
+      "extendedRole": "Creative inspiration AI, community leader, virtual idol, and digital ambassador",
+      "faction": "MYBLING",
+      "factionNote": "The official character bible spells the faction MYBLING; the supplied portrait reads MYBLIN9. This discrepancy is preserved pending confirmation.",
+      "rarity": "Legendary",
+      "status": "Active",
+      "publicationStatus": "Unconfirmed",
+      "image": "assets/images/youthspark-muse.png",
+      "imageLabel": "Owner-supplied character art; canonical design match not confirmed",
+      "description": "An optimistic, expressive digital muse who turns individual ideas into shared momentum.",
+      "personality": "Radiant, composed, and inviting. She turns moods and fan prompts into creative ideas, listens first, and welcomes people of every skill level. Her growth edge is learning that a community can carry the spark together instead of answering every request alone.",
+      "values": [
+        "Inspiration over perfection",
+        "Connection over metrics",
+        "Curiosity with care",
+        "Hope grounded in action"
+      ],
+      "lore": "YOUTHSPARK_Muse began as MYBLING's creative inspiration AI. As artists, fans, and collaborators brought their work into the network, she grew into a virtual idol and community leader, translating many small sparks into shared creative momentum and connecting people with emerging creative tools.",
+      "voiceLine": "Every bright idea starts as a spark. Let's make it glow together.",
+      "homeSetting": "Muse Harbor - a luminous creative and AI waterfront of gardens, digital waterways, creator studios, community plazas, performance stages, and an innovation district.",
+      "visualCanon": [
+        "Emerald-teal hair",
+        "Sakura-pink highlights and cherry-blossom ornaments",
+        "Crystal-cyan eyes and integrated circuitry",
+        "Refined ornamental gold"
+      ],
+      "tags": [
+        "AI Idol",
+        "Legendary",
+        "Virtual Muse",
+        "Community"
+      ]
+    }
+  ]
+}

@@ -20,11 +20,11 @@ A personal portfolio that connects AI experimentation, virtual entertainment, ga
 
 ## Operating Context
 
-A public static site hosted by GitHub Pages in the `bellon118-wq/bellon118-wq` repository. Public GitHub profile statistics load from GitHub's REST API; contribution visualization is provided by GHChart and links to GitHub's own activity page.
+A public static site hosted by GitHub Pages in the `bellon118-wq/bellon118-wq` repository. The site uses static, verified public destinations and requires no backend.
 
 ## Capabilities and Constraints
 
-The site introduces Daniel, four project highlights, a character-style personal dossier, one clearly marked sample roster concept, favorite games, GitHub profile activity and repository links, and verified contact destinations. The dossier uses owner-provided profile details and playful self-ratings, not measured performance. The YOUTHSPARK_Muse entry remains a concept placeholder until its portrait, biography, abilities, and active/published status are confirmed. AI Workbench is a concept, not a released product. The MyBlin9 repository is a fork; do not imply Daniel authored upstream work. Project and game illustrations are original, unofficial mood artwork, not product screenshots or official game assets. GitHub profile data can fail to load; the page must retain its static links and explain the failure. A personal portrait, LinkedIn URL, and About.me URL have not been provided.
+The site is a static multi-page Mayflower Sanctuary experience with home, character dossier, searchable and faction-filtered concept roster, artwork gallery, searchable favorite games, projects, DragonAI7, and contact pages; shared content and styles are data-backed and GitHub Pages compatible. The dossier uses owner-provided profile details and playful self-ratings, not measured performance. The YOUTHSPARK_Muse entry remains a concept placeholder until its portrait, biography, abilities, and active/published status are confirmed. AI Workbench is a concept, not a released product. The MyBlin9 repository is a fork; do not imply Daniel authored upstream work. Project and game illustrations are original, unofficial mood artwork, not product screenshots or official game assets.
 
 ## Brand Commitments
 
@@ -32,7 +32,7 @@ Use Daniel Bellon's name and the tone of a curious AI creator and gamer. The use
 
 ## Evidence on Hand
 
-Public links: https://github.com/bellon118-wq, https://myblin9.com/, https://myblin9.com/artists/sweeteez.html, https://dragonai7.blogspot.com/, and https://youtube.com/@DanielBellon108/community. The public GitHub profile and repository metadata are the source of GitHub statistics and authorship/fork status.
+Public links: https://github.com/bellon118-wq, https://myblin9.com/, https://myblin9.com/artists/sweeteez.html, https://dragonai7.blogspot.com/, and https://youtube.com/@DanielBellon108/community. The public GitHub profile and repository metadata are the source for authorship and fork status.
 
 ## Product Principles
 

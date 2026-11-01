@@ -5,8 +5,8 @@
 ## Surface
 
 - **Mode:** Experience
-- **Route:** GitHub Pages portfolio at `/bellon118-wq/`
-- **Source of truth:** `index.html`; styles and original SVG illustrations are authored inline.
+- **Routes:** GitHub Pages multi-page experience at `/bellon118-wq/`
+- **Source of truth:** eight static HTML routes share `assets/css/styles.css` and `assets/js/main.js`; roster/game content lives in JSON.
 - **Intent:** Put the personal portfolio and artwork first, with navigation receding into a dark, cinematic fantasy atmosphere.
 
 ## Visual tokens
@@ -29,7 +29,7 @@ Bahnschrift leads, with Segoe UI Variable and Segoe UI fallbacks. Use the displa
 
 ## Composition and materials
 
-The hero is a full-viewport twilight scene using the existing original profile banner, layered with dark gradients for readable text. Subsequent sections move through About, Projects, Worlds, GitHub activity, and Connect. A centered content column, generous section spacing, restrained glass-like panels, thin cool borders, soft teal/gold highlights, and sparse decorative starwork keep the page immersive without obscuring its content.
+The home hero is a cinematic twilight scene using the existing original profile banner, layered with dark gradients for readable text. Subsequent sections move through About, Projects, Worlds, GitHub activity, and Connect. A centered content column, generous section spacing, restrained glass-like panels, thin cool borders, soft teal/gold highlights, and sparse decorative starwork keep the page immersive without obscuring its content.
 
 Project cards use original inline SVG artwork rather than external hotlinked screenshots. Game cards are unofficial atmospheric illustrations, not logos or official game artwork. Use image-led cards with clear titles, concise descriptions, and status labels where appropriate.
 
@@ -39,9 +39,9 @@ Project cards use original inline SVG artwork rather than external hotlinked scr
 - **Hero:** large name, role line, short introduction, and two primary actions: projects and GitHub.
 - **Project card:** original art, title, short description, and factual status/link treatment.
 - **World card:** atmospheric art with game title, genre, and personal-interest copy.
-- **GitHub activity:** achievement-like summary and profile/repository actions; live public stats are supplementary, not required for navigation.
+- **Gallery:** original repository SVGs plus labeled portrait, landscape, and NPC placeholders; search, category filtering, and native dialog lightbox.
 - **Character dossier:** a profile sheet with the existing original DB monogram (not a portrait), owner-provided profile details, accessible self-rating bars labeled as playful, and current-focus quests.
-- **Character roster entry:** an original YM emblem rather than fabricated portrait art; concept/status and missing biography/skills are explicit, with no fake profile link or nonfunctional search/filter.
+- **Character roster entry:** an original YM emblem rather than fabricated portrait art; concept/status and missing biography/skills are explicit, with no fake profile link; roster search and faction filtering are functional.
 - **Connect/footer:** only verified destinations; unavailable profile destinations remain clearly unlinked.
 
 ## Interaction and accessibility

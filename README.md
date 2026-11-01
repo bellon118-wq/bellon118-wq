@@ -46,3 +46,6 @@ These are **forks**, shared here as projects I'm learning from and following—n
 [MyBlin9](https://myblin9.com) · [DragonAI7 blog](https://dragonai7.blogspot.com/) · [Personal portfolio](https://bellon118-wq.github.io/bellon118-wq/) · [Website specification](https://github.com/bellon118-wq/bellon118-wq/blob/main/COPILOT_WEBSITE_SPEC.md) · [GitHub repositories](https://github.com/bellon118-wq?tab=repositories) · [YouTube Community](https://youtube.com/@DanielBellon108/community)
 
 <p align="center"><sub>Always collecting ideas. Always building toward the next world.</sub></p>
+## Mayflower Sanctuary website
+
+The site now has separate home, character profile, roster, gallery, games, projects, DragonAI7, and contact pages. Shared styles and interactions are in assets/css and assets/js; editable roster and game content is in assets/data. Character search, faction filtering, game search, and gallery filtering/lightbox work without a backend. Missing portraits and official game art are clearly labeled. See COPILOT_WEBSITE_SPEC.md for the complete direction and roadmap.
