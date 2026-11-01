@@ -29,7 +29,7 @@ Bahnschrift leads, with Segoe UI Variable and Segoe UI fallbacks. Use the displa
 
 ## Composition and materials
 
-The home hero is a cinematic twilight scene using the existing original profile banner, layered with dark gradients for readable text. Subsequent sections move through About, Projects, Worlds, GitHub activity, and Connect. A centered content column, generous section spacing, restrained glass-like panels, thin cool borders, soft teal/gold highlights, and sparse decorative starwork keep the page immersive without obscuring its content.
+The home hero uses the owner-provided moonlit castle and flower-lined river artwork, embedded as a self-contained panoramic SVG. Restrained blue-black overlays protect title contrast while preserving the lantern glow and castle; the top-aligned wide crop keeps the towers in the profile banner. Subsequent sections move through About, Projects, Worlds, GitHub activity, and Connect. A centered content column, generous section spacing, restrained glass-like panels, thin cool borders, soft teal/gold highlights, and sparse decorative starwork keep the page immersive without obscuring its content.
 
 Project cards use original inline SVG artwork rather than external hotlinked screenshots. Game cards are unofficial atmospheric illustrations, not logos or official game artwork. Use image-led cards with clear titles, concise descriptions, and status labels where appropriate.
 
