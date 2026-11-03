@@ -30,9 +30,9 @@ nav{position:sticky; top:0; z-index:20; background:rgba(11,15,26,.92); backdrop-
 .brand span{color:var(--teal)}
 nav a.navlink{color:var(--muted); text-decoration:none; font-size:.95rem; padding:.25rem .1rem}
 nav a.navlink:hover{color:#fff}
-/* Hero — terrace artwork behind a dark gradient so headings never fight it */
+/* Hero — moonlit castle artwork behind a dark gradient for legible headings */
 .hero{position:relative; overflow:hidden}
-.hero-bg{position:absolute; inset:0; background:url("assets/images/backgrounds/rose-sanctuary-terrace.webp") center/cover no-repeat; opacity:.45}
+.hero-bg{position:absolute; inset:0; background:url("profile-banner.svg") center/cover no-repeat; opacity:.45}
 .hero-bg::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(11,15,26,.55) 0%,rgba(11,15,26,.82) 55%,var(--bg) 100%)}
 .hero-inner{position:relative; width:min(1120px,92vw); margin:0 auto; padding:clamp(2.5rem,10vw,5rem) 0 clamp(2rem,8vw,3.5rem)}
 .eyebrow{color:var(--gold); text-transform:uppercase; letter-spacing:.18em; font-size:.85rem; margin:0}
@@ -58,6 +58,7 @@ section{padding:2.5rem 0 1rem}
 /* Roster: YouthSpark feature card */
 .feature{display:grid; grid-template-columns:1fr; gap:1rem}
 .feature img{border-radius:var(--radius); width:100%; object-fit:cover; aspect-ratio:3/4; max-height:560px}
+.feature img.reference-sheet{object-fit:contain;background:var(--bg2)}
 .lore{margin-top:1rem}
 .lore h3{color:var(--gold)}
 /* Worlds grid — floating backdrop gradients behind contrast cards */
