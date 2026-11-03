@@ -1,0 +1,64 @@
+{
+ "games": [
+  {
+   "name": "Genshin Impact",
+   "genre": "Open-world action RPG",
+   "why": "HoYoverse open-world action RPG. Daniel played it a long time ago.",
+   "description": "Favorite characters, impressions, screenshots, artwork: Details to come — Daniel to fill."
+  },
+  {
+   "name": "AION 2",
+   "genre": "Fantasy MMORPG",
+   "why": "NCSOFT MMORPG, launched Oct 5, 2026, free-to-play. Daniel's favorite game; his character is Dbella, on the High Priestess path.",
+   "description": "Verified from the local homepage worlds section."
+  },
+  {
+   "name": "Tower of Fantasy",
+   "genre": "Open-world RPG",
+   "why": "Details to come — Daniel to fill.",
+   "description": "No verified Tower of Fantasy material was found in the Mayflower or DragonAI7 files."
+  },
+  {
+   "name": "Infinity Nikki",
+   "genre": "Open-world dress-up adventure",
+   "why": "Fashion, customization, and dreamlike scenery make exploration playful. Version 2.11 launched Oct 29, 2026.",
+   "description": "Verified from the local homepage worlds section."
+  },
+  {
+   "name": "Once Human",
+   "genre": "Open-world survival",
+   "why": "Base-building and strange frontiers make the world mysterious. Endless Dream scenario; Hive Destiny Gate.",
+   "description": "Verified from the local homepage worlds section."
+  },
+  {
+   "name": "Zenless Zone Zero",
+   "genre": "Urban fantasy action RPG",
+   "why": "Distinctive characters, city details, and lively storytelling. Played roughly once a month around new updates.",
+   "description": "Verified from the local homepage worlds section."
+  },
+  {
+   "name": "Neverness to Everness",
+   "genre": "Urban fantasy RPG",
+   "why": "A contemporary city with supernatural corners invites exploration.",
+   "description": "From the live repository games data."
+  },
+  {
+   "name": "The Witcher",
+   "genre": "Dark fantasy RPG",
+   "why": "Deep lore, hard choices, and wild places invite revisiting.",
+   "description": "From the live repository games data."
+  },
+  {
+   "name": "Aniimo",
+   "genre": "Creature-collecting adventure",
+   "why": "Discover creatures in imaginative environments.",
+   "description": "From the live repository games data."
+  },
+  {
+   "name": "Arknights: Endfield",
+   "genre": "Sci-fi RPG · strategy",
+   "why": "Science-fiction worldbuilding and shaping a place over time.",
+   "description": "From the live repository games data."
+  }
+ ]
+}

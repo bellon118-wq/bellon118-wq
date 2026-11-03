@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome to Muse Harbor — YOUTHSPARK_Muse</title>
+<meta name="description" content="Enter Muse Harbor and meet YOUTHSPARK_Muse for the first time.">
+<style>
+  :root{
+    --neon-teal:#00F0FF; --hollow-blue:#8FB7FF; --sakura-pink:#F7B7D8;
+    --gold:#D8C79A; --abyss-blue:#0A1C3A; --black:#050505; --mist:#E7E7EB;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;overflow:hidden;background:var(--black);color:var(--mist);
+    font-family:"Segoe UI Variable","Segoe UI",system-ui,sans-serif}
+  h1,h2{font-family:"Bahnschrift SemiLight","Bahnschrift",system-ui,sans-serif;font-weight:400}
+  .landing{position:relative;width:100vw;height:100dvh;overflow:hidden;
+    background:radial-gradient(ellipse at 50% 0%,#143a5e 0%,var(--abyss-blue) 45%,#02040a 100%)}
+  /* distant stage lights */
+  .stage-lights{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+  .beam{position:absolute;bottom:18%;width:120px;height:70vh;filter:blur(18px);opacity:.35;
+    transform-origin:bottom center;animation:sway 9s ease-in-out infinite alternate}
+  .beam.b1{left:8%;background:linear-gradient(to top,transparent,var(--neon-teal));transform:rotate(-14deg)}
+  .beam.b2{left:38%;background:linear-gradient(to top,transparent,var(--hollow-blue));animation-delay:-3s;transform:rotate(6deg)}
+  .beam.b3{left:66%;background:linear-gradient(to top,transparent,var(--sakura-pink));animation-delay:-6s;transform:rotate(12deg)}
+  @keyframes sway{from{transform:rotate(-14deg)}to{transform:rotate(10deg)}}
+  .stars{position:absolute;inset:0;background-image:radial-gradient(1px 1px at 20% 30%,#fff,transparent),
+    radial-gradient(1px 1px at 70% 15%,#fff,transparent),radial-gradient(2px 2px at 45% 8%,#cfefff,transparent),
+    radial-gradient(1px 1px at 85% 40%,#fff,transparent);opacity:.7}
+  /* floating holographic lanterns */
+  .lantern{position:absolute;width:34px;height:48px;border-radius:10px 10px 14px 14px;
+    background:linear-gradient(180deg,#aef6ff,#2fd6f0);box-shadow:0 0 24px 6px rgba(0,240,255,.55),inset 0 0 10px #fff;
+    opacity:.9;animation:floatUp 16s linear infinite}
+  .lantern::after{content:"";position:absolute;left:50%;top:-8px;width:2px;height:8px;background:#8fb7ff;transform:translateX(-50%)}
+  @keyframes floatUp{0%{transform:translateY(20vh);opacity:0}12%{opacity:.9}100%{transform:translateY(-110vh);opacity:0}}
+  /* cherry blossom petals */
+  .petal{position:absolute;width:14px;height:12px;background:var(--sakura-pink);border-radius:80% 0 80% 0;
+    opacity:.85;animation:fall linear infinite}
+  @keyframes fall{0%{transform:translate(0,-5vh) rotate(0deg)}100%{transform:translate(-12vw,110vh) rotate(320deg)}}
+  canvas#particles{position:absolute;inset:0;width:100%;height:100%}
+  /* animated digital waterway */
+  .waterway{position:absolute;left:0;right:0;bottom:0;height:22vh;overflow:hidden;
+    background:linear-gradient(180deg,rgba(0,240,255,.08),rgba(10,28,58,.9))}
+  .wave{position:absolute;left:-50%;width:200%;height:100%;opacity:.6;
+    background:repeating-radial-gradient(circle at 50% 0,transparent 0 26px,rgba(0,240,255,.25) 27px 28px);
+    animation:flow 10s linear infinite}
+  .wave.w2{opacity:.35;animation-duration:16s;animation-direction:reverse}
+  @keyframes flow{from{transform:translateX(0)}to{transform:translateX(25%)}}
+  .content{position:relative;z-index:5;height:100%;display:flex;align-items:center;justify-content:center;
+    gap:3rem;padding:2rem;max-width:1200px;margin:0 auto}
+  .portrait{flex:0 0 340px;text-align:center;animation:fadeIn 1.2s ease both .3s}
+  .portrait img{width:100%;max-width:340px;border-radius:24px;border:1px solid rgba(0,240,255,.4);
+    box-shadow:0 0 60px rgba(0,240,255,.35),0 20px 50px rgba(0,0,0,.6)}
+  .portrait figcaption{margin-top:.75rem;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;font-size:.8rem}
+  .welcome{flex:1;max-width:620px;animation:fadeIn 1.2s ease both .6s}
+  .welcome h1{font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.05;margin:0 0 1rem;color:#fff;
+    text-shadow:0 0 24px rgba(0,240,255,.6)}
+  .welcome h1 span{color:var(--neon-teal)}
+  #greeting{min-height:6.5rem;font-size:clamp(1.15rem,2.4vw,1.5rem);line-height:1.6;white-space:pre-line}
+  #greeting .caret{display:inline-block;width:.55em;height:1.1em;background:var(--neon-teal);vertical-align:-0.15em;animation:blink 1s step-end infinite}
+  @keyframes blink{50%{opacity:0}}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  .actions{margin-top:1.75rem;display:flex;gap:1rem;flex-wrap:wrap}
+  .btn{display:inline-block;padding:.9rem 1.6rem;border-radius:999px;text-decoration:none;font-weight:600;
+    background:var(--neon-teal);color:#031018;box-shadow:0 0 28px rgba(0,240,255,.5);transition:transform .2s,box-shadow .2s}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 0 38px rgba(0,240,255,.8)}
+  .btn.ghost{background:transparent;color:var(--mist);border:1px solid rgba(231,231,235,.4);box-shadow:none}
+  .note{margin-top:1rem;font-size:.9rem;color:rgba(231,231,235,.75)}
+  .stage-controls{margin-top:1.25rem;display:flex;gap:.5rem;flex-wrap:wrap}
+  .chip{padding:.55rem 1rem;border-radius:999px;border:1px solid rgba(0,240,255,.5);background:rgba(0,240,255,.08);
+    color:var(--mist);cursor:pointer;font:inherit;font-size:.9rem}
+  .chip[aria-pressed="true"]{background:var(--neon-teal);color:#031018;font-weight:700}
+  .stage{position:absolute;z-index:10;left:50%;top:50%;transform:translate(-50%,-50%);width:min(680px,92vw);
+    max-height:88dvh;overflow:auto;background:rgba(5,10,20,.92);border:1px solid rgba(0,240,255,.4);
+    border-radius:20px;padding:1.5rem;box-shadow:0 0 60px rgba(0,240,255,.35)}
+  .stage-head{display:flex;justify-content:space-between;align-items:center;gap:1rem}
+  .stage-head h2{margin:0;font-size:1.4rem}
+  #visualizer{width:100%;height:90px;background:rgba(0,240,255,.06);border-radius:12px;margin-top:1rem}
+  .stage-note{font-size:.9rem;color:rgba(231,231,235,.75)}
+  .stage-actions{display:flex;gap:.75rem;flex-wrap:wrap;margin:.75rem 0}
+  .lightstick{margin:1rem auto;width:60px;text-align:center}
+  .stick-glow{width:44px;height:64px;margin:0 auto;border-radius:22px 22px 12px 12px;
+    background:radial-gradient(circle,#fff,var(--neon-teal));box-shadow:0 0 34px var(--neon-teal);transition:background .3s,box-shadow .3s}
+  .stick-handle{width:12px;height:46px;margin:0 auto;background:#222;border-radius:0 0 8px 8px}
+  .lightstick.waving .stick-glow{animation:wave .5s ease-in-out infinite alternate}
+  @keyframes wave{from{transform:rotate(-14deg)}to{transform:rotate(14deg)}}
+  .portrait.dancing img{animation:dance 2.4s ease-in-out infinite}
+  @keyframes dance{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-10px) rotate(1.5deg)}}
+  .landing.holo .portrait img{filter:drop-shadow(0 0 18px rgba(0,240,255,.9)) hue-rotate(12deg) saturate(1.2)}
+  .landing.holo .welcome h1{text-shadow:0 0 30px rgba(255,46,209,.7),0 0 24px rgba(0,240,255,.6)}
+  .fanwall{margin-top:1.25rem;border-top:1px solid rgba(231,231,235,.2);padding-top:1rem}
+  .fanwall label{display:block;margin:.6rem 0 .25rem;font-size:.9rem}
+  .fanwall input,.fanwall textarea{width:100%;padding:.6rem;border-radius:10px;border:1px solid rgba(231,231,235,.3);
+    background:rgba(255,255,255,.06);color:var(--mist);font:inherit}
+  #fanList{list-style:none;padding:0;margin:1rem 0 0}
+  #fanList li{background:rgba(0,240,255,.08);border:1px solid rgba(0,240,255,.25);border-radius:12px;padding:.75rem;margin-bottom:.5rem}
+  #fanList li b{color:var(--neon-teal)}
+  @media (max-width:768px){
+    html,body{overflow:auto}
+    .content{flex-direction:column;gap:1.25rem;padding:1.25rem;text-align:center}
+    .portrait{flex:0 0 auto}.portrait img{max-width:220px}
+    #greeting{min-height:8rem}
+    .actions{justify-content:center}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .beam,.lantern,.petal,.wave{animation:none}
+    .portrait,.welcome{animation:none}
+  }
+</style>
+</head>
+<body>
+<main class="landing" aria-label="Welcome to Muse Harbor">
+  <div class="stars" aria-hidden="true"></div>
+  <div class="stage-lights" aria-hidden="true">
+    <div class="beam b1"></div><div class="beam b2"></div><div class="beam b3"></div>
+  </div>
+  <canvas id="particles" aria-hidden="true"></canvas>
+  <div id="lanterns" aria-hidden="true"></div>
+  <div id="petals" aria-hidden="true"></div>
+  <div class="waterway" aria-hidden="true"><div class="wave"></div><div class="wave w2"></div></div>
+
+  <div class="content">
+    <figure class="portrait">
+      <img src="assets/images/characters/youthspark-muse-new-face-portrait.png"
+           alt="YOUTHSPARK_Muse, teal hair with pink streaks in pigtails, cherry-blossom pins, cyan earpiece, gold-lattice collar"
+           loading="eager">
+      <figcaption>YOUTHSPARK_Muse · AI Idol · MYBLIN9</figcaption>
+    </figure>
+    <section class="welcome">
+      <h1>Welcome to <span>Muse Harbor</span></h1>
+      <p id="greeting" aria-live="polite"></p>
+      <div class="actions">
+        <a class="btn" href="index.html">Enter Muse Harbor →</a>
+        <a class="btn ghost" href="characters/youthspark-muse.html">Meet YOUTHSPARK_Muse</a>
+      </div>
+      <p class="note">YOUTHSPARK_Muse is your guide through Muse Harbor — the codex, the map, the gallery, and the stories ahead.</p>
+      <p class="note">Continue to: <a href="characters.html">Characters</a> · <a href="gallery.html">Gallery</a> · <a href="games.html">Games</a> · <a href="projects.html">Projects</a> · <a href="dragonai7.html">DragonAI7 Lab</a> · <a href="about.html">About Daniel</a> · <a href="connect.html">Connect</a></p>
+      <div class="stage-controls" role="group" aria-label="Live Stage controls">
+        <button class="chip" id="stageBtn" type="button">✦ Live Stage</button>
+        <button class="chip" id="holoBtn" type="button">Holographic Effects</button>
+        <button class="chip" id="animBtn" type="button">Character Animations</button>
+        <button class="chip" id="stickBtn" type="button">Lightstick Mode</button>
+      </div>
+    </section>
+  </div>
+  <section class="stage" id="stage" hidden aria-label="Live Stage">
+    <div class="stage-head">
+      <h2>Live Stage · Muse Harbor</h2>
+      <button class="chip" id="closeStage" type="button">Close stage ✕</button>
+    </div>
+    <canvas id="visualizer" width="600" height="90" aria-label="Music visualizer"></canvas>
+    <p class="stage-note" id="visualizerNote">Visualizer is idle. Press “Play ambient tone” to start the browser-generated tone — there is no music track on file, so no song is claimed here.</p>
+    <div class="stage-actions">
+      <button class="btn" id="toneBtn" type="button">Play ambient tone</button>
+      <button class="btn ghost" id="waveBtn" type="button">Wave lightstick ✦</button>
+    </div>
+    <div class="lightstick" id="lightstick" aria-hidden="true"><div class="stick-glow"></div><div class="stick-handle"></div></div>
+    <div class="fanwall">
+      <h3>Fan Messages</h3>
+      <p class="stage-note">Messages you leave here are stored only in this browser, on this device. No messages from other visitors are shown, because none have been collected.</p>
+      <form id="fanForm">
+        <label for="fanName">Your name (optional)</label>
+        <input id="fanName" type="text" maxlength="40" placeholder="Dreamer">
+        <label for="fanMsg">Message for YOUTHSPARK_Muse</label>
+        <textarea id="fanMsg" rows="3" maxlength="280" required placeholder="Every bright idea starts as a spark…"></textarea>
+        <button class="btn" type="submit">Leave a message</button>
+      </form>
+      <ul id="fanList"></ul>
+    </div>
+  </section>
+</main>
+<script>
+  // Voice-style typewriter greeting — Daniel's exact words, line by line.
+  const lines = [
+    "Welcome to Muse Harbor.",
+    "Every bright idea starts as a spark.",
+    "Let's make it glow together."
+  ];
+  const el = document.getElementById('greeting');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) {
+    el.textContent = lines.join("\n");
+  } else {
+    let li = 0, ci = 0;
+    (function type(){
+      if (li >= lines.length) { el.innerHTML = lines.join("\n"); return; }
+      const done = lines.slice(0, li).join("\n");
+      const current = lines[li].slice(0, ci + 1);
+      el.innerHTML = (done ? done + "\n" : "") + current + '<span class="caret" aria-hidden="true"></span>';
+      ci++;
+      if (ci >= lines[li].length) { li++; ci = 0; setTimeout(type, 450); }
+      else setTimeout(type, 42);
+    })();
+  }
+  // Flowing particles over the digital waterway.
+  const canvas = document.getElementById('particles');
+  const ctx = canvas.getContext('2d');
+  let dots = [];
+  function resize(){
+    canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight;
+    dots = Array.from({length: Math.min(90, Math.floor(canvas.width / 14))}, () => ({
+      x: Math.random() * canvas.width, y: Math.random() * canvas.height,
+      r: Math.random() * 2.2 + 0.6, s: Math.random() * 0.5 + 0.15,
+      c: Math.random() > 0.5 ? '0,240,255' : '247,183,216'
+    }));
+  }
+  resize(); window.addEventListener('resize', resize);
+  (function draw(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    dots.forEach(d => {
+      d.y -= d.s; if (d.y < -4) { d.y = canvas.height + 4; d.x = Math.random() * canvas.width; }
+      ctx.beginPath(); ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(' + d.c + ',0.8)'; ctx.fill();
+    });
+    if (!reduced) requestAnimationFrame(draw);
+  })();
+  // Floating holographic lanterns.
+  const lanternBox = document.getElementById('lanterns');
+  for (let i = 0; i < 10; i++) {
+    const l = document.createElement('div'); l.className = 'lantern';
+    l.style.left = (4 + Math.random() * 92) + '%';
+    l.style.bottom = (-10 + Math.random() * 20) + 'vh';
+    l.style.animationDuration = (13 + Math.random() * 10) + 's';
+    l.style.animationDelay = (-Math.random() * 16) + 's';
+    l.style.transform = 'scale(' + (0.7 + Math.random() * 0.6) + ')';
+    lanternBox.appendChild(l);
+  }
+  // Cherry blossom petals.
+  const petalBox = document.getElementById('petals');
+  for (let i = 0; i < 22; i++) {
+    const p = document.createElement('div'); p.className = 'petal';
+    p.style.left = (Math.random() * 100) + '%';
+    p.style.top = (-Math.random() * 20) + 'vh';
+    p.style.animationDuration = (9 + Math.random() * 9) + 's';
+    p.style.animationDelay = (-Math.random() * 18) + 's';
+    p.style.transform = 'scale(' + (0.7 + Math.random() * 0.8) + ')';
+    petalBox.appendChild(p);
+  }
+  // Live Stage: visualizer, holographic effects, character animation, lightstick, fan messages.
+  const stage = document.getElementById('stage');
+  const landing = document.querySelector('.landing');
+  const portrait = document.querySelector('.portrait');
+  const stageBtn = document.getElementById('stageBtn');
+  const closeStage = document.getElementById('closeStage');
+  stageBtn.addEventListener('click', () => { stage.hidden = false; stageBtn.setAttribute('aria-pressed', 'true'); });
+  closeStage.addEventListener('click', () => { stage.hidden = true; stageBtn.setAttribute('aria-pressed', 'false'); });
+  const holoBtn = document.getElementById('holoBtn');
+  holoBtn.addEventListener('click', () => {
+    landing.classList.toggle('holo');
+    holoBtn.setAttribute('aria-pressed', landing.classList.contains('holo') ? 'true' : 'false');
+  });
+  const animBtn = document.getElementById('animBtn');
+  animBtn.addEventListener('click', () => {
+    portrait.classList.toggle('dancing');
+    animBtn.setAttribute('aria-pressed', portrait.classList.contains('dancing') ? 'true' : 'false');
+  });
+  const stickBtn = document.getElementById('stickBtn');
+  const lightstick = document.getElementById('lightstick');
+  const stickGlow = lightstick.querySelector('.stick-glow');
+  const stickColors = ['#00F0FF', '#F7B7D8', '#68E8F5', '#D8C79A', '#FF2ED1'];
+  let stickColor = 0, stickOn = false;
+  function waveStick(){
+    lightstick.classList.add('waving');
+    stickColor = (stickColor + 1) % stickColors.length;
+    const c = stickColors[stickColor];
+    stickGlow.style.background = 'radial-gradient(circle,#fff,' + c + ')';
+    stickGlow.style.boxShadow = '0 0 34px ' + c;
+    setTimeout(() => lightstick.classList.remove('waving'), 1200);
+  }
+  stickBtn.addEventListener('click', () => { stickOn = !stickOn; stage.hidden = false; waveStick(); stickBtn.setAttribute('aria-pressed', stickOn ? 'true' : 'false'); });
+  document.getElementById('waveBtn').addEventListener('click', waveStick);
+  // Music visualizer: browser-generated ambient tone only, via WebAudio. No track on file.
+  const viz = document.getElementById('visualizer');
+  const vctx = viz.getContext('2d');
+  let audioCtx = null, analyser = null, toneOn = false, osc = null;
+  const toneBtn = document.getElementById('toneBtn');
+  const vizNote = document.getElementById('visualizerNote');
+  function drawViz(){
+    vctx.clearRect(0, 0, viz.width, viz.height);
+    if (!analyser) {
+      vctx.fillStyle = 'rgba(0,240,255,.25)';
+      for (let i = 0; i < 40; i++) vctx.fillRect(i * 15 + 4, 70, 8, 12);
+      return;
+    }
+    const data = new Uint8Array(analyser.frequencyBinCount);
+    analyser.getByteFrequencyData(data);
+    for (let i = 0; i < 40; i++) {
+      const h = data[i * 2] / 255 * 80;
+      vctx.fillStyle = i % 2 ? '#00F0FF' : '#F7B7D8';
+      vctx.fillRect(i * 15 + 4, 88 - h, 8, h);
+    }
+    requestAnimationFrame(drawViz);
+  }
+  drawViz();
+  toneBtn.addEventListener('click', () => {
+    if (!audioCtx) {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      analyser = audioCtx.createAnalyser(); analyser.fftSize = 256;
+      osc = audioCtx.createOscillator(); osc.type = 'sine'; osc.frequency.value = 220;
+      const gain = audioCtx.createGain(); gain.gain.value = 0.04;
+      osc.connect(gain); gain.connect(analyser); analyser.connect(audioCtx.destination);
+      osc.start();
+    }
+    if (toneOn) { audioCtx.suspend(); toneBtn.textContent = 'Play ambient tone'; }
+    else { audioCtx.resume(); toneBtn.textContent = 'Pause ambient tone'; drawViz(); }
+    toneOn = !toneOn;
+    vizNote.textContent = toneOn ? 'Visualizer live: browser-generated ambient tone.' : 'Visualizer paused.';
+  });
+  // Fan messages: local browser storage only, no fake messages from others.
+  const fanForm = document.getElementById('fanForm');
+  const fanList = document.getElementById('fanList');
+  function renderFans(){
+    const msgs = JSON.parse(localStorage.getItem('muse-harbor-fan-messages') || '[]');
+    fanList.innerHTML = msgs.length ? '' : '<li>No messages yet — be the first Dreamer to leave one.</li>';
+    msgs.slice().reverse().forEach(m => {
+      const li = document.createElement('li');
+      li.innerHTML = '<b></b><span></span>';
+      li.querySelector('b').textContent = (m.name || 'Dreamer') + ': ';
+      li.querySelector('span').textContent = m.text;
+      fanList.appendChild(li);
+    });
+  }
+  renderFans();
+  fanForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('fanName').value.trim();
+    const text = document.getElementById('fanMsg').value.trim();
+    if (!text) return;
+    const msgs = JSON.parse(localStorage.getItem('muse-harbor-fan-messages') || '[]');
+    msgs.push({name, text, at: new Date().toISOString()});
+    localStorage.setItem('muse-harbor-fan-messages', JSON.stringify(msgs));
+    document.getElementById('fanMsg').value = '';
+    renderFans();
+  });
+</script>
+</body>
+</html>
