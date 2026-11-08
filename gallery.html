@@ -9,6 +9,7 @@
 <meta property="og:description" content="YOUTHSPARK_Muse character references and story artwork, plus original Mayflower project illustrations.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://bellon118-wq.github.io/bellon118-wq/gallery.html">
+<meta property="og:image" content="https://bellon118-wq.github.io/bellon118-wq/assets/images/founder-emblem.webp">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Digital Art Gallery — Mayflower Sanctuary">
 <meta name="twitter:description" content="YOUTHSPARK_Muse character references and story artwork, plus original Mayflower project illustrations.">
@@ -33,18 +34,18 @@
 <p class="kicker">Digital Art Gallery · Interactive Museum</p>
 <h1>Gallery</h1>
 
-<p class="muted">Owner-supplied YOUTHSPARK_Muse character references and story-art concepts, alongside original project illustrations. Book and film release status is unconfirmed.</p>
-<p><label>Filter by category: <select id="galleryFilter2"><option>All</option><option>Character reference</option><option>Story artwork</option><option>Portrait</option><option>Location</option><option>Project illustration</option></select></label></p>
+<p class="muted">Character portraits are withheld and shown as abstract placeholders. Owner-supplied story-art concepts and original project illustrations remain labeled separately; book and film release status is unconfirmed.</p>
+<p><label>Filter by category: <select id="galleryFilter2"><option>All</option><option>Character reference</option><option>Story artwork</option><option>Character emblem</option><option>Location</option><option>Project illustration</option></select></label></p>
 <div class="gallery-grid" id="galleryGrid2">
-<figure data-tag="Character reference"><img class="gallery-portrait" src="assets/images/characters/youthspark-muse-turnaround-v2.webp" alt="YOUTHSPARK_Muse version 2 turnaround sheet with front, three-quarter, side, and back views plus face and outfit details" loading="lazy" decoding="async"><figcaption>Character reference · Version 2 turnaround sheet</figcaption></figure>
-<figure data-tag="Story artwork"><img class="gallery-portrait" src="assets/images/characters/youthspark-book-cover.webp" alt="Owner-supplied YOUTHSPARK book-cover concept: Muse reading in a gothic library" loading="lazy" decoding="async"><figcaption>Story artwork · Book-cover concept (publication status unconfirmed)</figcaption></figure>
-<figure data-tag="Story artwork"><img class="gallery-portrait" src="assets/images/characters/youthspark-movie-poster.webp" alt="Owner-supplied YOUTHSPARK: The Blossom Protocol movie-poster concept" loading="lazy" decoding="async"><figcaption>Story artwork · “The Blossom Protocol” poster concept (film status unconfirmed)</figcaption></figure>
-<figure data-tag="Portrait"><img src="assets/images/youthspark-muse.png" alt="Earlier owner-supplied YOUTHSPARK_Muse portrait artwork" loading="lazy" decoding="async"><figcaption>Portrait · Earlier YOUTHSPARK_Muse artwork</figcaption></figure>
+<figure data-tag="Character reference"><img class="gallery-portrait character-avatar" src="assets/images/characters/youthspark-muse-placeholder.svg" data-image-fallback="assets/images/founder-emblem.webp" data-fallback-alt="Abstract character-art fallback; no canonical likeness is shown" alt="Abstract YOUTHSPARK_Muse emblem placeholder; no portrait or turnaround art supplied" loading="lazy" decoding="async"><figcaption>Character reference placeholder · no portrait or turnaround art displayed</figcaption></figure>
+<figure data-tag="Story artwork"><img class="gallery-portrait" src="assets/images/characters/youthspark-book-cover.webp" data-image-fallback="assets/images/founder-emblem.webp" data-fallback-alt="Abstract character-art fallback; no canonical likeness is shown" alt="Owner-supplied YOUTHSPARK book-cover concept; publication status unconfirmed" loading="lazy" decoding="async"><figcaption>Story artwork · Book-cover concept (publication status unconfirmed)</figcaption></figure>
+<figure data-tag="Story artwork"><img class="gallery-portrait" src="assets/images/characters/youthspark-movie-poster.webp" data-image-fallback="assets/images/founder-emblem.webp" data-fallback-alt="Abstract character-art fallback; no canonical likeness is shown" alt="Owner-supplied YOUTHSPARK: The Blossom Protocol movie-poster concept; publication status unconfirmed" loading="lazy" decoding="async"><figcaption>Story artwork · “The Blossom Protocol” poster concept (film status unconfirmed)</figcaption></figure>
+<figure data-tag="Character emblem"><img class="character-avatar" src="assets/images/characters/youthspark-muse-placeholder.svg" data-image-fallback="assets/images/founder-emblem.webp" data-fallback-alt="Abstract character-art fallback; no canonical likeness is shown" alt="Abstract YOUTHSPARK_Muse emblem placeholder, not a portrait or canonical likeness" loading="lazy" decoding="async"><figcaption>Character emblem placeholder · portrait artwork intentionally withheld</figcaption></figure>
 <figure data-tag="Location"><img src="profile-banner.svg" alt="Mayflower Sanctuary moonlit castle above a flower-lined river" loading="lazy" decoding="async"><figcaption>Location mood art · Mayflower Sanctuary moonlit castle</figcaption></figure>
 <figure data-tag="Project illustration"><img src="showcase/myblin9.svg" alt="Original MYBLIN9 virtual-idol stage project illustration" loading="lazy" decoding="async"><figcaption>Project illustration · MYBLIN9</figcaption></figure>
 <figure data-tag="Project illustration"><img src="showcase/dragonai7.svg" alt="Original DragonAI7 waterfront sanctuary project illustration" loading="lazy" decoding="async"><figcaption>Project illustration · DragonAI7</figcaption></figure>
 <figure data-tag="Project illustration"><img src="showcase/witchlight-pavilion.svg" alt="Original Witchlight Pavilion fantasy-home concept illustration" loading="lazy" decoding="async"><figcaption>Project concept · Witchlight Pavilion</figcaption></figure></div>
-<dialog id="lightbox2"><button class="close chip" onclick="this.closest('dialog').close()">Close ✕</button><img id="lightboxImg2" src="" alt="" style="width:100%"></dialog>
+<dialog id="lightbox2"><button class="close chip" onclick="this.closest('dialog').close()">Close ✕</button><img id="lightboxImg2" src="" alt="" data-image-fallback="assets/images/founder-emblem.webp" data-fallback-alt="Abstract character-art fallback; no canonical likeness is shown" style="width:100%"></dialog>
 <script>
 document.getElementById('galleryFilter2').addEventListener('change', e => {
   const v = e.target.value;
@@ -62,5 +63,6 @@ document.getElementById('galleryGrid2').addEventListener('click', e => {
 </section>
 </main>
 <footer><div class="wrap" style="padding-bottom:0"><p>Mayflower Sanctuary 2.0 · Owner-supplied character references and story concepts are displayed as such; artwork does not imply a published film or book.</p></div></footer>
+<script src="assets/js/image-fallback.js" defer></script>
 </body>
 </html>

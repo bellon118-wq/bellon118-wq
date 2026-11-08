@@ -6,3 +6,16 @@
 .character-art{display:block;width:100%;height:auto;max-height:70vh;object-fit:contain;object-position:center;background:#050505}.panel>.character-art{margin:-19px -19px 16px;width:calc(100% + 38px);max-width:calc(100% + 38px)}
 
 .featured-character{display:grid;grid-template-columns:minmax(220px,.72fr) 1.28fr;gap:clamp(20px,4vw,48px);align-items:center;padding:clamp(16px,3vw,30px);border:1px solid var(--line);background:linear-gradient(145deg,#112644d1,#060d1cef)}.featured-art{display:grid;place-items:center;min-height:280px;background:radial-gradient(circle at 50% 35%,#f7b7d822,transparent 42%),#050914}.featured-art img{display:block;width:100%;height:min(64vh,560px);object-fit:contain}.featured-copy h2{margin:8px 0 14px}.featured-copy>p{color:var(--mut)}@media(max-width:680px){.featured-character{grid-template-columns:1fr}.featured-art img{height:min(70vh,620px)}}
+.character-avatar{display:block;width:min(100%,400px);aspect-ratio:1;height:auto;object-fit:cover;border-radius:50%;background-color:#0A1C3A;background-size:cover;margin-inline:auto}
+.card img.character-avatar{width:min(100%,360px);height:auto;aspect-ratio:1;object-fit:cover;border-radius:50%;background-color:#0A1C3A;margin-inline:auto}
+.panel>.character-art.character-avatar{width:min(100%,400px);max-width:100%;height:auto;max-height:none;margin:0 auto 16px}
+.hero-banner img.character-avatar{width:min(100%,380px);height:auto;max-height:none;aspect-ratio:1;border-radius:50%;justify-self:center}
+.feature img.character-avatar{width:min(100%,360px);height:auto;max-height:none;aspect-ratio:1;object-fit:cover;border-radius:50%;background-color:#0A1C3A;margin-inline:auto}
+.gallery-grid img.character-avatar{width:min(100%,340px);height:auto;aspect-ratio:1;object-fit:cover;border-radius:50%;padding:0;background-color:#0A1C3A;margin-inline:auto}
+.founder-card{display:grid;grid-template-columns:minmax(150px,.72fr) minmax(0,1.28fr);align-items:center;gap:clamp(16px,3vw,30px)}
+.founder-card .character-avatar{width:min(100%,250px)}
+.founder-badge{color:var(--aether-gold);font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.founder-title{color:var(--neon-teal);font-size:clamp(1.05rem,2.4vw,1.4rem);letter-spacing:.06em}
+.image-fallback-graphic{display:grid;width:100%;min-height:180px;place-items:center;border:1px solid rgba(0,240,255,.55);background-color:#0A1C3A;background-image:radial-gradient(circle at 50% 42%,#00f0ff66 0 7%,#8fb7ff22 18%,transparent 34%),radial-gradient(circle at 50% 50%,transparent 43%,#00f0ff99 44% 45%,transparent 46%),radial-gradient(circle at 50% 50%,#0a1c3a,#050914);background-size:cover}
+.image-fallback-graphic.character-avatar{width:min(100%,400px);min-height:0;border-radius:50%}
+@media(max-width:680px){.founder-card{grid-template-columns:1fr}.founder-card .character-avatar{width:min(76vw,260px)}}

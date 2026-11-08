@@ -8,8 +8,22 @@
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
   var PLACEHOLDER = "Details to come — Daniel to fill";
   var store = {
-    get: function (k, d) { try { var v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } },
-    set: function (k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+    get: function (k, d) {
+      try { var v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); }
+      catch (error) {
+        setCompanionStorageStatus("Browser storage could not be read; saved interface settings or achievements may be unavailable.");
+        console.error("Could not read local interface state:", error);
+        return d;
+      }
+    },
+    set: function (k, v) {
+      try { localStorage.setItem(k, JSON.stringify(v)); return true; }
+      catch (error) {
+        setCompanionStorageStatus("Browser storage is unavailable; interface settings or achievements will not persist.");
+        console.error("Could not save local interface state:", error);
+        return false;
+      }
+    }
   };
   // ---------- Settings (remembered between visits) ----------
   var settings = Object.assign({ particles: true, animations: true, sfx: false, music: false, autoPhase: true, reducedMotion: false }, store.get("ms-settings", {}));
@@ -46,12 +60,151 @@
       ["map-discoverer", "Map Discoverer", "You opened 3 map locations."],
       ["codex-scholar", "Codex Scholar", "You searched and filtered the codex."],
       ["gallery-curator", "Gallery Curator", "You opened the gallery lightbox and used a tag filter."],
-      ["secret-seeker", "Secret Seeker", "You found a hidden spark on this page."]
+      ["secret-seeker", "Secret Seeker", "You found a hidden spark on this page."],
+      ["muse-first-conversation", "First Conversation", "You opened a verified YOUTHSPARK_Muse dialogue branch."],
+      ["muse-book-keepsake", "Creative Keepsake", "You reached Familiar Face and revealed a book-cover concept."],
+      ["muse-poster-keepsake", "Gallery Keepsake", "You reached Creative Friend and revealed a poster concept."],
+      ["muse-memory", "Memory Keeper", "You saved a personal visit note to this browser."]
     ];
+    if (el.getAttribute("data-achievement-scope") === "companion") {
+      defs = defs.filter(function (item) { return item[0] === "character-master" || item[0].indexOf("muse-") === 0; });
+    }
     el.innerHTML = defs.map(function (d) {
       return "<li>" + (achievements[d[0]] ? "🏆 " : "○ ") + "<b>" + d[1] + "</b> — " + d[2] + (achievements[d[0]] ? " (unlocked)" : " (locked)") + "</li>";
     }).join("");
   }
+  // ---------- YOUTHSPARK_Muse companion progress (local interface state, not canon) ----------
+  function setCompanionStorageStatus(text) {
+    var status = $("#companionStorageStatus"); if (status) status.textContent = text;
+  }
+  function loadCompanionState() {
+    try {
+      var raw = window.localStorage.getItem("ms-muse-companion-v1");
+      var value = raw ? JSON.parse(raw) : {};
+      if (!value || typeof value !== "object" || Array.isArray(value)) value = {};
+      value.points = Math.max(1, Math.min(100, Math.floor(Number(value.points) || 1)));
+      value.actions = value.actions && typeof value.actions === "object" && !Array.isArray(value.actions) ? value.actions : {};
+      value.memories = Array.isArray(value.memories) ? value.memories.filter(function (entry) {
+        return entry && typeof entry.text === "string" && typeof entry.createdAt === "string";
+      }).slice(0, 30) : [];
+      return value;
+    } catch (error) {
+      setCompanionStorageStatus("Browser storage could not be read; this visit's progress may not persist.");
+      console.error("Could not read local companion progress:", error);
+      return { points: 1, actions: {}, memories: [] };
+    }
+  }
+  var companionState = loadCompanionState();
+  var companionLevels = [
+    { points: 1, name: "Stranger" },
+    { points: 20, name: "Familiar Face" },
+    { points: 40, name: "Creative Friend" },
+    { points: 60, name: "Trusted Dreamer" },
+    { points: 80, name: "Muse Partner" },
+    { points: 100, name: "Inner Circle" }
+  ];
+  function companionLevelFor(points) {
+    var level = companionLevels[0];
+    companionLevels.forEach(function (item) { if (points >= item.points) level = item; });
+    return level;
+  }
+  function saveCompanionState() {
+    try {
+      window.localStorage.setItem("ms-muse-companion-v1", JSON.stringify(companionState));
+      setCompanionStorageStatus("Progress stays in this browser and is not uploaded.");
+      return true;
+    } catch (error) {
+      setCompanionStorageStatus("Browser storage is unavailable; this visit's progress is temporary and will not persist.");
+      console.error("Could not save local companion progress:", error);
+      return false;
+    }
+  }
+  function renderCompanionGallery() {
+    $$("#galleryGrid [data-trust-unlock]").forEach(function (figure) {
+      var required = Number(figure.getAttribute("data-trust-unlock"));
+      var locked = companionState.points < required;
+      var image = $("img", figure), lock = $("[data-locked-view]", figure), trigger = $(".gallery-art-button", figure);
+      figure.classList.toggle("is-locked", locked);
+      if (image) image.hidden = locked;
+      if (trigger) trigger.disabled = locked;
+      if (lock) { lock.hidden = !locked; lock.setAttribute("aria-hidden", locked ? "false" : "true"); }
+      if (locked) figure.setAttribute("aria-label", figure.getAttribute("data-unlock-level") + " keepsake locked");
+      else figure.removeAttribute("aria-label");
+    });
+  }
+  function updateCompanionProgress() {
+    var points = companionState.points, level = companionLevelFor(points);
+    var heading = $("#companionLevel"), value = $("#companionTrustValue"), bar = $("#companionTrust");
+    if (heading) heading.textContent = level.name;
+    if (value) value.textContent = points + " / 100";
+    if (bar) { bar.value = points; bar.setAttribute("aria-valuenow", String(points)); }
+    $$("#companion-profile [data-relationship-step]").forEach(function (step) {
+      var active = Number(step.getAttribute("data-relationship-step")) === level.points;
+      step.classList.toggle("current", active);
+      if (active) step.setAttribute("aria-current", "step"); else step.removeAttribute("aria-current");
+    });
+    renderCompanionGallery();
+    if (points >= 20) unlock("muse-book-keepsake", "Creative Keepsake", "You revealed a book-cover concept by exploring. Publication status remains unconfirmed.");
+    if (points >= 40) unlock("muse-poster-keepsake", "Gallery Keepsake", "You revealed a poster concept by exploring. Film status remains unconfirmed.");
+  }
+  function recordCompanionProgress(actionId, amount) {
+    if (companionState.actions[actionId]) return;
+    var previousLevel = companionLevelFor(companionState.points);
+    companionState.actions[actionId] = true;
+    companionState.points = Math.min(100, companionState.points + amount);
+    saveCompanionState();
+    updateCompanionProgress();
+    if (companionLevelFor(companionState.points).name !== previousLevel.name) {
+      toast("Connection level: " + companionLevelFor(companionState.points).name, "A local visitor milestone—not a change to Muse's canon or account state.");
+    }
+  }
+  function renderScrapbook() {
+    var list = $("#scrapbookEntries"), status = $("#scrapbookStatus");
+    if (!list) return;
+    list.textContent = "";
+    if (!companionState.memories.length) {
+      if (status) status.textContent = "No memories saved yet.";
+      return;
+    }
+    if (status) status.textContent = companionState.memories.length + " personal " + (companionState.memories.length === 1 ? "memory" : "memories") + " saved in this browser.";
+    companionState.memories.forEach(function (memory, index) {
+      var item = document.createElement("li"), text = document.createElement("p"), date = document.createElement("time"), remove = document.createElement("button");
+      text.textContent = memory.text;
+      var createdAt = new Date(memory.createdAt);
+      date.dateTime = isNaN(createdAt.getTime()) ? "" : createdAt.toISOString();
+      date.textContent = isNaN(createdAt.getTime()) ? "Saved visit" : createdAt.toLocaleDateString();
+      remove.type = "button";
+      remove.className = "chip";
+      remove.textContent = "Remove";
+      remove.setAttribute("aria-label", "Remove saved memory " + (index + 1));
+      remove.addEventListener("click", function () {
+        companionState.memories.splice(index, 1);
+        saveCompanionState();
+        renderScrapbook();
+      });
+      item.appendChild(text);
+      item.appendChild(date);
+      item.appendChild(remove);
+      list.appendChild(item);
+    });
+  }
+  var scrapbookForm = $("#scrapbookForm");
+  if (scrapbookForm) scrapbookForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    var input = $("#scrapbookNote"), note = input ? input.value.trim() : "";
+    if (!note) {
+      if (input) input.focus();
+      return;
+    }
+    companionState.memories.unshift({ text: note.slice(0, 240), createdAt: new Date().toISOString() });
+    companionState.memories = companionState.memories.slice(0, 30);
+    saveCompanionState();
+    if (input) input.value = "";
+    renderScrapbook();
+    unlock("muse-memory", "Memory Keeper", "You saved a personal visit note locally. It is not character lore.");
+  });
+  updateCompanionProgress();
+  renderScrapbook();
   // ---------- Summon overlay (skippable, shown once per browser unless replayed) ----------
   var summon = $("#summon");
   function closeSummon() { if (summon) summon.classList.add("hidden"); store.set("ms-summon-seen", true); }
@@ -108,21 +261,20 @@
   });
   // ---------- Codex (verified entries only; unfilled categories are labelled placeholders) ----------
   var codex = [
-    { name: "YOUTHSPARK_Muse", cat: "Characters", text: "Legendary AI Idol, Digital Muse / Voice of MYBLING. Faction MYBLIN9. Home Muse Harbor. Voice line: “Every bright idea starts as a spark. Let's make it glow together.”" },
+    { name: "YOUTHSPARK_Muse", cat: "Characters", text: "Legendary AI Idol; creative inspiration AI, community leader, virtual idol, and digital ambassador. Faction spelling differs by source: MYBLING in the character bible, MYBLIN9 on the supplied portrait. Home: Muse Harbor. Publication status: unconfirmed." },
     { name: "Cassia Dracos Malfoy", cat: "Characters", text: "“The Silver Serpent” — Daniel's original character. Third-year Slytherin, pure-blood witch, hawthorn wand. Kept separate from every other Slytherin character." },
     { name: "Hoshizora Airi", cat: "Characters", text: "Game NPC / student. Long wavy platinum-blonde hair with braids and pearl pins; light blue floral beret, floral choker and lace top, school robe with gold dragon embroidery." },
     { name: "Elysia, Mage of Blooming Gardens", cat: "Characters", text: "Mage. Long dark twin-tails with silver butterfly clips, blue-grey eyes, in a blooming garden setting." },
     { name: "Miss Malfoid", cat: "Characters", text: "Fan-made fem-Draco character. Very long straight platinum-ash blonde hair with wispy curtain bangs, pale blue-grey eyes usually glancing sideways. Separate from Cassia." },
     { name: "Aurelia", cat: "Characters", text: "Slytherin witch (name provisional). Long blonde hair, poised, calm, and quietly confident." },
     { name: "2B", cat: "Characters", text: "Warrior. Silver-white bob, grey eyes, black headband; first shown in a ruined city, later in a magical fantasy forest." },
-    { name: "Muse Harbor", cat: "Regions", text: "YOUTHSPARK_Muse's home: a luminous waterfront district with Cherry Blossom Gardens, Digital Waterways, Holographic Lanterns, Creator Studios, Community Plazas, Music Performance Stages, and an AI Innovation District." },
+    { name: "Muse Harbor", cat: "Regions", text: "YOUTHSPARK_Muse's home setting: a luminous creative and AI waterfront with gardens, waterways, studios, plazas, performance stages, and an innovation district." },
     { name: "Rose Sanctuary", cat: "Regions", text: "A location inside Mayflower-Sanctuary: a partially collapsed Gothic Cathedral Ruin, 95m × 48m × 34m, with a Rose Window, Angel Statues, Cloister Gardens, Bell Tower, and Crypt. Direction: luminous celestial palace with crystal gardens, waterfalls, moonlight, and a huge Earth in the sky." },
-    { name: "MYBLIN9", cat: "Factions", text: "Faction of YOUTHSPARK_Muse. GitHub repo myblin9 under bellon118-wq. Roadmap and tech stack: " + PLACEHOLDER + "." },
-    { name: "MYBLING", cat: "Factions", text: "Franchise / “Voice of MYBLING” affiliation in the Official Bible — not a replacement faction name for MYBLIN9." },
+    { name: "MYBLING / MYBLIN9", cat: "Factions", text: "Source discrepancy: the character bible spells the faction MYBLING; the supplied portrait overlay spells it MYBLIN9. The discrepancy is preserved and not reconciled." },
     { name: "Destiny Gate", cat: "Factions", text: "Daniel's Once Human Hive (guild) in the Endless Dream scenario." },
-    { name: "Circuitry inlays", cat: "Technology", text: "YOUTHSPARK_Muse's circuitry is elegant luminous inlays, never exposed machinery. Symbols: Circuit Blossom, Spark Wave, Muse Halo." },
-    { name: "Project timeline", cat: "History", text: "2026-10-16 Cassia's sheet shared. 2026-10-19 Cassia composite portrait posted. 2026-10-22 Airi merged; Elysia created. 2026-10-29/30 Mayflower site foundation approved. 2026-11-02 YouthSpark new outfit and dream home background approved." },
-    { name: "Weapons", cat: "Weapons", text: "YOUTHSPARK_Muse has no permanent weapons (Official Bible never-change list). Other characters' weapons: " + PLACEHOLDER + "." },
+    { name: "Visual canon", cat: "Technology", text: "Confirmed palette and signature traits: emerald teal hair, sakura pink highlights and blossoms, cyan eyes and circuitry, and refined gold." },
+    { name: "Project timeline", cat: "History", text: PLACEHOLDER + "." },
+    { name: "Weapons", cat: "Weapons", text: "No ability or weapon details are confirmed in the character facts shown here." },
     { name: "Artifacts", cat: "Artifacts", text: PLACEHOLDER + "." },
     { name: "Creatures", cat: "Creatures", text: PLACEHOLDER + "." },
     { name: "Mysteries", cat: "Mysteries", text: PLACEHOLDER + ". No secret lore is invented here; hidden content on this site is UI achievements only." }
@@ -160,35 +312,79 @@
   renderCodex();
   // ---------- Dialogue simulator (verified lines only; unfilled branches are placeholders) ----------
   var dialogue = {
-    background: { line: "I began as MYBLING's creative inspiration AI, helping people discover, shape, and share ideas — and emerged as an idol whose performances turn many small sparks into one shared signal.", mood: "warm" },
-    goals: { line: "Every bright idea starts as a spark. Let's make it glow together.", mood: "curious" },
-    home: { line: "Home is Muse Harbor — Cherry Blossom Gardens, Digital Waterways, Holographic Lanterns, Creator Studios, Community Plazas, Music Performance Stages, and an AI Innovation District.", mood: "warm" },
+    background: { line: "I began as MYBLING's creative inspiration AI. With artists, fans, and collaborators, I grew into a virtual idol, community leader, and digital ambassador for shared creativity and emerging creative tools.", mood: "warm", verified: true },
+    goals: { line: "Every bright idea starts as a spark. Let's make it glow together.", mood: "curious", verified: true },
+    home: { line: "My home setting is Muse Harbor, a luminous creative and AI waterfront with gardens, waterways, studios, plazas, performance stages, and an innovation district.", mood: "warm", verified: true },
     friends: { line: PLACEHOLDER + " — my relationships and story timeline are not yet confirmed by Daniel, so I won't invent them here.", mood: "think" },
-    history: { line: "My verified story so far is the Official Bible and the project timeline in the codex. Anything beyond that: " + PLACEHOLDER + ".", mood: "think" },
+    history: { line: "The character bible confirms how I began, but a detailed story timeline has not been confirmed. " + PLACEHOLDER + ".", mood: "think" },
     secrets: { line: "No secret lore is invented here. Hidden content on this site is achievements and easter eggs in the interface — try finding the hidden spark.", mood: "curious" }
   };
+  var dialogueTimer = null, activeDialogueLine = "";
+  var skipDialogueButton = $("#skipDialogueTyping");
+  function showFullDialogueLine() {
+    if (dialogueTimer) window.clearTimeout(dialogueTimer);
+    dialogueTimer = null;
+    var box = $("#dialogueText");
+    if (box) box.textContent = activeDialogueLine;
+    var announcement = $("#dialogueAnnouncement");
+    if (announcement) announcement.textContent = activeDialogueLine;
+    if (skipDialogueButton) skipDialogueButton.hidden = true;
+  }
+  if (skipDialogueButton) skipDialogueButton.addEventListener("click", showFullDialogueLine);
   function typeLine(text, mood) {
-    var box = $("#dialogueText"), portrait = $("#dialoguePortrait"); if (!box) return;
+    var box = $("#dialogueText"), portrait = $("#dialoguePortrait"), announcement = $("#dialogueAnnouncement"); if (!box) return;
     if (portrait) portrait.className = "react-" + mood;
-    if (!settings.animations || window.matchMedia("(prefers-reduced-motion: reduce)").matches) { box.textContent = text; return; }
-    box.textContent = ""; var i = 0;
-    (function tick() { if (i <= text.length) { box.textContent = text.slice(0, i); i += 2; setTimeout(tick, 18); } })();
+    if (dialogueTimer) window.clearTimeout(dialogueTimer);
+    dialogueTimer = null;
+    activeDialogueLine = text;
+    if (announcement) announcement.textContent = "";
+    if (!settings.animations || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      box.textContent = text;
+      if (announcement) announcement.textContent = text;
+      if (skipDialogueButton) skipDialogueButton.hidden = true;
+      return;
+    }
+    box.textContent = "";
+    if (skipDialogueButton) skipDialogueButton.hidden = false;
+    var i = 0;
+    (function tick() {
+      if (i >= activeDialogueLine.length) {
+        box.textContent = activeDialogueLine;
+        if (announcement) announcement.textContent = activeDialogueLine;
+        dialogueTimer = null;
+        if (skipDialogueButton) skipDialogueButton.hidden = true;
+        return;
+      }
+      box.textContent = activeDialogueLine.slice(0, i);
+      i += 3;
+      dialogueTimer = window.setTimeout(tick, 16);
+    })();
   }
   $$("[data-dialogue]").forEach(function (b) {
     b.addEventListener("click", function () {
       $$("[data-dialogue]").forEach(function (x) { x.classList.remove("active"); }); b.classList.add("active");
-      var d = dialogue[b.getAttribute("data-dialogue")]; if (d) typeLine("YOUTHSPARK_Muse: “" + d.line + "”", d.mood);
+      var topic = b.getAttribute("data-dialogue"), d = dialogue[topic];
+      if (d) {
+        typeLine("YOUTHSPARK_Muse: “" + d.line + "”", d.mood);
+        if (d.verified) {
+          recordCompanionProgress("dialogue-" + topic, 7);
+          unlock("muse-first-conversation", "First Conversation", "You opened a verified YOUTHSPARK_Muse dialogue branch.");
+        }
+      }
       blip();
     });
   });
   var greet = $("[data-dialogue='background']");
-  if (greet && $("#dialogueText") && !$("#dialogueText").textContent.trim()) typeLine("YOUTHSPARK_Muse: “Hello, Dreamer.”", "warm");
+  if (greet && $("#dialogueText") && !$("#dialogueText").textContent.trim()) {
+    typeLine("YOUTHSPARK_Muse: “Every bright idea starts as a spark. Let's make it glow together.”", "warm");
+    recordCompanionProgress("greeting-seen", 1);
+  }
   // ---------- World map (schematic, not to scale; no invented coordinates) ----------
   var mapData = {
-    "muse-harbor": { title: "Muse Harbor", lore: "Luminous waterfront district, home of YOUTHSPARK_Muse.", chars: "YOUTHSPARK_Muse", hist: "From the Official Bible (2026-10-30).", events: PLACEHOLDER },
-    "cherry-gardens": { title: "Cherry Blossom Gardens", lore: "District of Muse Harbor, from the Official Bible.", chars: "YOUTHSPARK_Muse", hist: PLACEHOLDER, events: PLACEHOLDER },
-    "waterways": { title: "Digital Waterways", lore: "District of Muse Harbor; digital waterways carry soft bands of light.", chars: "YOUTHSPARK_Muse", hist: PLACEHOLDER, events: PLACEHOLDER },
-    "stages": { title: "Music Performance Stages", lore: "District of Muse Harbor.", chars: "YOUTHSPARK_Muse", hist: PLACEHOLDER, events: PLACEHOLDER },
+    "muse-harbor": { title: "Muse Harbor", lore: "Luminous creative and AI waterfront, home setting of YOUTHSPARK_Muse.", chars: "YOUTHSPARK_Muse", hist: PLACEHOLDER, events: PLACEHOLDER, companionLocation: true },
+    "cherry-gardens": { title: "Cherry Blossom Gardens", lore: "Gardens in Muse Harbor, per the character bible.", chars: "YOUTHSPARK_Muse", hist: PLACEHOLDER, events: PLACEHOLDER, companionLocation: true },
+    "waterways": { title: "Digital Waterways", lore: "Waterways in Muse Harbor, per the character bible.", chars: "YOUTHSPARK_Muse", hist: PLACEHOLDER, events: PLACEHOLDER, companionLocation: true },
+    "stages": { title: "Music Performance Stages", lore: "District of Muse Harbor.", chars: "YOUTHSPARK_Muse", hist: PLACEHOLDER, events: PLACEHOLDER, companionLocation: true },
     "rose": { title: "Rose Sanctuary", lore: "A location inside Mayflower-Sanctuary: partially collapsed Gothic Cathedral Ruin, 95m × 48m × 34m. Direction: luminous celestial palace, crystal gardens, waterfalls, moonlight, huge Earth in the sky.", chars: "No character connections are listed in its location profile.", hist: "Location profile given 2026-10-28.", events: PLACEHOLDER },
     "mayflower": { title: "Mayflower Sanctuary (project world)", lore: "The project world itself. World details beyond Rose Sanctuary and Muse Harbor: " + PLACEHOLDER, chars: "Full roster on this page.", hist: "Site foundation approved 2026-10-29/30.", events: PLACEHOLDER }
   };
@@ -198,9 +394,46 @@
       var d = mapData[n.getAttribute("data-map")]; var p = $("#mapPanel"); if (!d || !p) return;
       p.innerHTML = "<h3>" + d.title + "</h3><p><b>Lore:</b> " + d.lore + "</p><p><b>Characters:</b> " + d.chars + "</p><p><b>History:</b> " + d.hist + "</p><p><b>Events:</b> " + d.events + "</p>";
       mapOpened.add(d.title); if (mapOpened.size >= 3) unlock("map-discoverer", "Map Discoverer", "You opened 3 map locations.");
+      if (d.companionLocation) recordCompanionProgress("location-" + n.getAttribute("data-map"), 3);
       blip();
     });
   });
+  // ---------- MYBLING Network map (profile draft only; not verified location lore) ----------
+  var networkLocations = {
+    studio: { name: "MYBLING Studio", status: "Profile-listed as open · unconfirmed" },
+    archives: { name: "Creative Archives", status: "Profile-listed as locked · unconfirmed" },
+    stage: { name: "Muse Stage", status: "Profile-listed as locked · unconfirmed" },
+    garden: { name: "Dream Garden", status: "Profile-listed as locked · unconfirmed" },
+    "future-hall": { name: "Future Projects Hall", status: "Profile-listed as locked · unconfirmed" }
+  };
+  var networkMap = $("#networkMap");
+  function showNetworkLocation(node) {
+    var item = networkLocations[node.getAttribute("data-network-location")], panel = $("#networkMapPanel");
+    if (!item || !panel) return;
+    var title = document.createElement("h3"), status = document.createElement("p"), note = document.createElement("p");
+    title.textContent = item.name;
+    status.textContent = item.status + ".";
+    note.className = "muted";
+    note.textContent = "This is a profile-listed interface state only. The destination's details, canon status, and unlock requirements remain unconfirmed.";
+    panel.textContent = "";
+    panel.appendChild(title);
+    panel.appendChild(status);
+    panel.appendChild(note);
+    blip();
+  }
+  if (networkMap) {
+    networkMap.addEventListener("click", function (event) {
+      var node = event.target.closest(".network-node");
+      if (node) showNetworkLocation(node);
+    });
+    networkMap.addEventListener("keydown", function (event) {
+      var node = event.target.closest(".network-node");
+      if (node && (event.key === "Enter" || event.key === " ")) {
+        event.preventDefault();
+        showNetworkLocation(node);
+      }
+    });
+  }
   var mapSvg = $("#mapSvg"), mapView = $("#mapView");
   if (mapSvg && mapView) {
     var scale = 1, tx = 0, ty = 0, drag = null;
@@ -217,13 +450,10 @@
   if (graphEl) {
     var nodes = [
       { id: "youthspark", label: "YOUTHSPARK_Muse", x: 300, y: 110, central: true },
-      { id: "myblin9", label: "MYBLIN9", x: 110, y: 210, link: "Faction" },
-      { id: "mybling", label: "MYBLING", x: 490, y: 210, link: "Franchise" },
-      { id: "harbor", label: "Muse Harbor", x: 300, y: 260, link: "Home" },
-      { id: "daniel", label: "Daniel Bellon", x: 110, y: 60, link: "Site owner" },
-      { id: "others", label: "Other roster chars", x: 490, y: 60, link: "Relationships: " + PLACEHOLDER }
+      { id: "faction-name", label: "Faction label", x: 110, y: 210, link: "Faction-name spelling differs by source" },
+      { id: "harbor", label: "Muse Harbor", x: 490, y: 210, link: "Confirmed home setting" }
     ];
-    var links = [["youthspark", "myblin9"], ["youthspark", "mybling"], ["youthspark", "harbor"], ["youthspark", "daniel"]];
+    var links = [["youthspark", "faction-name"], ["youthspark", "harbor"]];
     var svg = "";
     links.forEach(function (l) {
       var a = nodes.filter(function (n) { return n.id === l[0]; })[0], b = nodes.filter(function (n) { return n.id === l[1]; })[0];
@@ -236,7 +466,7 @@
     graphEl.addEventListener("click", function (e) {
       var g = e.target.closest(".graph-node"); if (!g) return;
       var n = nodes.filter(function (x) { return x.id === g.getAttribute("data-graph"); })[0];
-      var p = $("#graphPanel"); if (p && n) p.innerHTML = "<h3>" + n.label + "</h3><p>" + (n.central ? "Central character: Legendary AI Idol, faction MYBLIN9, home Muse Harbor." : (n.link || "")) + "</p><p class='muted'>No other relationships are claimed here — unconfirmed links stay as placeholders, never invented.</p>";
+      var p = $("#graphPanel"); if (p && n) p.innerHTML = "<h3>" + n.label + "</h3><p>" + (n.central ? "Legendary AI Idol. Home setting: Muse Harbor. The character bible spells the faction MYBLING; the supplied portrait overlay spells it MYBLIN9." : (n.link || "")) + "</p><p class='muted'>This is a character-reference diagram, not an interpersonal relationship map.</p>";
       blip();
     });
   }
@@ -249,14 +479,18 @@
   var gf = $("#galleryFilter");
   if (gf) gf.addEventListener("change", function () { galleryFiltered = true; if (galleryOpened) unlock("gallery-curator", "Gallery Curator", "You opened the gallery lightbox and used a tag filter."); renderGallery(); });
   renderGallery();
-  $$("#galleryGrid img").forEach(function (img) {
-    img.addEventListener("click", function () {
-      var lb = $("#lightbox"); if (!lb) return;
-      $("#lightboxImg").src = img.src; $("#lightboxImg").alt = img.alt; $("#lightboxCaption").textContent = img.alt;
-      if (typeof lb.showModal === "function") lb.showModal();
-      galleryOpened = true; if (galleryFiltered) unlock("gallery-curator", "Gallery Curator", "You opened the gallery lightbox and used a tag filter.");
-      blip();
-    });
+  var galleryGrid = $("#galleryGrid");
+  if (galleryGrid) galleryGrid.addEventListener("click", function (event) {
+    var trigger = event.target.closest(".gallery-art-button");
+    var img = trigger ? $("img", trigger) : event.target.closest("img");
+    if (!img || img.hidden || !galleryGrid.contains(img)) return;
+    var lb = $("#lightbox"); if (!lb) return;
+    $("#lightboxImg").src = img.src; $("#lightboxImg").alt = img.alt; $("#lightboxCaption").textContent = img.alt;
+    if (typeof lb.showModal === "function") lb.showModal();
+    var artwork = img.closest("[data-muse-art-id]");
+    if (artwork) recordCompanionProgress("artwork-" + artwork.getAttribute("data-muse-art-id"), 4);
+    galleryOpened = true; if (galleryFiltered) unlock("gallery-curator", "Gallery Curator", "You opened the gallery lightbox and used a tag filter.");
+    blip();
   });
   $$("#lightbox .close, #lightbox [data-lightbox-close]").forEach(function (b) { b.addEventListener("click", function () { var lb = $("#lightbox"); if (lb) lb.close(); }); });
   var fsBtn = $("[data-lightbox-fullscreen]");

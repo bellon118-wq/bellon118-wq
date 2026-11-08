@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-labelledby="title description">
+  <title id="title">YOUTHSPARK_Muse abstract character placeholder</title>
+  <desc id="description">A non-portrait emblem of a luminous creative spark, sakura petals, and connected ideas in teal, cyan, pink, and gold. It does not depict or establish a canonical likeness.</desc>
+  <defs>
+    <radialGradient id="field">
+      <stop stop-color="#123b55"/>
+      <stop offset=".58" stop-color="#0a1c3a"/>
+      <stop offset="1" stop-color="#050914"/>
+    </radialGradient>
+    <radialGradient id="spark" cx=".35" cy=".28">
+      <stop stop-color="#fff"/>
+      <stop offset=".2" stop-color="#a8fbff"/>
+      <stop offset=".55" stop-color="#00f0ff"/>
+      <stop offset="1" stop-color="#147caa"/>
+    </radialGradient>
+    <linearGradient id="petal" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#ffe2f2"/>
+      <stop offset=".55" stop-color="#f7b7d8"/>
+      <stop offset="1" stop-color="#bd5c9d"/>
+    </linearGradient>
+    <filter id="glow" x="-.7" y="-.7" width="2.4" height="2.4">
+      <feGaussianBlur stdDeviation="18" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <circle cx="512" cy="512" r="512" fill="url(#field)"/>
+  <g fill="#fff">
+    <circle cx="179" cy="214" r="4"/><circle cx="845" cy="239" r="3"/>
+    <circle cx="245" cy="807" r="3"/><circle cx="786" cy="772" r="4"/>
+    <circle cx="702" cy="142" r="2"/><circle cx="336" cy="135" r="2"/>
+  </g>
+  <circle cx="512" cy="482" r="354" fill="none" stroke="#00f0ff" stroke-opacity=".62" stroke-width="8"/>
+  <circle cx="512" cy="482" r="330" fill="none" stroke="#d8c79a" stroke-opacity=".62" stroke-width="2" stroke-dasharray="3 18"/>
+  <g fill="none" stroke="#8fb7ff" stroke-opacity=".75" stroke-width="4">
+    <path d="M253 348 374 268 506 296 644 247 767 344 738 500 778 636 642 705 512 667 378 714 244 624 279 483Z"/>
+    <path d="m374 268 31 156 101-128 22 161 116-210M253 348l152 76 101-128 139 28 122 20-160 108 131 48-160 143-108-199-98 270-95-176 207-95"/>
+  </g>
+  <g fill="#00f0ff" filter="url(#glow)">
+    <circle cx="253" cy="348" r="8"/><circle cx="374" cy="268" r="8"/><circle cx="506" cy="296" r="9"/>
+    <circle cx="644" cy="247" r="7"/><circle cx="767" cy="344" r="8"/><circle cx="738" cy="500" r="7"/>
+    <circle cx="778" cy="636" r="8"/><circle cx="642" cy="705" r="7"/><circle cx="512" cy="667" r="9"/>
+    <circle cx="378" cy="714" r="7"/><circle cx="244" cy="624" r="8"/><circle cx="279" cy="483" r="7"/>
+  </g>
+  <g fill="url(#petal)" stroke="#fff0fa" stroke-opacity=".75" stroke-width="3">
+    <path d="M512 184c-44-44-39-101 0-139 39 38 44 95 0 139Z"/>
+    <path d="M702 292c-4-62 36-102 91-107 8 54-24 101-91 107Z"/>
+    <path d="M787 535c49-39 105-26 137 18-44 34-101 31-137-18Z"/>
+    <path d="M632 744c58 23 72 77 48 127-51-26-74-77-48-127Z"/>
+    <path d="M390 744c-26 56-81 67-130 39 28-50 80-70 130-39Z"/>
+    <path d="M237 535c-51-36-57-93-21-136 46 36 61 91 21 136Z"/>
+    <path d="M322 292c-64 4-101-40-102-95 54-6 98 27 102 95Z"/>
+  </g>
+  <circle cx="512" cy="482" r="126" fill="#00f0ff" fill-opacity=".12" filter="url(#glow)"/>
+  <circle cx="512" cy="482" r="96" fill="url(#spark)" stroke="#d8c79a" stroke-width="5"/>
+  <g fill="none" stroke="#fff" stroke-opacity=".74" stroke-width="3">
+    <ellipse cx="512" cy="482" rx="43" ry="96"/>
+    <ellipse cx="512" cy="482" rx="96" ry="38"/>
+    <path d="M416 482h192M512 386v192"/>
+  </g>
+  <path d="M512 387v190M416 482h192" stroke="#d8c79a" stroke-opacity=".7" stroke-width="2"/>
+  <g fill="#fff">
+    <circle cx="512" cy="386" r="6"/><circle cx="608" cy="482" r="6"/>
+    <circle cx="512" cy="578" r="6"/><circle cx="416" cy="482" r="6"/>
+  </g>
+  <g fill="none" stroke="#00f0ff" stroke-opacity=".58" stroke-width="4">
+    <path d="M199 841c114-73 207-109 313-108s203 37 313 108"/>
+    <path d="M256 886c91-52 169-75 256-75s166 23 256 75"/>
+  </g>
+  <g fill="#d8c79a" opacity=".92">
+    <path d="m208 754 13-84 14 84Zm-8 9h43v9h-43z"/>
+    <path d="m782 754 13-84 14 84Zm-8 9h43v9h-43z"/>
+    <circle cx="512" cy="816" r="7"/><circle cx="302" cy="860" r="5"/><circle cx="722" cy="860" r="5"/>
+  </g>
+  <path d="M512 733v102m-42-57 42-45 42 45" fill="none" stroke="#8fb7ff" stroke-width="5" stroke-linecap="round"/>
+</svg>
