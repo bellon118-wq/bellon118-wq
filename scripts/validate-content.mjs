@@ -3,7 +3,7 @@ import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const readJson = relative => JSON.parse(readFileSync(resolve(root, relative), "utf8").replace(/^\\uFEFF/, ""));
+const readJson = relative => JSON.parse(readFileSync(resolve(root, relative), "utf8").replace(/^\uFEFF/, ""));
 const fail = message => { console.error("✖ " + message); process.exitCode = 1; };
 const pass = message => console.log("✔ " + message);
 const validId = value => typeof value === "string" && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value);
@@ -38,7 +38,7 @@ for (const route of routes.routes || []) {
   if (!existsSync(resolve(root, route.path))) fail("routes.json: route target does not exist: " + route.path);
 }
 for (const item of routes.navigation || []) {
-  const path = new URL(item.href, "https://mayflower.invalid/").pathname.replace(/^\\//, "");
+  const path = new URL(item.href, "https://mayflower.invalid/").pathname.replace(/^\//, "");
   if (!existsSync(resolve(root, path))) fail("routes.json: navigation target does not exist: " + item.href);
 }
 pass("assets/data/routes.json: route targets checked");
@@ -78,5 +78,5 @@ for (const [legacyPath, entry] of Object.entries(sourceMap.legacy || {})) {
 }
 pass("source-map: canonical and legacy compatibility paths checked");
 
-if (process.exitCode === 1) console.error("\\nContent validation failed.");
-else console.log("\\nMayflower Sanctuary content and relationship validation passed.");
+if (process.exitCode === 1) console.error("\nContent validation failed.");
+else console.log("\nMayflower Sanctuary content and relationship validation passed.");
