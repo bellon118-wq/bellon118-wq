@@ -32,6 +32,13 @@
       "description": "Manage player items, currencies and collections."
     },
     {
+      "id": "discovery-journal",
+      "label": "Discovery Journal",
+      "href": "discoveries.html",
+      "group": "game",
+      "description": "Record discovered locations and track exploration progress."
+    },
+    {
       "id": "world-map",
       "label": "World Map",
       "href": "index.html#map",
@@ -118,6 +125,12 @@
     {
       "id": "inventory",
       "path": "inventory.html",
+      "kind": "page",
+      "status": "active"
+    },
+    {
+      "id": "discovery-journal",
+      "path": "discoveries.html",
       "kind": "page",
       "status": "active"
     },
