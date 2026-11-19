@@ -4,6 +4,8 @@
 // labelled "Details to come — Daniel to fill" and never invented.
 (function () {
   "use strict";
+  var GAME_SCRIPT = document.currentScript;
+  var GAME_ROOT = GAME_SCRIPT && GAME_SCRIPT.src ? new URL("./", GAME_SCRIPT.src) : new URL("./", window.location.href);
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
   var PLACEHOLDER = "Details to come — Daniel to fill";
@@ -388,8 +390,39 @@
     "rose": { title: "Rose Sanctuary", lore: "A location inside Mayflower-Sanctuary: partially collapsed Gothic Cathedral Ruin, 95m × 48m × 34m. Direction: luminous celestial palace, crystal gardens, waterfalls, moonlight, huge Earth in the sky.", chars: "No character connections are listed in its location profile.", hist: "Location profile given 2026-10-28.", events: PLACEHOLDER },
     "mayflower": { title: "Mayflower Sanctuary (project world)", lore: "The project world itself. World details beyond Rose Sanctuary and Muse Harbor: " + PLACEHOLDER, chars: "Full roster on this page.", hist: "Site foundation approved 2026-10-29/30.", events: PLACEHOLDER }
   };
+  // Load canonical location and character records. The inline mapData above remains
+  // as a graceful fallback if the catalogue cannot be fetched (offline/file preview).
+  Promise.all([
+    fetch(new URL("assets/data/locations.json", GAME_ROOT)).then(function (response) {
+      if (!response.ok) throw new Error("Location catalogue request failed: " + response.status);
+      return response.json();
+    }),
+    fetch(new URL("assets/data/characters.json", GAME_ROOT)).then(function (response) {
+      if (!response.ok) throw new Error("Character catalogue request failed: " + response.status);
+      return response.json();
+    })
+  ]).then(function (catalogues) {
+    var locations = catalogues[0].locations || [];
+    var characters = catalogues[1].characters || [];
+    var characterNames = {};
+    characters.forEach(function (character) { characterNames[character.id] = character.name; });
+    locations.forEach(function (location) {
+      if (!location.mapMarkerId) return;
+      var linkedNames = (location.characterIds || []).map(function (id) { return characterNames[id] || id; });
+      mapData[location.mapMarkerId] = {
+        title: location.name,
+        lore: location.description,
+        chars: linkedNames.length ? linkedNames.join(", ") : (location.characterNote || "No character connections are listed in its location profile."),
+        hist: location.historyNote || (location.historyStatus === "documented" ? "Documented; further details to come." : PLACEHOLDER),
+        events: location.eventsStatus === "documented" ? (location.eventsNote || "Documented event details are available.") : PLACEHOLDER,
+        companionLocation: (location.characterIds || []).indexOf("youthspark-muse") !== -1
+      };
+    });
+  }).catch(function (error) {
+    console.warn("Using the built-in world map fallback data:", error);
+  });
   var mapOpened = new Set();
-  $$(".map-node").forEach(function (n) {
+  $(".map-node").forEach(function (n) {
     n.addEventListener("click", function () {
       var d = mapData[n.getAttribute("data-map")]; var p = $("#mapPanel"); if (!d || !p) return;
       p.innerHTML = "<h3>" + d.title + "</h3><p><b>Lore:</b> " + d.lore + "</p><p><b>Characters:</b> " + d.chars + "</p><p><b>History:</b> " + d.hist + "</p><p><b>Events:</b> " + d.events + "</p>";
