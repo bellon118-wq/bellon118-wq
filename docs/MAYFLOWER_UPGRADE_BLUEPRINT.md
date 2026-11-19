@@ -218,3 +218,7 @@ The first connected-world data foundation has been added on the development bran
 
 ## Phase 2.1 implementation update — 2026-11-19
 The Quest Journal prototype is now implemented as a separate page, linked from the homepage, Command Deck and shared navigation. It includes category/search/progress filters and a local-only progression loop for beginning quests, checking objectives and completing/abandoning quests. A player progression schema separates save data from the shared quest catalogue. The catalogue intentionally remains empty until Daniel approves actual in-world quests and rewards. Browser QA and populated quest testing remain outstanding. See `docs/PHASE_2_1_QUEST_JOURNAL.md`.
+
+
+## Phase 2.2 implementation update — 2026-11-19
+A dedicated Inventory & Collections page, versioned item/currency/collection catalogue, and local player-inventory save contract have been added on the development branch. The catalogue remains empty until Daniel approves item names, categories, rarities, currencies, collection sets and reward rules. Player inventory state is stored separately from quest progress, with export and reset controls. Quest reward granting remains disabled until an idempotent grant service is implemented and tested. Browser QA remains outstanding. See `docs/PHASE_2_2_INVENTORY_REWARDS.md`.
