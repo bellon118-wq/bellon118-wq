@@ -94,7 +94,8 @@
                 }
               },
               "additionalProperties": true
-            }
+            },
+            "minItems": 1
           },
           "prerequisiteQuestIds": {
             "type": "array",
