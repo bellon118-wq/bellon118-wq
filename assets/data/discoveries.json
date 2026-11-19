@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "1.0.0",
+  "locations": [
+    {
+      "id": "location-mayflower-sanctuary",
+      "locationId": "mayflower-sanctuary",
+      "status": "active",
+      "category": "world"
+    },
+    {
+      "id": "location-muse-harbor",
+      "locationId": "muse-harbor",
+      "status": "active",
+      "category": "district"
+    },
+    {
+      "id": "location-cherry-gardens",
+      "locationId": "cherry-gardens",
+      "status": "active",
+      "category": "landmark"
+    },
+    {
+      "id": "location-waterways",
+      "locationId": "waterways",
+      "status": "active",
+      "category": "landmark"
+    },
+    {
+      "id": "location-stages",
+      "locationId": "stages",
+      "status": "active",
+      "category": "district"
+    },
+    {
+      "id": "location-rose",
+      "locationId": "rose",
+      "status": "active",
+      "category": "landmark"
+    }
+  ],
+  "collectibles": [],
+  "notes": [
+    "Location discovery targets reference the canonical location catalogue and do not duplicate its lore or descriptions.",
+    "The player records discoveries manually in this prototype; automatic world-position sensing is not connected.",
+    "Collectible discoveries remain empty until owner-approved item records and reward mappings exist.",
+    "Discovery does not grant inventory items or gate Gallery artwork."
+  ]
+}
