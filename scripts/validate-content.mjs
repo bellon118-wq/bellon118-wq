@@ -76,7 +76,7 @@ for (const character of characters) {
 const questCategories = new Set(["main","side","character","exploration","collection"]);
 for (const quest of quests) {
   if (!questCategories.has(quest.category)) fail("quests.json: " + quest.id + " has invalid category " + quest.category);
-  if (!Array.isArray(quest.objectives)) fail("quests.json: " + quest.id + " must define an objectives array");
+  if (!Array.isArray(quest.objectives) || quest.objectives.length < 1) fail("quests.json: " + quest.id + " must define at least one objective");
   const objectiveIds = new Set();
   for (const objective of quest.objectives || []) {
     if (!validId(objective.id)) fail("quests.json: " + quest.id + " has invalid objective ID");
