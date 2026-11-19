@@ -46,7 +46,7 @@ pass("assets/data/routes.json: route targets checked");
 const characters = validateCatalogue("assets/data/characters.json", "characters", ["id","name","role","status","faction"]);
 validateCatalogue("assets/data/games.json", "games", ["id","name","genre"]);
 const locations = validateCatalogue("assets/data/locations.json", "locations", ["id","name","locationType","status","description"]);
-const quests = validateCatalogue("assets/data/quests.json", "quests", ["id","title","status"]);
+const quests = validateCatalogue("assets/data/quests.json", "quests", ["id","title","category","status"]);
 
 const characterIds = new Set(characters.map(x => x.id));
 const locationIds = new Set(locations.map(x => x.id));
@@ -73,11 +73,33 @@ for (const character of characters) {
   for (const id of character.locationIds || []) if (!locationIds.has(id)) fail("characters.json: " + character.id + " references unknown location " + id);
   for (const id of character.questIds || []) if (!questIds.has(id)) fail("characters.json: " + character.id + " references unknown quest " + id);
 }
+const questCategories = new Set(["main","side","character","exploration","collection"]);
 for (const quest of quests) {
+  if (!questCategories.has(quest.category)) fail("quests.json: " + quest.id + " has invalid category " + quest.category);
+  if (!Array.isArray(quest.objectives)) fail("quests.json: " + quest.id + " must define an objectives array");
+  const objectiveIds = new Set();
+  for (const objective of quest.objectives || []) {
+    if (!validId(objective.id)) fail("quests.json: " + quest.id + " has invalid objective ID");
+    if (objectiveIds.has(objective.id)) fail("quests.json: " + quest.id + " has duplicate objective ID " + objective.id);
+    objectiveIds.add(objective.id);
+    if (!["discover","interact","collect","visit","complete"].includes(objective.type)) fail("quests.json: " + quest.id + " has invalid objective type " + objective.type);
+  }
   for (const id of quest.prerequisiteQuestIds || []) if (!questIds.has(id)) fail("quests.json: " + quest.id + " references unknown prerequisite quest " + id);
   for (const id of quest.characterIds || []) if (!characterIds.has(id)) fail("quests.json: " + quest.id + " references unknown character " + id);
   for (const id of quest.locationIds || []) if (!locationIds.has(id)) fail("quests.json: " + quest.id + " references unknown location " + id);
+  for (const id of quest.rewardItemIds || []) if (typeof id !== "string" || !validId(id)) fail("quests.json: " + quest.id + " has invalid reward item ID " + id);
 }
+const visiting = new Set(), visited = new Set();
+function checkQuestCycle(id) {
+  if (visiting.has(id)) { fail("quests.json: prerequisite cycle detected at " + id); return; }
+  if (visited.has(id)) return;
+  visiting.add(id);
+  const quest = quests.find(item => item.id === id);
+  for (const dependency of (quest && quest.prerequisiteQuestIds) || []) if (questIds.has(dependency)) checkQuestCycle(dependency);
+  visiting.delete(id); visited.add(id);
+}
+quests.forEach(quest => checkQuestCycle(quest.id));
+pass("quests.json: categories, objectives and prerequisite graph checked");
 
 const sourceMap = readJson("assets/data/source-map.json");
 for (const [name, path] of Object.entries(sourceMap.canonical || {})) {
