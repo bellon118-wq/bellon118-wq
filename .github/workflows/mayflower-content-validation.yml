@@ -24,5 +24,5 @@ jobs:
           node-version: 20
       - name: Check JavaScript syntax
         run: node --check game.js && node --check dashboard.js && node --check assets/js/site-navigation.js && node --check assets/js/quest-journal.js && node --check assets/js/inventory.js && node --check assets/js/discovery-journal.js && node --check assets/js/gallery-discovery.js && node --check assets/js/companion-bonds.js && node --check assets/js/muse-core.js && node --check assets/js/youthspark-dialogue.js && node --check assets/js/youthspark-ai-gateway.js
-      - name: Validate canonical content and routes
+      - name: Test YouthSpark AI gateway safety\n        run: node scripts/test-youthspark-ai-gateway.mjs\n      - name: Validate canonical content and routes
         run: node scripts/validate-content.mjs
