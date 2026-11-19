@@ -92,7 +92,9 @@
         "Legendary",
         "Virtual Muse",
         "Community"
-      ]
+      ],
+      "homeLocationId": "muse-harbor"
     }
-  ]
+  ],
+  "schemaVersion": "1.0.0"
 }

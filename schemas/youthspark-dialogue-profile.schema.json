@@ -1,0 +1,169 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "YouthSpark Dialogue Profile",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "characterId",
+    "dialogue",
+    "voice",
+    "integrationStatus"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string"
+    },
+    "characterId": {
+      "const": "youthspark-muse"
+    },
+    "dialogue": {
+      "type": "object",
+      "required": [
+        "engine",
+        "networkRequests",
+        "conversationPersistence",
+        "languages",
+        "tones",
+        "memoryContext"
+      ],
+      "properties": {
+        "engine": {
+          "const": "local-rule-prototype"
+        },
+        "modelProvider": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "networkRequests": {
+          "const": false
+        },
+        "conversationPersistence": {
+          "const": "none"
+        },
+        "languages": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "en",
+              "ko"
+            ]
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "languageMode": {
+          "type": "string"
+        },
+        "tones": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "gentle",
+              "bright",
+              "reflective"
+            ]
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "canonicalProfileIsSourceOfTruth": {
+          "const": true
+        },
+        "memoryContext": {
+          "type": "object",
+          "required": [
+            "source",
+            "eligibleStatus",
+            "defaultEnabled",
+            "perReplyOptIn",
+            "matchRequired",
+            "maxRecords",
+            "automaticCapture"
+          ],
+          "properties": {
+            "source": {
+              "const": "mayflower-muse-core-memory-v1"
+            },
+            "eligibleStatus": {
+              "const": "retained"
+            },
+            "defaultEnabled": {
+              "const": false
+            },
+            "perReplyOptIn": {
+              "const": true
+            },
+            "matchRequired": {
+              "const": true
+            },
+            "maxRecords": {
+              "type": "integer",
+              "maximum": 2
+            },
+            "automaticCapture": {
+              "const": false
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "voice": {
+      "type": "object",
+      "required": [
+        "enabled",
+        "consentRequired",
+        "contract"
+      ],
+      "properties": {
+        "enabled": {
+          "const": false
+        },
+        "consentRequired": {
+          "const": true
+        },
+        "contract": {
+          "type": "object",
+          "required": [
+            "input",
+            "output",
+            "providerCredentials"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "integrationStatus": {
+      "type": "object",
+      "required": [
+        "liveLanguageModel",
+        "cloudMemory",
+        "voiceSynthesis",
+        "speechRecognition",
+        "backend"
+      ],
+      "properties": {
+        "liveLanguageModel": {
+          "const": "not-connected"
+        },
+        "cloudMemory": {
+          "const": "not-connected"
+        },
+        "voiceSynthesis": {
+          "const": "not-connected"
+        },
+        "speechRecognition": {
+          "const": "not-connected"
+        },
+        "backend": {
+          "const": "not-connected"
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}

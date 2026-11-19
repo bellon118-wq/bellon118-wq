@@ -1,0 +1,176 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mayflower-sanctuary.local/schemas/quests.schema.json",
+  "title": "Mayflower Sanctuary Quest Catalogue",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "quests"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string"
+    },
+    "quests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "category",
+          "status",
+          "objectives",
+          "prerequisiteQuestIds",
+          "characterIds",
+          "locationIds"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "category": {
+            "enum": [
+              "main",
+              "side",
+              "character",
+              "exploration",
+              "collection"
+            ]
+          },
+          "status": {
+            "enum": [
+              "draft",
+              "planned",
+              "available",
+              "retired"
+            ]
+          },
+          "summary": {
+            "type": "string"
+          },
+          "recommendedLevel": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "objectives": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "description",
+                "type"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+                },
+                "description": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "type": {
+                  "enum": [
+                    "discover",
+                    "interact",
+                    "collect",
+                    "visit",
+                    "complete"
+                  ]
+                },
+                "targetRef": {
+                  "type": "string"
+                },
+                "requiredCount": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              },
+              "additionalProperties": true
+            },
+            "minItems": 1
+          },
+          "prerequisiteQuestIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "characterIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "locationIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "rewardItemIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "rewards": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "type",
+                "description"
+              ],
+              "properties": {
+                "type": {
+                  "enum": [
+                    "item",
+                    "currency",
+                    "title",
+                    "unlock",
+                    "relationship"
+                  ]
+                },
+                "targetRef": {
+                  "type": "string"
+                },
+                "amount": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "description": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "storyId": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": true
+}

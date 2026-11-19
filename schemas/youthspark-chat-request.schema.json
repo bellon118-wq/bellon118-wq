@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "YouthSpark Chat Request",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "characterId",
+    "message",
+    "locale",
+    "expression",
+    "persona",
+    "memoryContext"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "characterId": {
+      "const": "youthspark-muse"
+    },
+    "message": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1200
+    },
+    "locale": {
+      "enum": [
+        "en",
+        "ko"
+      ]
+    },
+    "expression": {
+      "enum": [
+        "gentle",
+        "bright",
+        "reflective"
+      ]
+    },
+    "persona": {
+      "type": "object",
+      "required": [
+        "name",
+        "role",
+        "personality",
+        "values"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "role": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "personality": {
+          "type": "string",
+          "maxLength": 1200
+        },
+        "values": {
+          "type": "array",
+          "maxItems": 12,
+          "items": {
+            "type": "string",
+            "maxLength": 80
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "memoryContext": {
+      "type": "array",
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "category",
+          "title",
+          "content",
+          "provenance"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "category": {
+            "enum": [
+              "core",
+              "relationship",
+              "episodic",
+              "symbolic"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 120
+          },
+          "content": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "provenance": {
+            "const": "player-authored-local-memory"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

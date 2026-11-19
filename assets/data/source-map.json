@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "1.0.0",
+  "canonical": {
+    "characters": "assets/data/characters.json",
+    "games": "assets/data/games.json",
+    "navigation": "assets/data/routes.json",
+    "locations": "assets/data/locations.json",
+    "quests": "assets/data/quests.json",
+    "questProgressionSchema": "schemas/player-progression.schema.json",
+    "items": "assets/data/items.json",
+    "inventorySchema": "schemas/player-inventory.schema.json",
+    "itemCatalogueSchema": "schemas/items.schema.json",
+    "discoveries": "assets/data/discoveries.json",
+    "playerDiscoverySchema": "schemas/player-discovery.schema.json",
+    "relationships": "assets/data/relationships.json",
+    "relationshipsSchema": "schemas/relationships.schema.json",
+    "museCoreProfile": "assets/data/muse-core-profile.json",
+    "museCoreProfileSchema": "schemas/muse-core-profile.schema.json",
+    "museMemorySchema": "schemas/muse-memory.schema.json",
+    "youthsparkDialogueProfile": "assets/data/youthspark-dialogue-profile.json",
+    "youthsparkDialogueProfileSchema": "schemas/youthspark-dialogue-profile.schema.json",
+    "youthsparkAiRuntime": "assets/data/youthspark-ai-runtime.json",
+    "youthsparkChatRequestSchema": "schemas/youthspark-chat-request.schema.json",
+    "youthsparkChatResponseSchema": "schemas/youthspark-chat-response.schema.json"
+  },
+  "legacy": {
+    "data/characters.json": {
+      "replacedBy": "assets/data/characters.json",
+      "status": "read-only-compatibility",
+      "removeOnlyAfter": "all readers and inbound references are verified"
+    },
+    "data/games.json": {
+      "replacedBy": "assets/data/games.json",
+      "status": "read-only-compatibility",
+      "removeOnlyAfter": "all readers and inbound references are verified"
+    }
+  },
+  "rules": [
+    "Do not write new content to legacy data/ files.",
+    "Do not delete legacy data/ files during Phase 1.",
+    "Preserve source-specific differences until reviewed against owner-approved canon.",
+    "Use stable IDs for cross-system references; display names are not keys.",
+    "Use assets/data/locations.json as the canonical source for map-linked location records.",
+    "Use assets/data/quests.json as the canonical source for authored in-world quests; do not convert UI achievements or development tasks into quests.",
+    "Quest definitions belong in assets/data/quests.json; per-player quest state belongs in the local progression store until a backend is approved.",
+    "Do not treat development checklist items as in-world quests.",
+    "Item, currency and collection definitions belong in assets/data/items.json; player holdings belong in the separate local inventory save.",
+    "Do not enable quest reward granting until item references resolve and duplicate awards are prevented by an idempotent reward receipt.",
+    "Location discovery targets reference assets/data/locations.json by stable ID; player discoveries are stored separately in a local guest save.",
+    "Collectible discoveries reference approved item IDs; discovery recording does not grant inventory items or unlock gallery artwork unless an explicit approved reward mapping exists.",
+    "Relationship catalogue entries reference canonical character IDs; do not invent relationship scores or character history.",
+    "Player-authored companion journal entries remain separate from character canon and AI memory.",
+    "Existing YouthSpark visitor progression is browser-local interface progression, not canonical affection or trust.",
+    "Do not grant rewards or unlock quests from relationship progression without an approved mapping.",
+    "Muse-Core memory records are explicit player-authored local notes until an approved backend and consent model exist.",
+    "Core, Relationship, Episodic and Symbolic are separate memory categories; do not silently convert journal entries into memory.",
+    "Memory importance is a transparent weighted organizational score, not a model judgment or emotional inference.",
+    "A locally retained memory is not automatically character canon or injected into AI model context.",
+    "Preserve canonical character identity and personality; memory records must not overwrite character source data.",
+    "YouthSpark dialogue uses a local deterministic prototype until an approved model service is integrated.",
+    "Dialogue context may use only topic-matched Muse-Core memories explicitly marked retained and only after per-page player opt-in; memory use is off by default.",
+    "Dialogue transcripts are not persisted and are never automatically captured as memories.",
+    "English and Korean dialogue phrases are curated prototype copy, not a claim of live translation or full language fluency.",
+    "Voice adapter configuration is provider-neutral architecture only; no audio, speech recognition, voice cloning or provider is connected.",
+    "YouthSpark live AI gateway is disabled by default and may only call an explicitly configured same-origin backend after per-message consent.",
+    "Never place AI provider credentials or private tokens in public client code or runtime configuration.",
+    "Only explicitly selected retained Muse-Core notes may be sent to the gateway; never send the full memory vault or conversation history.",
+    "The backend must validate schemas, authenticate sessions, protect against CSRF, rate-limit, cap usage and keep provider credentials server-side.",
+    "A live AI provider is not connected until a secure backend is deployed and explicitly configured."
+  ]
+}

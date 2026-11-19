@@ -15,6 +15,8 @@
 <meta name="twitter:description" content="YOUTHSPARK_Muse character references and story artwork, plus original Mayflower project illustrations.">
 <link rel="stylesheet" href="styles.css?v=muse-art-20261103">
 <link rel="stylesheet" href="game.css?v=muse-art-20261103">
+  <link rel="stylesheet" href="assets/css/site-navigation.css?v=phase1">
+<link rel="stylesheet" href="assets/css/discovery.css?v=phase2-3">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -22,6 +24,7 @@
   <a class="brand" href="index.html">Mayflower <span>Sanctuary</span></a>
   <a class="navlink" href="muse-harbor.html">Muse Harbor</a>
   <a class="navlink" href="characters.html">Characters</a>
+  <a class="navlink" href="discoveries.html">Discovery Journal</a>
   <a class="navlink" href="gallery.html">Gallery</a>
   <a class="navlink" href="games.html">Games</a>
   <a class="navlink" href="projects.html">Projects</a>
@@ -35,6 +38,7 @@
 <h1>Gallery</h1>
 
 <p class="muted">Daniel-selected YOUTHSPARK_Muse character artwork appears alongside owner-supplied story-art concepts and original project illustrations; publication and release status remain unconfirmed.</p>
+<section class="gallery-discovery-panel" aria-labelledby="galleryDiscoveryTitle"><div><p class="kicker">World exploration</p><h2 id="galleryDiscoveryTitle">Your discovery archive</h2><p id="galleryDiscoverySummary" class="muted" role="status">Loading your local exploration record…</p></div><a class="btn" href="discoveries.html">Open Discovery Journal</a></section>
 <p><label>Filter by category: <select id="galleryFilter2"><option>All</option><option>Character reference</option><option>Story artwork</option><option>Character emblem</option><option>Location</option><option>Project illustration</option></select></label></p>
 <div class="gallery-grid" id="galleryGrid2">
 <figure data-tag="Character reference"><img class="gallery-portrait character-avatar" src="assets/images/characters/youthspark-muse-character-art.jpg" data-image-fallback="assets/images/founder-emblem.webp" data-fallback-alt="Abstract character-art fallback; selected character illustration is unavailable" alt="Daniel-selected YOUTHSPARK_Muse character-art concept; publication status unconfirmed" loading="lazy" decoding="async"><figcaption>Daniel-selected character-art concept · publication status unconfirmed</figcaption></figure>
@@ -63,6 +67,8 @@ document.getElementById('galleryGrid2').addEventListener('click', e => {
 </section>
 </main>
 <footer><div class="wrap" style="padding-bottom:0"><p>Mayflower Sanctuary 2.0 · Owner-supplied character references and story concepts are displayed as such; artwork does not imply a published film or book.</p></div></footer>
+<script src="assets/js/gallery-discovery.js?v=phase2-3" defer></script>
 <script src="assets/js/image-fallback.js" defer></script>
+  <script src="assets/js/site-navigation.js?v=phase1" defer></script>
 </body>
 </html>

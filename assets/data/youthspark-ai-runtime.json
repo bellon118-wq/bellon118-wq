@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0.0",
+  "enabled": false,
+  "endpoint": null,
+  "provider": "none",
+  "modelLabel": "Not connected",
+  "requireExplicitConsent": true,
+  "notes": [
+    "Public client configuration only; never put API keys, provider secrets or private credentials here.",
+    "Set endpoint only to a same-origin server route after deploying and securing the backend.",
+    "Backend must authenticate sessions, enforce rate limits, validate request/response schemas, and keep provider credentials server-side.",
+    "Live AI remains disabled until a backend endpoint and privacy policy are approved."
+  ]
+}
