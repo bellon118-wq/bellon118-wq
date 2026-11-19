@@ -39,6 +39,13 @@
       "description": "Record discovered locations and track exploration progress."
     },
     {
+      "id": "companion-bonds",
+      "label": "Companion Bonds",
+      "href": "companions.html",
+      "group": "game",
+      "description": "Follow companion milestones and keep a private relationship journal."
+    },
+    {
       "id": "world-map",
       "label": "World Map",
       "href": "index.html#map",
@@ -131,6 +138,12 @@
     {
       "id": "discovery-journal",
       "path": "discoveries.html",
+      "kind": "page",
+      "status": "active"
+    },
+    {
+      "id": "companion-bonds",
+      "path": "companions.html",
       "kind": "page",
       "status": "active"
     },
