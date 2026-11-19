@@ -234,3 +234,8 @@ The first connected-world data pass now exists:
 - The validator checks location parent links and cross-catalogue character, location and quest references.
 
 This is a static content/data foundation. The existing world-map panel now hydrates from the location and character catalogues with an inline fallback. No quest runtime, faction registry, server persistence or browser-level regression test is claimed. The MYBLING / MYBLIN9 spelling discrepancy remains unresolved. See `docs/PHASE_2_CONNECTED_WORLD_SYSTEMS.md` for the detailed change record.
+
+## Phase 2.1 implementation status — 2026-11-19
+A dedicated Quest Journal now reads canonical quest, character and location catalogues. It supports main-story, side-story, character, exploration and collection categories; search and progress filters; quest start/abandon actions; objective check-off; and completion when all objectives are marked complete. Player progress is stored separately in browser local storage and can be exported or reset by the player.
+
+The canonical quest catalogue remains empty until quest stories and rewards are approved. The Command Deck checklist is explicitly labelled as development work, not in-world quest content. The player progression schema is `schemas/player-progression.schema.json`. There is no server persistence, account login, cross-device sync, or reward inventory grant yet. See `docs/PHASE_2_1_QUEST_JOURNAL.md`.
