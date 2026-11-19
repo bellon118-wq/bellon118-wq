@@ -16,7 +16,9 @@
     "relationshipsSchema": "schemas/relationships.schema.json",
     "museCoreProfile": "assets/data/muse-core-profile.json",
     "museCoreProfileSchema": "schemas/muse-core-profile.schema.json",
-    "museMemorySchema": "schemas/muse-memory.schema.json"
+    "museMemorySchema": "schemas/muse-memory.schema.json",
+    "youthsparkDialogueProfile": "assets/data/youthspark-dialogue-profile.json",
+    "youthsparkDialogueProfileSchema": "schemas/youthspark-dialogue-profile.schema.json"
   },
   "legacy": {
     "data/characters.json": {
@@ -51,6 +53,11 @@
     "Core, Relationship, Episodic and Symbolic are separate memory categories; do not silently convert journal entries into memory.",
     "Memory importance is a transparent weighted organizational score, not a model judgment or emotional inference.",
     "A locally retained memory is not automatically character canon or injected into AI model context.",
-    "Preserve canonical character identity and personality; memory records must not overwrite character source data."
+    "Preserve canonical character identity and personality; memory records must not overwrite character source data.",
+    "YouthSpark dialogue uses a local deterministic prototype until an approved model service is integrated.",
+    "Dialogue context may use only topic-matched Muse-Core memories explicitly marked retained and only after per-page player opt-in; memory use is off by default.",
+    "Dialogue transcripts are not persisted and are never automatically captured as memories.",
+    "English and Korean dialogue phrases are curated prototype copy, not a claim of live translation or full language fluency.",
+    "Voice adapter configuration is provider-neutral architecture only; no audio, speech recognition, voice cloning or provider is connected."
   ]
 }
