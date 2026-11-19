@@ -224,3 +224,13 @@ The first foundation pass now exists in the repository:
 - Validation: `scripts/validate-content.mjs` and `.github/workflows/mayflower-content-validation.yml`.
 
 The canonical catalogues now include schema version 1.0.0. Existing character IDs remain unchanged; the 10 game records now have stable IDs. Legacy `data/` files are read-only compatibility sources and have not been deleted. Existing data readers have not yet all been migrated; that is a later controlled step after record comparison. Runtime/browser QA and the GitHub Actions result remain release gates.
+
+## Phase 2 implementation status — 2026-11-19
+The first connected-world data pass now exists:
+- `assets/data/locations.json` defines the six existing schematic map locations using the existing marker IDs.
+- `assets/data/quests.json` establishes a versioned catalogue contract but intentionally has no authored quests yet.
+- `schemas/locations.schema.json` and `schemas/quests.schema.json` define the initial contracts.
+- YouthSpark's canonical record now references `homeLocationId: "muse-harbor"`.
+- The validator checks location parent links and cross-catalogue character, location and quest references.
+
+This is a static content/data foundation. The existing world-map UI has not yet been migrated to read the catalogue, and no quest runtime, faction registry, server persistence or browser-level regression test is claimed. The MYBLING / MYBLIN9 spelling discrepancy remains unresolved. See `docs/PHASE_2_CONNECTED_WORLD_SYSTEMS.md` for the detailed change record.
