@@ -11,7 +11,9 @@
     "inventorySchema": "schemas/player-inventory.schema.json",
     "itemCatalogueSchema": "schemas/items.schema.json",
     "discoveries": "assets/data/discoveries.json",
-    "playerDiscoverySchema": "schemas/player-discovery.schema.json"
+    "playerDiscoverySchema": "schemas/player-discovery.schema.json",
+    "relationships": "assets/data/relationships.json",
+    "relationshipsSchema": "schemas/relationships.schema.json"
   },
   "legacy": {
     "data/characters.json": {
@@ -37,6 +39,10 @@
     "Item, currency and collection definitions belong in assets/data/items.json; player holdings belong in the separate local inventory save.",
     "Do not enable quest reward granting until item references resolve and duplicate awards are prevented by an idempotent reward receipt.",
     "Location discovery targets reference assets/data/locations.json by stable ID; player discoveries are stored separately in a local guest save.",
-    "Collectible discoveries reference approved item IDs; discovery recording does not grant inventory items or unlock gallery artwork unless an explicit approved reward mapping exists."
+    "Collectible discoveries reference approved item IDs; discovery recording does not grant inventory items or unlock gallery artwork unless an explicit approved reward mapping exists.",
+    "Relationship catalogue entries reference canonical character IDs; do not invent relationship scores or character history.",
+    "Player-authored companion journal entries remain separate from character canon and AI memory.",
+    "Existing YouthSpark visitor progression is browser-local interface progression, not canonical affection or trust.",
+    "Do not grant rewards or unlock quests from relationship progression without an approved mapping."
   ]
 }
