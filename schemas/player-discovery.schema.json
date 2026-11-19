@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mayflower-sanctuary.local/schemas/player-discovery.schema.json",
+  "title": "Mayflower Sanctuary Player Discovery Save",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "playerId",
+    "updatedAt",
+    "discoveredLocationIds",
+    "discoveredCollectibleIds",
+    "history"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string"
+    },
+    "playerId": {
+      "type": "string"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "discoveredLocationIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "discoveredCollectibleIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "targetType",
+          "targetId",
+          "discoveredAt"
+        ],
+        "properties": {
+          "targetType": {
+            "enum": [
+              "location",
+              "collectible"
+            ]
+          },
+          "targetId": {
+            "type": "string"
+          },
+          "discoveredAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
