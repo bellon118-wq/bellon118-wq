@@ -1,0 +1,45 @@
+.quest-main{padding-top:1.4rem;padding-bottom:3rem}
+.quest-hero .command-hero-inner{padding-bottom:2.4rem}
+.quest-overview{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;margin-bottom:1rem}
+.quest-tools{margin-top:1rem}
+.quest-tools-heading,.quest-results-heading{display:flex;justify-content:space-between;align-items:end;gap:1rem}
+.quest-tools-heading h2,.quest-results-heading h2{margin:.1rem 0}
+.quest-search-label{color:var(--muted);font-size:.85rem}
+.quest-filters{display:grid;grid-template-columns:minmax(180px,1.5fr) repeat(2,minmax(150px,1fr));gap:.65rem;margin:1rem 0}
+.quest-filters input,.quest-filters select{min-width:0;width:100%;padding:.72rem .8rem;border:1px solid rgba(143,183,255,.4);border-radius:10px;background:#0b1220;color:#fff;font:inherit}
+.quest-filters input:focus-visible,.quest-filters select:focus-visible{outline:2px solid var(--neon-teal);outline-offset:2px}
+.quest-category-legend{display:flex;flex-wrap:wrap;gap:.65rem 1.1rem;color:var(--muted);font-size:.82rem}
+.quest-category-legend span{display:flex;align-items:center;gap:.4rem}
+.category-dot{width:9px;height:9px;border-radius:50%;background:var(--teal);display:inline-block}
+.category-dot.main{background:#d8c79a}.category-dot.side{background:#8fb7ff}.category-dot.character{background:#ff9fce}.category-dot.exploration{background:#00f0c8}.category-dot.collection{background:#b99aff}
+.quest-results{padding:2rem 0 1rem}
+.quest-results-heading{margin-bottom:1rem}
+.quest-card-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.quest-card{background:linear-gradient(145deg,rgba(24,43,73,.98),rgba(10,21,40,.97));border:1px solid var(--dash-line);border-radius:18px;padding:1.1rem;min-width:0}
+.quest-card h3{margin:.45rem 0}
+.quest-card p{color:#c4d2e9;line-height:1.55}
+.quest-card-top{display:flex;justify-content:space-between;align-items:center;gap:.6rem;flex-wrap:wrap}
+.quest-category{font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;color:var(--gold)}
+.quest-status{font-size:.75rem;border:1px solid var(--dash-line);border-radius:99px;padding:.25rem .6rem;color:#dce9ff}
+.quest-meta{display:flex;flex-wrap:wrap;gap:.45rem;margin:.8rem 0;color:var(--muted);font-size:.8rem}
+.quest-meta span{border:1px solid rgba(143,183,255,.18);border-radius:99px;padding:.2rem .5rem}
+.quest-related{font-size:.86rem;color:var(--muted)!important}
+.quest-objectives{border-top:1px solid rgba(143,183,255,.18);margin-top:.9rem;padding-top:.75rem}
+.quest-objectives h4{margin:.1rem 0 .5rem}
+.quest-objective{display:flex;gap:.55rem;align-items:flex-start;padding:.45rem 0;color:#d8e4f8;font-size:.9rem}
+.quest-objective input{accent-color:var(--neon-teal);margin-top:.18rem;flex:none}
+.quest-objective.done span{text-decoration:line-through;color:#9cebdc}
+.quest-rewards{font-size:.85rem;color:var(--gold)!important}
+.quest-card-actions{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.85rem}
+.quest-card-actions button{font:inherit}
+.quest-empty{grid-column:1/-1;text-align:center;padding:clamp(2rem,6vw,4rem)}
+.empty-sigil{display:block;font-size:2.5rem;color:var(--neon-teal);text-shadow:0 0 24px rgba(0,240,255,.55)}
+.quest-empty h3{font-size:1.45rem}
+.quest-save-note{margin-top:1.5rem}
+.quest-save-note p{max-width:850px;color:var(--muted);line-height:1.6}
+.quest-save-note button{margin:.35rem .35rem .1rem 0}
+.quest-progress-line{height:7px;border-radius:99px;background:#26334b;overflow:hidden;margin:.5rem 0}
+.quest-progress-line span{display:block;height:100%;background:linear-gradient(90deg,var(--neon-teal),var(--hollow-blue),var(--gold))}
+@media(max-width:720px){.quest-card-grid{grid-template-columns:1fr}.quest-filters{grid-template-columns:1fr}.quest-tools-heading{display:block}.quest-search-label{display:block;margin-top:.8rem}}
+@media(max-width:520px){.quest-overview{grid-template-columns:1fr}.quest-overview .overview-card{min-height:76px}.quest-results-heading{align-items:start;flex-direction:column}}
+@media(prefers-reduced-motion:reduce){.quest-progress-line span{transition:none}}
