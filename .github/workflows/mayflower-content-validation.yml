@@ -23,6 +23,6 @@ jobs:
         with:
           node-version: 20
       - name: Check JavaScript syntax
-        run: node --check game.js && node --check assets/js/site-navigation.js
+        run: node --check game.js && node --check dashboard.js && node --check assets/js/site-navigation.js && node --check assets/js/quest-journal.js
       - name: Validate canonical content and routes
         run: node scripts/validate-content.mjs
