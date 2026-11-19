@@ -49,7 +49,8 @@
             "type": "string"
           },
           "homeLocationId": {
-            "type": "string"
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
           },
           "artworkIds": {
             "type": "array",
@@ -62,6 +63,13 @@
             "items": {
               "type": "string"
             }
+          },
+          "locationIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
           }
         },
         "additionalProperties": true
