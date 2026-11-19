@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Mayflower Sanctuary command deck: quests, worlds, characters, codex and development status.">
+<title>Command Deck | Mayflower Sanctuary</title>
+<link rel="stylesheet" href="styles.css?v=mayflower-20261119">
+<link rel="stylesheet" href="game.css?v=mayflower-20261119">
+<link rel="stylesheet" href="dashboard.css?v=mayflower-20261119">
+</head>
+<body data-phase="night">
+<a class="skip-link" href="#main">Skip to command deck</a>
+<nav><div class="nav-inner">
+<a class="brand" href="index.html">Mayflower <span>Sanctuary</span></a>
+<a class="navlink" href="index.html">Sanctuary Home</a>
+<a class="navlink" href="index.html#map">World Map</a>
+<a class="navlink" href="characters.html">Characters</a>
+<a class="navlink" href="games.html">Worlds</a>
+<a class="navlink" href="muse-harbor.html">Muse Harbor</a>
+</div></nav>
+<header class="command-hero">
+<div class="command-hero-inner">
+<p class="eyebrow">Mayflower Sanctuary · Player Command</p>
+<h1>Sanctuary Command Deck</h1>
+<p class="lede">Your gateway to the world, its people, stories and ongoing development. Choose a destination, track your next steps, and keep building.</p>
+<div class="command-actions"><a class="btn" href="index.html#map">Explore the world</a><a class="btn ghost" href="characters/youthspark-muse.html">Meet YouthSpark</a></div>
+<div class="command-status"><span class="status-orb"></span><span>Prototype interface · local progress only</span><span id="saveStatus" role="status">Ready</span></div>
+</div>
+</header>
+<main id="main" class="wrap command-main">
+<section class="command-overview" aria-label="Sanctuary overview">
+<div class="overview-card"><span class="overline">Your sanctuary</span><strong>Mayflower</strong><small>World hub</small></div>
+<div class="overview-card"><span class="overline">Featured companion</span><strong>YOUTHSPARK_Muse</strong><small>Muse Harbor · AI Idol</small></div>
+<div class="overview-card"><span class="overline">Your checklist</span><strong id="questCount">0 / 5</strong><small>Local development goals</small></div>
+</section>
+<section class="command-section">
+<div class="section-heading"><div><p class="kicker">Quick travel</p><h2>Choose your destination</h2></div><p class="muted">Every gateway opens an existing area of the project.</p></div>
+<div class="destination-grid">
+<a class="destination-card destination-muse" href="muse-harbor.html"><span class="destination-icon">✧</span><span class="destination-label">01 · Companion district</span><strong>Muse Harbor</strong><span>Meet YouthSpark, visit the waterfront and open her stage.</span><b>Enter district ↗</b></a>
+<a class="destination-card destination-map" href="index.html#map"><span class="destination-icon">⌖</span><span class="destination-label">02 · Exploration</span><strong>World Map</strong><span>Browse the sanctuary's current schematic map and location panels.</span><b>Explore map ↗</b></a>
+<a class="destination-card destination-roster" href="characters.html"><span class="destination-icon">♙</span><span class="destination-label">03 · People & lore</span><strong>Character Codex</strong><span>Open the roster and individual character profiles.</span><b>View roster ↗</b></a>
+<a class="destination-card destination-worlds" href="games.html"><span class="destination-icon">◇</span><span class="destination-label">04 · Inspiration</span><strong>World Library</strong><span>Browse the games and worlds that inspire this project.</span><b>Open library ↗</b></a>
+<a class="destination-card destination-gallery" href="gallery.html"><span class="destination-icon">❀</span><span class="destination-label">05 · Visual archive</span><strong>Art Gallery</strong><span>Explore the artwork currently included in the site.</span><b>View gallery ↗</b></a>
+<a class="destination-card destination-projects" href="projects.html"><span class="destination-icon">✦</span><span class="destination-label">06 · Creator workshop</span><strong>Project Workshop</strong><span>Visit project showcases and the DragonAI7 creative lab.</span><b>Open workshop ↗</b></a>
+</div>
+</section>
+<section class="command-section split-section">
+<article class="panel-card">
+<p class="kicker">Development journal</p><h2>Sanctuary quest board</h2>
+<p class="muted">A lightweight checklist for the next development pass. Your checkmarks are saved only in this browser; they are not shared or synced.</p>
+<div class="quest-list" id="questList">
+<label class="quest-row"><input type="checkbox" data-quest="ui"><span><strong>Polish the game interface</strong><small>Responsive navigation, dashboard hierarchy and clear destinations.</small></span></label>
+<label class="quest-row"><input type="checkbox" data-quest="muse"><span><strong>Build the Muse-Core foundation</strong><small>Define versioned memory, relationship, voice and safety boundaries.</small></span></label>
+<label class="quest-row"><input type="checkbox" data-quest="world"><span><strong>Expand world exploration</strong><small>Turn map locations into consistent, connected destinations.</small></span></label>
+<label class="quest-row"><input type="checkbox" data-quest="codex"><span><strong>Complete the character codex</strong><small>Standardize profiles, lore, visuals and NPC details.</small></span></label>
+<label class="quest-row"><input type="checkbox" data-quest="qa"><span><strong>Run the full game test pass</strong><small>Check mobile, links, keyboard access, images and browser storage.</small></span></label>
+</div>
+<div class="quest-progress"><div><span>Development checklist</span><strong id="questPercent">0%</strong></div><div class="progress-track"><span id="questProgressBar"></span></div></div>
+<button class="chip" id="resetQuests" type="button">Reset checklist</button>
+</article>
+<article class="panel-card muse-feature">
+<p class="kicker">Featured companion</p><div class="muse-feature-art"><img src="assets/images/characters/youthspark-muse-character-art.jpg?v=20261108" data-image-fallback="assets/images/founder-emblem.webp" alt="YOUTHSPARK_Muse selected concept art" loading="lazy"></div>
+<h2>YOUTHSPARK_Muse</h2><p>Radiant, composed and inviting. Her confirmed visual direction combines emerald-teal, sakura pink, crystal cyan and ornamental gold.</p>
+<p class="muted">The current site dialogue and scrapbook are prototypes. Persistent cross-device memory, live voice and an AI service are not connected yet.</p>
+<a class="btn" href="characters/youthspark-muse.html">Open companion profile</a>
+</article>
+</section>
+<section class="command-section system-notes">
+<p class="kicker">System status</p><h2>What is live in this prototype?</h2>
+<div class="status-grid">
+<div><span class="status-dot ready"></span><strong>Site navigation & pages</strong><small>Static pages and existing interactions.</small></div>
+<div><span class="status-dot ready"></span><strong>Browser-local progress</strong><small>Settings, achievements and scrapbook depend on this browser.</small></div>
+<div><span class="status-dot planned"></span><strong>Muse-Core persistence</strong><small>Architecture defined; no server database or sync connected.</small></div>
+<div><span class="status-dot planned"></span><strong>Live AI / voice services</strong><small>Not connected; no external model or voice call is made here.</small></div>
+</div>
+</section>
+</main>
+<footer><div class="wrap"><p>Mayflower Sanctuary · Built as an evolving fantasy game-world prototype.</p><p><a href="index.html">Return to Sanctuary Home</a></p></div></footer>
+<script src="dashboard.js?v=mayflower-20261119" defer></script>
+</body></html>
