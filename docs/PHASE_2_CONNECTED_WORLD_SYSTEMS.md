@@ -44,3 +44,6 @@ The GitHub Actions run is the executable CI verification gate. Browser behavior 
 
 ## Next controlled step
 Phase 2 follow-up should wire the existing world-map panel to the canonical location catalogue, replacing the duplicated inline `mapData` object only after the UI behavior is regression-tested. Then add owner-confirmed quests and faction records. Do not turn placeholder achievements or development tasks into canonical game content.
+
+## Phase 2.1 follow-up
+The dedicated Quest Journal and local player progression prototype are now implemented. The canonical quest catalogue remains empty pending owner-approved quest content. The Command Deck's five project checkboxes are explicitly development tasks and are not part of the in-world quest catalogue. See `docs/PHASE_2_1_QUEST_JOURNAL.md` for scope and QA boundaries.
