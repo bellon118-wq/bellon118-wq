@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "1.0.0",
+  "characterId": "youthspark-muse",
+  "dialogue": {
+    "engine": "local-rule-prototype",
+    "modelProvider": null,
+    "networkRequests": false,
+    "conversationPersistence": "none",
+    "languages": [
+      "en",
+      "ko"
+    ],
+    "languageMode": "manual-or-hangul-detection",
+    "tones": [
+      "gentle",
+      "bright",
+      "reflective"
+    ],
+    "canonicalProfileIsSourceOfTruth": true,
+    "memoryContext": {
+      "source": "mayflower-muse-core-memory-v1",
+      "eligibleStatus": "retained",
+      "defaultEnabled": false,
+      "perReplyOptIn": true,
+      "matchRequired": true,
+      "maxRecords": 2,
+      "automaticCapture": false
+    }
+  },
+  "voice": {
+    "adapterVersion": "1.0.0",
+    "provider": null,
+    "enabled": false,
+    "audioInput": false,
+    "audioOutput": false,
+    "voiceCloning": false,
+    "consentRequired": true,
+    "contract": {
+      "input": "approved dialogue text, locale, voice preset identifier",
+      "output": "audio asset reference and duration",
+      "providerCredentials": "server-side only; never expose secrets in client code"
+    }
+  },
+  "integrationStatus": {
+    "liveLanguageModel": "not-connected",
+    "cloudMemory": "not-connected",
+    "voiceSynthesis": "not-connected",
+    "speechRecognition": "not-connected",
+    "backend": "not-connected"
+  }
+}
