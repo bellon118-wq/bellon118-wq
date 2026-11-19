@@ -18,7 +18,10 @@
     "museCoreProfileSchema": "schemas/muse-core-profile.schema.json",
     "museMemorySchema": "schemas/muse-memory.schema.json",
     "youthsparkDialogueProfile": "assets/data/youthspark-dialogue-profile.json",
-    "youthsparkDialogueProfileSchema": "schemas/youthspark-dialogue-profile.schema.json"
+    "youthsparkDialogueProfileSchema": "schemas/youthspark-dialogue-profile.schema.json",
+    "youthsparkAiRuntime": "assets/data/youthspark-ai-runtime.json",
+    "youthsparkChatRequestSchema": "schemas/youthspark-chat-request.schema.json",
+    "youthsparkChatResponseSchema": "schemas/youthspark-chat-response.schema.json"
   },
   "legacy": {
     "data/characters.json": {
@@ -58,6 +61,11 @@
     "Dialogue context may use only topic-matched Muse-Core memories explicitly marked retained and only after per-page player opt-in; memory use is off by default.",
     "Dialogue transcripts are not persisted and are never automatically captured as memories.",
     "English and Korean dialogue phrases are curated prototype copy, not a claim of live translation or full language fluency.",
-    "Voice adapter configuration is provider-neutral architecture only; no audio, speech recognition, voice cloning or provider is connected."
+    "Voice adapter configuration is provider-neutral architecture only; no audio, speech recognition, voice cloning or provider is connected.",
+    "YouthSpark live AI gateway is disabled by default and may only call an explicitly configured same-origin backend after per-message consent.",
+    "Never place AI provider credentials or private tokens in public client code or runtime configuration.",
+    "Only explicitly selected retained Muse-Core notes may be sent to the gateway; never send the full memory vault or conversation history.",
+    "The backend must validate schemas, authenticate sessions, protect against CSRF, rate-limit, cap usage and keep provider credentials server-side.",
+    "A live AI provider is not connected until a secure backend is deployed and explicitly configured."
   ]
 }
