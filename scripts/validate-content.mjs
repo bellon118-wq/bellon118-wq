@@ -77,6 +77,15 @@ const weightTotal = ["emotionalIntensity","personalRelevance","novelty","repetit
 if (Math.abs(weightTotal-1)>0.000001) fail("muse-core-profile.json: memory score weights must total 1");
 if (museCoreProfile.memoryArchitecture.captureMode !== "explicit-player-authored" || museCoreProfile.memoryArchitecture.reviewRequired !== true) fail("muse-core-profile.json: explicit player capture and review are required");
 pass("muse-core-profile.json: character reference, memory layers and scoring weights checked");
+const dialogueProfile = readJson("assets/data/youthspark-dialogue-profile.json");
+if (dialogueProfile.schemaVersion !== "1.0.0" || dialogueProfile.characterId !== "youthspark-muse") fail("youthspark-dialogue-profile.json: invalid version or character reference");
+if (!characters.some(character => character.id === dialogueProfile.characterId)) fail("youthspark-dialogue-profile.json: unknown characterId");
+if (dialogueProfile.dialogue?.engine !== "local-rule-prototype" || dialogueProfile.dialogue?.networkRequests !== false || dialogueProfile.dialogue?.conversationPersistence !== "none") fail("youthspark-dialogue-profile.json: prototype must remain local and non-persistent");
+if (dialogueProfile.dialogue?.memoryContext?.defaultEnabled !== false || dialogueProfile.dialogue?.memoryContext?.perReplyOptIn !== true || dialogueProfile.dialogue?.memoryContext?.eligibleStatus !== "retained" || dialogueProfile.dialogue?.memoryContext?.automaticCapture !== false) fail("youthspark-dialogue-profile.json: memory context must be opt-in and retained-only");
+if (dialogueProfile.voice?.enabled !== false || dialogueProfile.voice?.consentRequired !== true) fail("youthspark-dialogue-profile.json: voice must remain disabled and consent-gated");
+for (const key of ["liveLanguageModel","cloudMemory","voiceSynthesis","speechRecognition","backend"]) if (dialogueProfile.integrationStatus?.[key] !== "not-connected") fail("youthspark-dialogue-profile.json: "+key+" must remain marked not-connected");
+pass("youthspark-dialogue-profile.json: local dialogue, memory consent and voice boundaries checked");
+
 const characterIds = new Set(characters.map(x => x.id));
 const locationIds = new Set(locations.map(x => x.id));
 const questIds = new Set(quests.map(x => x.id));
