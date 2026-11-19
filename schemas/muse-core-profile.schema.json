@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mayflower-sanctuary.local/schemas/muse-core-profile.schema.json",
+  "title": "Muse-Core Character Profile",
+  "type": "object",
+  "required": ["schemaVersion", "characterId", "codename", "memoryArchitecture", "continuityRules", "integrationStatus"],
+  "properties": {
+    "schemaVersion": {"type": "string"},
+    "characterId": {"type": "string"},
+    "codename": {"type": "string"},
+    "memoryArchitecture": {
+      "type": "object",
+      "required": ["categories", "captureMode", "reviewRequired", "memoryScore"],
+      "properties": {
+        "categories": {"type": "array", "items": {"enum": ["core", "relationship", "episodic", "symbolic"]}, "minItems": 4, "maxItems": 4, "uniqueItems": true},
+        "captureMode": {"const": "explicit-player-authored"},
+        "reviewRequired": {"type": "boolean"},
+        "automaticChatCapture": {"type": "boolean"},
+        "automaticEmotionInference": {"type": "boolean"},
+        "memoryScore": {
+          "type": "object",
+          "required": ["formula", "inputScale", "outputScale", "weights"],
+          "properties": {
+            "formula": {"type": "string"},
+            "inputScale": {"type": "string"},
+            "outputScale": {"type": "string"},
+            "weights": {"type": "object", "required": ["emotionalIntensity", "personalRelevance", "novelty", "repetitionValue"], "properties": {"emotionalIntensity": {"const": 0.35}, "personalRelevance": {"const": 0.3}, "novelty": {"const": 0.2}, "repetitionValue": {"const": 0.15}}, "additionalProperties": false}
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "continuityRules": {"type": "array", "items": {"type": "string"}},
+    "integrationStatus": {"type": "object"}
+  },
+  "additionalProperties": false
+}
