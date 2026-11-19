@@ -199,3 +199,16 @@ See `MAYFLOWER_SYSTEM_ARCHITECTURE.md` for the domain model, schema contracts an
 
 ## Definition of done
 A system is done only when its purpose, canonical data, dependencies, UI states, error/empty states, accessibility, responsive behavior, tests and integration contract are documented and verified. A visual mock or localStorage demo is not a completed backend feature.
+
+
+## Phase 1 implementation update — 2026-11-19
+Phase 1 has now been implemented on the feature branch:
+- Shared route registry at `assets/data/routes.json`.
+- Accessible progressive-enhancement Explore menu integrated into 23 HTML pages; existing local navigation is retained.
+- Canonical source map at `assets/data/source-map.json`; `assets/data/characters.json` and `assets/data/games.json` are the designated canonical catalogues.
+- Canonical catalogues now carry schema version 1.0.0; all 10 game records have stable IDs. Existing character IDs and canon values were preserved.
+- Initial character and game schema contracts are in `schemas/`.
+- Dependency-free validation script and GitHub Actions workflow added.
+- Legacy `data/` JSON files remain unchanged for compatibility. No page, character profile, artwork or production branch was removed or rewritten.
+
+The implementation still requires the workflow run and desktop/mobile browser QA before Phase 1 can be marked fully verified. See `docs/PHASE_1_FOUNDATION_CHANGELOG.md`.
