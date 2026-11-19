@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mayflower-sanctuary.local/schemas/locations.schema.json",
+  "title": "Mayflower Sanctuary Location Catalogue",
+  "type": "object",
+  "required": ["schemaVersion", "worldId", "mapId", "locations"],
+  "properties": {
+    "schemaVersion": { "type": "string" },
+    "worldId": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "mapId": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "locations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "locationType", "status", "description", "characterIds", "questIds"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+          "name": { "type": "string", "minLength": 1 },
+          "locationType": { "enum": ["world", "region", "district", "landmark", "interior"] },
+          "status": { "enum": ["active", "planned", "placeholder", "retired"] },
+          "description": { "type": "string" },
+          "parentLocationId": { "type": ["string", "null"] },
+          "mapMarkerId": { "type": "string" },
+          "characterIds": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+          "questIds": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+          "historyStatus": { "enum": ["documented", "unconfirmed"] },
+          "eventsStatus": { "enum": ["documented", "unconfirmed"] }
+        },
+        "additionalProperties": true
+      }
+    },
+    "notes": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": true
+}
