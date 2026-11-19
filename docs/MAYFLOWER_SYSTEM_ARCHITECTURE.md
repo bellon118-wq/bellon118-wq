@@ -212,3 +212,15 @@ Keep a small bootstrap that initializes modules only when their DOM roots exist.
 - Responsive tests at 360, 390, 768, 1024 and desktop widths.
 - Accessibility checks for keyboard focus, labels, contrast, reduced motion, dialog focus return and screen-reader status.
 - Cross-client contract tests before connecting a game engine.
+
+
+## Phase 1 implementation status — 2026-11-19
+The first foundation pass now exists in the repository:
+- Route registry: `assets/data/routes.json`.
+- Canonical/legacy source map: `assets/data/source-map.json`.
+- Canonical character and game catalogues: `assets/data/characters.json` and `assets/data/games.json`.
+- Schema contracts: `schemas/characters.schema.json` and `schemas/games.schema.json`.
+- Shared navigation enhancement: `assets/js/site-navigation.js` and `assets/css/site-navigation.css`.
+- Validation: `scripts/validate-content.mjs` and `.github/workflows/mayflower-content-validation.yml`.
+
+The canonical catalogues now include schema version 1.0.0. Existing character IDs remain unchanged; the 10 game records now have stable IDs. Legacy `data/` files are read-only compatibility sources and have not been deleted. Existing data readers have not yet all been migrated; that is a later controlled step after record comparison. Runtime/browser QA and the GitHub Actions result remain release gates.
