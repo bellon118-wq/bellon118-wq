@@ -25,6 +25,13 @@
       "description": "Track story, character, exploration and collection quests."
     },
     {
+      "id": "inventory",
+      "label": "Inventory",
+      "href": "inventory.html",
+      "group": "game",
+      "description": "Manage player items, currencies and collections."
+    },
+    {
       "id": "world-map",
       "label": "World Map",
       "href": "index.html#map",
@@ -105,6 +112,12 @@
     {
       "id": "quest-journal",
       "path": "quests.html",
+      "kind": "page",
+      "status": "active"
+    },
+    {
+      "id": "inventory",
+      "path": "inventory.html",
       "kind": "page",
       "status": "active"
     },
