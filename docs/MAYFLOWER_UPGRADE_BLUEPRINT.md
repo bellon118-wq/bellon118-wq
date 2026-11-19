@@ -222,3 +222,7 @@ The Quest Journal prototype is now implemented as a separate page, linked from t
 
 ## Phase 2.2 implementation update — 2026-11-19
 A dedicated Inventory & Collections page, versioned item/currency/collection catalogue, and local player-inventory save contract have been added on the development branch. The catalogue remains empty until Daniel approves item names, categories, rarities, currencies, collection sets and reward rules. Player inventory state is stored separately from quest progress, with export and reset controls. Quest reward granting remains disabled until an idempotent grant service is implemented and tested. Browser QA remains outstanding. See `docs/PHASE_2_2_INVENTORY_REWARDS.md`.
+
+
+## Phase 2.3 implementation update — 2026-11-19
+A Discovery Journal now connects the canonical location catalogue to a guest-local exploration record. Discovery targets use stable location IDs; the Gallery reads the same local record to show exploration progress, while the existing artwork archive remains accessible and is not artificially locked. Collectible discovery definitions remain empty until approved item records exist. Recording a location discovery is a manual prototype action, not automatic game-world sensing, and does not grant an item or reward. See `docs/PHASE_2_3_COLLECTION_DISCOVERY.md`.
