@@ -51,14 +51,25 @@ const quests = validateCatalogue("assets/data/quests.json", "quests", ["id","tit
 const characterIds = new Set(characters.map(x => x.id));
 const locationIds = new Set(locations.map(x => x.id));
 const questIds = new Set(quests.map(x => x.id));
+const mapMarkerIds = new Set();
+const mapHtml = readFileSync(resolve(root, "index.html"), "utf8");
 
 for (const location of locations) {
+  if (location.mapMarkerId) {
+    if (mapMarkerIds.has(location.mapMarkerId)) fail("locations.json: duplicate mapMarkerId " + location.mapMarkerId);
+    mapMarkerIds.add(location.mapMarkerId);
+    if (!mapHtml.includes('data-map="' + location.mapMarkerId + '"')) fail("locations.json: mapMarkerId has no matching index.html marker: " + location.mapMarkerId);
+  }
   if (location.parentLocationId && !locationIds.has(location.parentLocationId)) fail("locations.json: " + location.id + " has unknown parentLocationId " + location.parentLocationId);
   for (const id of location.characterIds || []) if (!characterIds.has(id)) fail("locations.json: " + location.id + " references unknown character " + id);
   for (const id of location.questIds || []) if (!questIds.has(id)) fail("locations.json: " + location.id + " references unknown quest " + id);
 }
 for (const character of characters) {
   if (character.homeLocationId && !locationIds.has(character.homeLocationId)) fail("characters.json: " + character.id + " has unknown homeLocationId " + character.homeLocationId);
+  if (character.homeLocationId) {
+    const home = locations.find(location => location.id === character.homeLocationId);
+    if (home && !(home.characterIds || []).includes(character.id)) fail("characters.json: " + character.id + " homeLocationId is not reciprocated by location " + home.id);
+  }
   for (const id of character.locationIds || []) if (!locationIds.has(id)) fail("characters.json: " + character.id + " references unknown location " + id);
   for (const id of character.questIds || []) if (!questIds.has(id)) fail("characters.json: " + character.id + " references unknown quest " + id);
 }
