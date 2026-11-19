@@ -212,3 +212,6 @@ Phase 1 has now been implemented on the feature branch:
 - Legacy `data/` JSON files remain unchanged for compatibility. No page, character profile, artwork or production branch was removed or rewritten.
 
 The implementation still requires the workflow run and desktop/mobile browser QA before Phase 1 can be marked fully verified. See `docs/PHASE_1_FOUNDATION_CHANGELOG.md`.
+
+## Phase 2 implementation update — 2026-11-19
+The first connected-world data foundation has been added on the development branch. Six current schematic map locations now have canonical stable IDs and parent/character relationships in `assets/data/locations.json`. YouthSpark is linked to Muse Harbor through `homeLocationId`. A versioned quest catalogue and schemas are in place, but the quest catalogue is intentionally empty until actual in-world quests are confirmed. Automated validation now checks cross-catalogue references. The next implementation step is to migrate the existing map panel to this catalogue without changing its current interaction behavior. See `docs/PHASE_2_CONNECTED_WORLD_SYSTEMS.md`.
