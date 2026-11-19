@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "1.0.0",
+  "relationships": [
+    {
+      "id": "youthspark-visitor-bond",
+      "characterId": "youthspark-muse",
+      "mode": "visitor-prototype",
+      "progressionSource": "ms-muse-companion-v1",
+      "profileHref": "characters/youthspark-muse.html",
+      "description": "YouthSpark's existing profile includes browser-local visitor connection milestones. This page reads that progress without changing it. It is not a canonical affection or trust score, and it does not represent a persistent relationship with an AI service."
+    }
+  ],
+  "rules": [
+    "Relationship records reference canonical character IDs from assets/data/characters.json.",
+    "Do not invent character relationship values, affection scores, trust scores, shared events, or canon.",
+    "Visitor progression is distinct from canonical character relationships and must be labeled as a local prototype.",
+    "Personal journal entries belong to the player and must not be converted into character memories or lore automatically.",
+    "Relationship progression must not grant items, unlock quests, or alter character canon unless an explicit approved mapping is added.",
+    "Cloud persistence, account identity, multiplayer synchronization, and AI memory are not implemented in this phase."
+  ]
+}
