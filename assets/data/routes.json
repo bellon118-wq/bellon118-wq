@@ -46,6 +46,13 @@
       "description": "Follow companion milestones and keep a private relationship journal."
     },
     {
+      "id": "muse-core",
+      "label": "Muse-Core",
+      "href": "muse-core.html",
+      "group": "game",
+      "description": "Review YouthSpark's memory architecture and player-authored local memory records."
+    },
+    {
       "id": "world-map",
       "label": "World Map",
       "href": "index.html#map",
@@ -144,6 +151,12 @@
     {
       "id": "companion-bonds",
       "path": "companions.html",
+      "kind": "page",
+      "status": "active"
+    },
+    {
+      "id": "muse-core",
+      "path": "muse-core.html",
       "kind": "page",
       "status": "active"
     },
