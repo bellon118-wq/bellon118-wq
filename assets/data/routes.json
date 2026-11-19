@@ -53,6 +53,13 @@
       "description": "Review YouthSpark's memory architecture and player-authored local memory records."
     },
     {
+      "id": "youthspark-dialogue",
+      "label": "YouthSpark Dialogue",
+      "href": "youthspark-dialogue.html",
+      "group": "game",
+      "description": "Try the local bilingual dialogue prototype and optional retained-memory context."
+    },
+    {
       "id": "world-map",
       "label": "World Map",
       "href": "index.html#map",
@@ -157,6 +164,12 @@
     {
       "id": "muse-core",
       "path": "muse-core.html",
+      "kind": "page",
+      "status": "active"
+    },
+    {
+      "id": "youthspark-dialogue",
+      "path": "youthspark-dialogue.html",
       "kind": "page",
       "status": "active"
     },
