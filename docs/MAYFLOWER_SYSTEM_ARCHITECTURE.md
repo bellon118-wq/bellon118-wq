@@ -233,4 +233,4 @@ The first connected-world data pass now exists:
 - YouthSpark's canonical record now references `homeLocationId: "muse-harbor"`.
 - The validator checks location parent links and cross-catalogue character, location and quest references.
 
-This is a static content/data foundation. The existing world-map UI has not yet been migrated to read the catalogue, and no quest runtime, faction registry, server persistence or browser-level regression test is claimed. The MYBLING / MYBLIN9 spelling discrepancy remains unresolved. See `docs/PHASE_2_CONNECTED_WORLD_SYSTEMS.md` for the detailed change record.
+This is a static content/data foundation. The existing world-map panel now hydrates from the location and character catalogues with an inline fallback. No quest runtime, faction registry, server persistence or browser-level regression test is claimed. The MYBLING / MYBLIN9 spelling discrepancy remains unresolved. See `docs/PHASE_2_CONNECTED_WORLD_SYSTEMS.md` for the detailed change record.
