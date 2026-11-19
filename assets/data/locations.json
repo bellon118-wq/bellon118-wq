@@ -14,7 +14,9 @@
       "characterIds": [],
       "questIds": [],
       "historyStatus": "unconfirmed",
-      "eventsStatus": "unconfirmed"
+      "eventsStatus": "unconfirmed",
+      "historyNote": "Site foundation approved 2026-10-29/30.",
+      "characterNote": "Full roster on this page."
     },
     {
       "id": "muse-harbor",
@@ -24,7 +26,9 @@
       "description": "A luminous creative and AI waterfront with gardens, digital waterways, creator studios, community plazas, performance stages, and an innovation district. It is the home setting of YOUTHSPARK_Muse.",
       "parentLocationId": "mayflower-sanctuary",
       "mapMarkerId": "muse-harbor",
-      "characterIds": ["youthspark-muse"],
+      "characterIds": [
+        "youthspark-muse"
+      ],
       "questIds": [],
       "historyStatus": "unconfirmed",
       "eventsStatus": "unconfirmed"
@@ -37,7 +41,9 @@
       "description": "Gardens within Muse Harbor.",
       "parentLocationId": "muse-harbor",
       "mapMarkerId": "cherry-gardens",
-      "characterIds": ["youthspark-muse"],
+      "characterIds": [
+        "youthspark-muse"
+      ],
       "questIds": [],
       "historyStatus": "unconfirmed",
       "eventsStatus": "unconfirmed"
@@ -50,7 +56,9 @@
       "description": "Waterways within Muse Harbor.",
       "parentLocationId": "muse-harbor",
       "mapMarkerId": "waterways",
-      "characterIds": ["youthspark-muse"],
+      "characterIds": [
+        "youthspark-muse"
+      ],
       "questIds": [],
       "historyStatus": "unconfirmed",
       "eventsStatus": "unconfirmed"
@@ -63,7 +71,9 @@
       "description": "A performance-stage district within Muse Harbor.",
       "parentLocationId": "muse-harbor",
       "mapMarkerId": "stages",
-      "characterIds": ["youthspark-muse"],
+      "characterIds": [
+        "youthspark-muse"
+      ],
       "questIds": [],
       "historyStatus": "unconfirmed",
       "eventsStatus": "unconfirmed"
@@ -79,7 +89,9 @@
       "characterIds": [],
       "questIds": [],
       "historyStatus": "documented",
-      "eventsStatus": "unconfirmed"
+      "eventsStatus": "unconfirmed",
+      "historyNote": "Location profile given 2026-10-28.",
+      "characterNote": "No character connections are listed in its location profile."
     }
   ],
   "notes": [
