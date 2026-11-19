@@ -31,3 +31,6 @@ CI now syntax-checks `game.js`, `dashboard.js`, `assets/js/site-navigation.js` a
 
 ## Next step
 Run the Quest Journal in a browser at desktop and mobile widths. After that, author the first owner-approved quest batch with confirmed story beats, prerequisites, objective targets, related characters/locations and reward definitions. Keep inventory and reward granting in a pending state until their canonical systems exist.
+
+## Prerequisite handling
+Quest cards now evaluate `prerequisiteQuestIds` against the player's local completed-quest records. A quest with unmet prerequisites is labelled locked and cannot be started until its dependencies are completed. The validator checks for missing prerequisite IDs and cycles. Objective completion is currently player-triggered in the prototype; automatic world-event objective tracking is a later integration task.
