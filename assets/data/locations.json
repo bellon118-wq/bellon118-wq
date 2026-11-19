@@ -1,0 +1,90 @@
+{
+  "schemaVersion": "1.0.0",
+  "worldId": "mayflower-sanctuary",
+  "mapId": "sanctuary-world-map",
+  "locations": [
+    {
+      "id": "mayflower-sanctuary",
+      "name": "Mayflower Sanctuary",
+      "locationType": "world",
+      "status": "active",
+      "description": "The project world itself. Further world details remain to be confirmed.",
+      "parentLocationId": null,
+      "mapMarkerId": "mayflower",
+      "characterIds": [],
+      "questIds": [],
+      "historyStatus": "unconfirmed",
+      "eventsStatus": "unconfirmed"
+    },
+    {
+      "id": "muse-harbor",
+      "name": "Muse Harbor",
+      "locationType": "district",
+      "status": "active",
+      "description": "A luminous creative and AI waterfront with gardens, digital waterways, creator studios, community plazas, performance stages, and an innovation district. It is the home setting of YOUTHSPARK_Muse.",
+      "parentLocationId": "mayflower-sanctuary",
+      "mapMarkerId": "muse-harbor",
+      "characterIds": ["youthspark-muse"],
+      "questIds": [],
+      "historyStatus": "unconfirmed",
+      "eventsStatus": "unconfirmed"
+    },
+    {
+      "id": "cherry-gardens",
+      "name": "Cherry Blossom Gardens",
+      "locationType": "landmark",
+      "status": "active",
+      "description": "Gardens within Muse Harbor.",
+      "parentLocationId": "muse-harbor",
+      "mapMarkerId": "cherry-gardens",
+      "characterIds": ["youthspark-muse"],
+      "questIds": [],
+      "historyStatus": "unconfirmed",
+      "eventsStatus": "unconfirmed"
+    },
+    {
+      "id": "waterways",
+      "name": "Digital Waterways",
+      "locationType": "landmark",
+      "status": "active",
+      "description": "Waterways within Muse Harbor.",
+      "parentLocationId": "muse-harbor",
+      "mapMarkerId": "waterways",
+      "characterIds": ["youthspark-muse"],
+      "questIds": [],
+      "historyStatus": "unconfirmed",
+      "eventsStatus": "unconfirmed"
+    },
+    {
+      "id": "stages",
+      "name": "Music Performance Stages",
+      "locationType": "district",
+      "status": "active",
+      "description": "A performance-stage district within Muse Harbor.",
+      "parentLocationId": "muse-harbor",
+      "mapMarkerId": "stages",
+      "characterIds": ["youthspark-muse"],
+      "questIds": [],
+      "historyStatus": "unconfirmed",
+      "eventsStatus": "unconfirmed"
+    },
+    {
+      "id": "rose",
+      "name": "Rose Sanctuary",
+      "locationType": "landmark",
+      "status": "active",
+      "description": "A location inside Mayflower Sanctuary: a partially collapsed Gothic Cathedral Ruin with a Rose Window, Angel Statues, Cloister Gardens, Bell Tower, and Crypt. Its visual direction includes a luminous celestial palace, crystal gardens, waterfalls, moonlight, and a huge Earth in the sky.",
+      "parentLocationId": "mayflower-sanctuary",
+      "mapMarkerId": "rose",
+      "characterIds": [],
+      "questIds": [],
+      "historyStatus": "documented",
+      "eventsStatus": "unconfirmed"
+    }
+  ],
+  "notes": [
+    "Location IDs match the existing schematic map marker keys; the map is not to scale.",
+    "No numeric map coordinates are asserted by this catalogue.",
+    "Character and quest arrays contain only confirmed links; empty arrays do not imply that future content is excluded."
+  ]
+}
