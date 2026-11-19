@@ -36,7 +36,7 @@
       const panel = document.createElement("div");
       panel.className = "site-nav-panel";
       panel.setAttribute("aria-label", "Sanctuary destinations");
-      const currentPath = window.location.pathname;
+      const currentPath = window.location.pathname.endsWith("/") ? new URL("index.html", window.location.href).pathname : window.location.pathname;
       const currentHash = window.location.hash;
       registry.navigation.forEach(route => panel.append(makeLink(route, currentPath, currentHash)));
       menu.append(panel);
