@@ -1,6 +1,6 @@
 .quest-main{padding-top:1.4rem;padding-bottom:3rem}
 .quest-hero .command-hero-inner{padding-bottom:2.4rem}
-.quest-overview{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;margin-bottom:1rem}
+.quest-overview{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.8rem;margin-bottom:1rem}
 .quest-tools{margin-top:1rem}
 .quest-tools-heading,.quest-results-heading{display:flex;justify-content:space-between;align-items:end;gap:1rem}
 .quest-tools-heading h2,.quest-results-heading h2{margin:.1rem 0}
@@ -41,5 +41,6 @@
 .quest-progress-line{height:7px;border-radius:99px;background:#26334b;overflow:hidden;margin:.5rem 0}
 .quest-progress-line span{display:block;height:100%;background:linear-gradient(90deg,var(--neon-teal),var(--hollow-blue),var(--gold))}
 @media(max-width:720px){.quest-card-grid{grid-template-columns:1fr}.quest-filters{grid-template-columns:1fr}.quest-tools-heading{display:block}.quest-search-label{display:block;margin-top:.8rem}}
+@media(max-width:720px){.quest-overview{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:520px){.quest-overview{grid-template-columns:1fr}.quest-overview .overview-card{min-height:76px}.quest-results-heading{align-items:start;flex-direction:column}}
 @media(prefers-reduced-motion:reduce){.quest-progress-line span{transition:none}}
