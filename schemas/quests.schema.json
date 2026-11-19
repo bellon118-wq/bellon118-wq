@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mayflower-sanctuary.local/schemas/quests.schema.json",
+  "title": "Mayflower Sanctuary Quest Catalogue",
+  "type": "object",
+  "required": ["schemaVersion", "quests"],
+  "properties": {
+    "schemaVersion": { "type": "string" },
+    "quests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "status", "objectives", "prerequisiteQuestIds", "characterIds", "locationIds"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+          "title": { "type": "string", "minLength": 1 },
+          "status": { "enum": ["draft", "planned", "available", "retired"] },
+          "summary": { "type": "string" },
+          "objectives": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "description", "type"],
+              "properties": {
+                "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+                "description": { "type": "string", "minLength": 1 },
+                "type": { "enum": ["discover", "interact", "collect", "visit", "complete"] },
+                "targetRef": { "type": "string" },
+                "requiredCount": { "type": "integer", "minimum": 1 }
+              },
+              "additionalProperties": true
+            }
+          },
+          "prerequisiteQuestIds": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+          "characterIds": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+          "locationIds": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+          "rewardItemIds": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+          "storyId": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "notes": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": true
+}
