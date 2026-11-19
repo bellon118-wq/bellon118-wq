@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mayflower-sanctuary.local/schemas/discoveries.schema.json",
+  "title": "Mayflower Sanctuary Discovery Catalogue",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "locations",
+    "collectibles"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string"
+    },
+    "locations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "locationId",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "locationId": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "status": {
+            "enum": [
+              "active",
+              "planned",
+              "retired"
+            ]
+          },
+          "category": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "collectibles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "itemId"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "itemId": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "galleryAsset": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "active",
+              "planned",
+              "retired"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}
