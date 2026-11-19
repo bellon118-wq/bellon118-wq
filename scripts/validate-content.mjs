@@ -67,6 +67,16 @@ for (const relationship of relationshipData.relationships || []) {
   if (typeof relationship.profileHref !== "string" || !existsSync(resolve(root, relationship.profileHref))) fail("relationships.json: " + relationship.id + " has missing profileHref");
 }
 pass("relationships.json: character references and profile routes checked");
+const museCoreProfile = readJson("assets/data/muse-core-profile.json");
+if (typeof museCoreProfile.schemaVersion !== "string" || !Array.isArray(museCoreProfile.memoryArchitecture?.categories)) fail("muse-core-profile.json: missing version or memory categories");
+if (!characters.some(character => character.id === museCoreProfile.characterId)) fail("muse-core-profile.json: unknown characterId " + museCoreProfile.characterId);
+const expectedMemoryCategories = ["core","relationship","episodic","symbolic"];
+if (expectedMemoryCategories.some(category => !museCoreProfile.memoryArchitecture.categories.includes(category)) || museCoreProfile.memoryArchitecture.categories.length !== 4) fail("muse-core-profile.json: all four unique memory categories are required");
+const weights = museCoreProfile.memoryArchitecture.memoryScore?.weights || {};
+const weightTotal = ["emotionalIntensity","personalRelevance","novelty","repetitionValue"].reduce((sum,key)=>sum+(Number(weights[key])||0),0);
+if (Math.abs(weightTotal-1)>0.000001) fail("muse-core-profile.json: memory score weights must total 1");
+if (museCoreProfile.memoryArchitecture.captureMode !== "explicit-player-authored" || museCoreProfile.memoryArchitecture.reviewRequired !== true) fail("muse-core-profile.json: explicit player capture and review are required");
+pass("muse-core-profile.json: character reference, memory layers and scoring weights checked");
 const characterIds = new Set(characters.map(x => x.id));
 const locationIds = new Set(locations.map(x => x.id));
 const questIds = new Set(quests.map(x => x.id));
