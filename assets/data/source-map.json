@@ -6,7 +6,10 @@
     "navigation": "assets/data/routes.json",
     "locations": "assets/data/locations.json",
     "quests": "assets/data/quests.json",
-    "questProgressionSchema": "schemas/player-progression.schema.json"
+    "questProgressionSchema": "schemas/player-progression.schema.json",
+    "items": "assets/data/items.json",
+    "inventorySchema": "schemas/player-inventory.schema.json",
+    "itemCatalogueSchema": "schemas/items.schema.json"
   },
   "legacy": {
     "data/characters.json": {
@@ -28,6 +31,8 @@
     "Use assets/data/locations.json as the canonical source for map-linked location records.",
     "Use assets/data/quests.json as the canonical source for authored in-world quests; do not convert UI achievements or development tasks into quests.",
     "Quest definitions belong in assets/data/quests.json; per-player quest state belongs in the local progression store until a backend is approved.",
-    "Do not treat development checklist items as in-world quests."
+    "Do not treat development checklist items as in-world quests.",
+    "Item, currency and collection definitions belong in assets/data/items.json; player holdings belong in the separate local inventory save.",
+    "Do not enable quest reward granting until item references resolve and duplicate awards are prevented by an idempotent reward receipt."
   ]
 }
