@@ -9,7 +9,9 @@
     "questProgressionSchema": "schemas/player-progression.schema.json",
     "items": "assets/data/items.json",
     "inventorySchema": "schemas/player-inventory.schema.json",
-    "itemCatalogueSchema": "schemas/items.schema.json"
+    "itemCatalogueSchema": "schemas/items.schema.json",
+    "discoveries": "assets/data/discoveries.json",
+    "playerDiscoverySchema": "schemas/player-discovery.schema.json"
   },
   "legacy": {
     "data/characters.json": {
@@ -33,6 +35,8 @@
     "Quest definitions belong in assets/data/quests.json; per-player quest state belongs in the local progression store until a backend is approved.",
     "Do not treat development checklist items as in-world quests.",
     "Item, currency and collection definitions belong in assets/data/items.json; player holdings belong in the separate local inventory save.",
-    "Do not enable quest reward granting until item references resolve and duplicate awards are prevented by an idempotent reward receipt."
+    "Do not enable quest reward granting until item references resolve and duplicate awards are prevented by an idempotent reward receipt.",
+    "Location discovery targets reference assets/data/locations.json by stable ID; player discoveries are stored separately in a local guest save.",
+    "Collectible discoveries reference approved item IDs; discovery recording does not grant inventory items or unlock gallery artwork unless an explicit approved reward mapping exists."
   ]
 }
