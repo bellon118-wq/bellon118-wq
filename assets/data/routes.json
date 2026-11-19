@@ -1,0 +1,231 @@
+{
+  "schemaVersion": "1.0.0",
+  "siteId": "mayflower-sanctuary",
+  "updatedAt": "2026-11-19",
+  "navigation": [
+    {
+      "id": "sanctuary-home",
+      "label": "Sanctuary",
+      "href": "index.html",
+      "group": "game",
+      "description": "Return to the sanctuary gateway."
+    },
+    {
+      "id": "command-deck",
+      "label": "Command Deck",
+      "href": "game-dashboard.html",
+      "group": "game",
+      "description": "Open the player dashboard and development checklist."
+    },
+    {
+      "id": "world-map",
+      "label": "World Map",
+      "href": "index.html#map",
+      "group": "game",
+      "description": "Explore the current interactive sanctuary map.",
+      "activeHash": "#map"
+    },
+    {
+      "id": "characters",
+      "label": "Characters",
+      "href": "characters.html",
+      "group": "game",
+      "description": "Browse character profiles and roster entries."
+    },
+    {
+      "id": "muse-harbor",
+      "label": "Muse Harbor",
+      "href": "muse-harbor.html",
+      "group": "game",
+      "description": "Visit YouthSpark's companion district."
+    },
+    {
+      "id": "gallery",
+      "label": "Gallery",
+      "href": "gallery.html",
+      "group": "game",
+      "description": "Browse the current artwork archive."
+    },
+    {
+      "id": "world-library",
+      "label": "World Library",
+      "href": "games.html",
+      "group": "library",
+      "description": "Browse games and worlds that inspire the project."
+    },
+    {
+      "id": "projects",
+      "label": "Projects",
+      "href": "projects.html",
+      "group": "library",
+      "description": "Explore creative project showcases."
+    },
+    {
+      "id": "dragonai7",
+      "label": "DragonAI7 Lab",
+      "href": "dragonai7.html",
+      "group": "library",
+      "description": "Open the DragonAI7 creative lab."
+    },
+    {
+      "id": "about",
+      "label": "About",
+      "href": "about.html",
+      "group": "community",
+      "description": "Read the creator profile."
+    },
+    {
+      "id": "connect",
+      "label": "Connect",
+      "href": "connect.html",
+      "group": "community",
+      "description": "Find community and contact destinations."
+    }
+  ],
+  "routes": [
+    {
+      "id": "sanctuary-home",
+      "path": "index.html",
+      "kind": "page",
+      "status": "active"
+    },
+    {
+      "id": "command-deck",
+      "path": "game-dashboard.html",
+      "kind": "page",
+      "status": "active"
+    },
+    {
+      "id": "muse-harbor",
+      "path": "muse-harbor.html",
+      "kind": "page",
+      "status": "active"
+    },
+    {
+      "id": "characters",
+      "path": "characters.html",
+      "kind": "page",
+      "status": "active"
+    },
+    {
+      "id": "youthspark-muse",
+      "path": "characters/youthspark-muse.html",
+      "kind": "page",
+      "status": "active"
+    },
+    {
+      "id": "founder-dossier",
+      "path": "characters/daniel-bellon-community-architect.html",
+      "kind": "page",
+      "status": "active"
+    },
+    {
+      "id": "gallery",
+      "path": "gallery.html",
+      "kind": "page",
+      "status": "active"
+    },
+    {
+      "id": "world-library",
+      "path": "games.html",
+      "kind": "page",
+      "status": "active"
+    },
+    {
+      "id": "projects",
+      "path": "projects.html",
+      "kind": "page",
+      "status": "active"
+    },
+    {
+      "id": "dragonai7",
+      "path": "dragonai7.html",
+      "kind": "page",
+      "status": "active"
+    },
+    {
+      "id": "about",
+      "path": "about.html",
+      "kind": "page",
+      "status": "active"
+    },
+    {
+      "id": "connect",
+      "path": "connect.html",
+      "kind": "page",
+      "status": "active"
+    },
+    {
+      "id": "golden-rose",
+      "path": "characters/golden-rose.html",
+      "kind": "page",
+      "status": "placeholder"
+    },
+    {
+      "id": "three-queens-character",
+      "path": "characters/three-queens.html",
+      "kind": "page",
+      "status": "placeholder"
+    },
+    {
+      "id": "myblin9-characters",
+      "path": "characters/myblin9-characters.html",
+      "kind": "page",
+      "status": "placeholder"
+    },
+    {
+      "id": "future-characters",
+      "path": "characters/future-characters.html",
+      "kind": "page",
+      "status": "placeholder"
+    },
+    {
+      "id": "myblin9-project",
+      "path": "projects/myblin9.html",
+      "kind": "page",
+      "status": "active"
+    },
+    {
+      "id": "sweeteez-project",
+      "path": "projects/sweeteez.html",
+      "kind": "page",
+      "status": "placeholder"
+    },
+    {
+      "id": "three-queens-project",
+      "path": "projects/three-queens.html",
+      "kind": "page",
+      "status": "placeholder"
+    },
+    {
+      "id": "cinematic-fantasy-project",
+      "path": "projects/cinematic-fantasy-universe.html",
+      "kind": "page",
+      "status": "placeholder"
+    },
+    {
+      "id": "future-ai-storytelling",
+      "path": "projects/future-ai-storytelling.html",
+      "kind": "page",
+      "status": "placeholder"
+    },
+    {
+      "id": "legacy-character",
+      "path": "character.html",
+      "kind": "compatibility",
+      "status": "legacy"
+    },
+    {
+      "id": "legacy-roster",
+      "path": "roster.html",
+      "kind": "compatibility",
+      "status": "legacy"
+    },
+    {
+      "id": "legacy-contact",
+      "path": "contact.html",
+      "kind": "compatibility",
+      "status": "legacy"
+    }
+  ]
+}
