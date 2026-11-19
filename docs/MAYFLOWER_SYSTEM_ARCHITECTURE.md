@@ -239,3 +239,12 @@ This is a static content/data foundation. The existing world-map panel now hydra
 A dedicated Quest Journal now reads canonical quest, character and location catalogues. It supports main-story, side-story, character, exploration and collection categories; search and progress filters; quest start/abandon actions; objective check-off; and completion when all objectives are marked complete. Player progress is stored separately in browser local storage and can be exported or reset by the player.
 
 The canonical quest catalogue remains empty until quest stories and rewards are approved. The Command Deck checklist is explicitly labelled as development work, not in-world quest content. The player progression schema is `schemas/player-progression.schema.json`. There is no server persistence, account login, cross-device sync, or reward inventory grant yet. See `docs/PHASE_2_1_QUEST_JOURNAL.md`.
+
+
+## Inventory and collection contracts
+- Canonical definitions: `assets/data/items.json` (items, currencies and collections).
+- Player-owned quantities and wallet balances: `schemas/player-inventory.schema.json` local save contract.
+- Stable item IDs are used by quest rewards and collection sets; never use display names as keys.
+- Item definitions may link to approved source quests, characters and locations. The validator checks those references.
+- Inventory and quest saves remain separate local stores until a versioned player-state adapter is introduced.
+- Reward granting requires an idempotent receipt keyed by player, quest completion and reward ID. It is not implemented in the current prototype.
