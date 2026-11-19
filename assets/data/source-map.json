@@ -13,7 +13,10 @@
     "discoveries": "assets/data/discoveries.json",
     "playerDiscoverySchema": "schemas/player-discovery.schema.json",
     "relationships": "assets/data/relationships.json",
-    "relationshipsSchema": "schemas/relationships.schema.json"
+    "relationshipsSchema": "schemas/relationships.schema.json",
+    "museCoreProfile": "assets/data/muse-core-profile.json",
+    "museCoreProfileSchema": "schemas/muse-core-profile.schema.json",
+    "museMemorySchema": "schemas/muse-memory.schema.json"
   },
   "legacy": {
     "data/characters.json": {
@@ -43,6 +46,11 @@
     "Relationship catalogue entries reference canonical character IDs; do not invent relationship scores or character history.",
     "Player-authored companion journal entries remain separate from character canon and AI memory.",
     "Existing YouthSpark visitor progression is browser-local interface progression, not canonical affection or trust.",
-    "Do not grant rewards or unlock quests from relationship progression without an approved mapping."
+    "Do not grant rewards or unlock quests from relationship progression without an approved mapping.",
+    "Muse-Core memory records are explicit player-authored local notes until an approved backend and consent model exist.",
+    "Core, Relationship, Episodic and Symbolic are separate memory categories; do not silently convert journal entries into memory.",
+    "Memory importance is a transparent weighted organizational score, not a model judgment or emotional inference.",
+    "A locally retained memory is not automatically character canon or injected into AI model context.",
+    "Preserve canonical character identity and personality; memory records must not overwrite character source data."
   ]
 }
