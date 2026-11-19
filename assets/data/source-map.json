@@ -3,7 +3,9 @@
   "canonical": {
     "characters": "assets/data/characters.json",
     "games": "assets/data/games.json",
-    "navigation": "assets/data/routes.json"
+    "navigation": "assets/data/routes.json",
+    "locations": "assets/data/locations.json",
+    "quests": "assets/data/quests.json"
   },
   "legacy": {
     "data/characters.json": {
@@ -21,6 +23,8 @@
     "Do not write new content to legacy data/ files.",
     "Do not delete legacy data/ files during Phase 1.",
     "Preserve source-specific differences until reviewed against owner-approved canon.",
-    "Use stable IDs for cross-system references; display names are not keys."
+    "Use stable IDs for cross-system references; display names are not keys.",
+    "Use assets/data/locations.json as the canonical source for map-linked location records.",
+    "Use assets/data/quests.json as the canonical source for authored in-world quests; do not convert UI achievements or development tasks into quests."
   ]
 }
