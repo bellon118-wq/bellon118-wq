@@ -56,6 +56,17 @@ const discoveryData = readJson("assets/data/discoveries.json");
 const locationDiscoveries = validateCatalogue("assets/data/discoveries.json", "locations", ["id","locationId"]);
 const collectibleDiscoveries = validateCatalogue("assets/data/discoveries.json", "collectibles", ["id","itemId"]);
 
+const relationshipData = readJson("assets/data/relationships.json");
+if (typeof relationshipData.schemaVersion !== "string" || !Array.isArray(relationshipData.relationships)) fail("relationships.json: missing schemaVersion or relationships array");
+const relationshipIds = new Set();
+for (const relationship of relationshipData.relationships || []) {
+  if (!validId(relationship.id) || relationshipIds.has(relationship.id)) fail("relationships.json: invalid or duplicate relationship ID " + relationship.id);
+  relationshipIds.add(relationship.id);
+  if (!characters.some(character => character.id === relationship.characterId)) fail("relationships.json: " + relationship.id + " references unknown character " + relationship.characterId);
+  if (!["visitor-prototype","canonical-profile"].includes(relationship.mode)) fail("relationships.json: " + relationship.id + " has invalid mode");
+  if (typeof relationship.profileHref !== "string" || !existsSync(resolve(root, relationship.profileHref))) fail("relationships.json: " + relationship.id + " has missing profileHref");
+}
+pass("relationships.json: character references and profile routes checked");
 const characterIds = new Set(characters.map(x => x.id));
 const locationIds = new Set(locations.map(x => x.id));
 const questIds = new Set(quests.map(x => x.id));
@@ -116,6 +127,7 @@ for (const collection of collections) {
 for (const quest of quests) for (const id of quest.rewardItemIds || []) if (!itemIds.has(id)) fail("quests.json: "+quest.id+" references unknown reward item "+id);
 pass("items.json: item, currency and collection references checked");
 pass("discoveries.json: location and collectible references checked");
+pass("relationships.json: relationship catalogue checked");
 const visiting = new Set(), visited = new Set();
 function checkQuestCycle(id) {
   if (visiting.has(id)) { fail("quests.json: prerequisite cycle detected at " + id); return; }
