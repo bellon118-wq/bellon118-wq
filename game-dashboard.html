@@ -16,6 +16,7 @@
 <a class="brand" href="index.html">Mayflower <span>Sanctuary</span></a>
 <a class="navlink" href="index.html">Sanctuary Home</a>
 <a class="navlink" href="index.html#map">World Map</a>
+<a class="navlink" href="quests.html">Quest Journal</a>
 <a class="navlink" href="characters.html">Characters</a>
 <a class="navlink" href="games.html">Worlds</a>
 <a class="navlink" href="muse-harbor.html">Muse Harbor</a>
@@ -25,7 +26,7 @@
 <p class="eyebrow">Mayflower Sanctuary · Player Command</p>
 <h1>Sanctuary Command Deck</h1>
 <p class="lede">Your gateway to the world, its people, stories and ongoing development. Choose a destination, track your next steps, and keep building.</p>
-<div class="command-actions"><a class="btn" href="index.html#map">Explore the world</a><a class="btn ghost" href="characters/youthspark-muse.html">Meet YouthSpark</a></div>
+<div class="command-actions"><a class="btn" href="quests.html">Open Quest Journal</a><a class="btn ghost" href="index.html#map">Explore the world</a><a class="btn ghost" href="characters/youthspark-muse.html">Meet YouthSpark</a></div>
 <div class="command-status"><span class="status-orb"></span><span>Prototype interface · local progress only</span><span id="saveStatus" role="status">Ready</span></div>
 </div>
 </header>
@@ -33,23 +34,24 @@
 <section class="command-overview" aria-label="Sanctuary overview">
 <div class="overview-card"><span class="overline">Your sanctuary</span><strong>Mayflower</strong><small>World hub</small></div>
 <div class="overview-card"><span class="overline">Featured companion</span><strong>YOUTHSPARK_Muse</strong><small>Muse Harbor · AI Idol</small></div>
-<div class="overview-card"><span class="overline">Your checklist</span><strong id="questCount">0 / 5</strong><small>Local development goals</small></div>
+<div class="overview-card"><span class="overline">Development checklist</span><strong id="questCount">0 / 5</strong><small>Local project tasks</small></div>
 </section>
 <section class="command-section">
 <div class="section-heading"><div><p class="kicker">Quick travel</p><h2>Choose your destination</h2></div><p class="muted">Every gateway opens an existing area of the project.</p></div>
 <div class="destination-grid">
 <a class="destination-card destination-muse" href="muse-harbor.html"><span class="destination-icon">✧</span><span class="destination-label">01 · Companion district</span><strong>Muse Harbor</strong><span>Meet YouthSpark, visit the waterfront and open her stage.</span><b>Enter district ↗</b></a>
-<a class="destination-card destination-map" href="index.html#map"><span class="destination-icon">⌖</span><span class="destination-label">02 · Exploration</span><strong>World Map</strong><span>Browse the sanctuary's current schematic map and location panels.</span><b>Explore map ↗</b></a>
-<a class="destination-card destination-roster" href="characters.html"><span class="destination-icon">♙</span><span class="destination-label">03 · People & lore</span><strong>Character Codex</strong><span>Open the roster and individual character profiles.</span><b>View roster ↗</b></a>
-<a class="destination-card destination-worlds" href="games.html"><span class="destination-icon">◇</span><span class="destination-label">04 · Inspiration</span><strong>World Library</strong><span>Browse the games and worlds that inspire this project.</span><b>Open library ↗</b></a>
-<a class="destination-card destination-gallery" href="gallery.html"><span class="destination-icon">❀</span><span class="destination-label">05 · Visual archive</span><strong>Art Gallery</strong><span>Explore the artwork currently included in the site.</span><b>View gallery ↗</b></a>
-<a class="destination-card destination-projects" href="projects.html"><span class="destination-icon">✦</span><span class="destination-label">06 · Creator workshop</span><strong>Project Workshop</strong><span>Visit project showcases and the DragonAI7 creative lab.</span><b>Open workshop ↗</b></a>
+<a class="destination-card destination-map" href="quests.html"><span class="destination-icon">📜</span><span class="destination-label">03 · Player adventures</span><strong>Quest Journal</strong><span>Track story, character, exploration and collection quests.</span><b>Open journal ↗</b></a>
+<a class="destination-card destination-map" href="index.html#map"><span class="destination-icon">⌖</span><span class="destination-label">04 · Exploration</span><strong>World Map</strong><span>Browse the sanctuary's current schematic map and location panels.</span><b>Explore map ↗</b></a>
+<a class="destination-card destination-roster" href="characters.html"><span class="destination-icon">♙</span><span class="destination-label">05 · People & lore</span><strong>Character Codex</strong><span>Open the roster and individual character profiles.</span><b>View roster ↗</b></a>
+<a class="destination-card destination-worlds" href="games.html"><span class="destination-icon">◇</span><span class="destination-label">06 · Inspiration</span><strong>World Library</strong><span>Browse the games and worlds that inspire this project.</span><b>Open library ↗</b></a>
+<a class="destination-card destination-gallery" href="gallery.html"><span class="destination-icon">❀</span><span class="destination-label">07 · Visual archive</span><strong>Art Gallery</strong><span>Explore the artwork currently included in the site.</span><b>View gallery ↗</b></a>
+<a class="destination-card destination-projects" href="projects.html"><span class="destination-icon">✦</span><span class="destination-label">08 · Creator workshop</span><strong>Project Workshop</strong><span>Visit project showcases and the DragonAI7 creative lab.</span><b>Open workshop ↗</b></a>
 </div>
 </section>
 <section class="command-section split-section">
 <article class="panel-card">
-<p class="kicker">Development journal</p><h2>Sanctuary quest board</h2>
-<p class="muted">A lightweight checklist for the next development pass. Your checkmarks are saved only in this browser; they are not shared or synced.</p>
+<p class="kicker">Project workspace</p><h2>Development checklist</h2>
+<p class="muted">These are website and game-building tasks, not in-world adventures. Your checkmarks are saved only in this browser; they are not shared or synced. Open the Quest Journal for actual player quests.</p>
 <div class="quest-list" id="questList">
 <label class="quest-row"><input type="checkbox" data-quest="ui"><span><strong>Polish the game interface</strong><small>Responsive navigation, dashboard hierarchy and clear destinations.</small></span></label>
 <label class="quest-row"><input type="checkbox" data-quest="muse"><span><strong>Build the Muse-Core foundation</strong><small>Define versioned memory, relationship, voice and safety boundaries.</small></span></label>
