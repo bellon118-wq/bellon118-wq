@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mayflower-sanctuary.local/schemas/player-inventory.schema.json",
+  "title": "Mayflower Sanctuary Player Inventory Save",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "playerId",
+    "updatedAt",
+    "items",
+    "currencies",
+    "discoveredCollectionIds"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string"
+    },
+    "playerId": {
+      "type": "string"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "items": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "quantity"
+        ],
+        "properties": {
+          "quantity": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "acquiredAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "sourceRef": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "currencies": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "discoveredCollectionIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    }
+  },
+  "additionalProperties": false
+}
