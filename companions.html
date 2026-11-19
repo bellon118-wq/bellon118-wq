@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Companion bonds, relationship milestones and a private local journal for Mayflower Sanctuary.">
+<title>Companion Bonds | Mayflower Sanctuary</title>
+<link rel="stylesheet" href="styles.css?v=mayflower-20261119">
+<link rel="stylesheet" href="assets/css/site-navigation.css?v=phase1">
+<link rel="stylesheet" href="assets/css/companion-bonds.css?v=phase2-4">
+</head>
+<body data-phase="night">
+<a class="skip-link" href="#main">Skip to companion bonds</a>
+<nav><div class="nav-inner">
+<a class="brand" href="index.html">Mayflower <span>Sanctuary</span></a>
+<a class="navlink" href="index.html">Sanctuary</a><a class="navlink" href="game-dashboard.html">Command Deck</a>
+<a class="navlink" href="quests.html">Quest Journal</a><a class="navlink" href="discoveries.html">Discoveries</a>
+<a class="navlink" href="characters.html">Characters</a><a class="navlink" href="muse-harbor.html">Muse Harbor</a>
+</div></nav>
+<header class="bond-hero"><div class="bond-wrap"><p class="eyebrow">Mayflower Sanctuary · Relationship Codex</p>
+<h1>Companion Bonds</h1><p class="bond-lede">A quiet place to follow your companion journey, revisit meaningful moments, and see how exploration connects to the characters you meet.</p>
+<div class="bond-status"><span class="status-orb"></span><span>Guest prototype · saved in this browser only</span><span id="bondStorageStatus" role="status">Loading companion records…</span></div></div></header>
+<main id="main" class="bond-wrap">
+<section class="bond-intro"><div><p class="kicker">Your shared journey</p><h2>Relationships grow through moments</h2><p class="muted">This phase adds a private player journal and a clearer companion overview. Existing YouthSpark connection milestones are displayed from her current local profile; journal notes never rewrite character canon or award relationship points.</p></div>
+<div class="bond-stats"><article><span>Companions</span><strong id="companionCount">—</strong></article><article><span>Journal moments</span><strong id="momentCount">0</strong></article><article><span>World discoveries</span><strong id="discoveryCount">0</strong></article></div></section>
+<section class="companion-grid" id="companionGrid" aria-live="polite"><article class="bond-card"><p>Loading the companion codex…</p></article></section>
+<section class="bond-journal glass">
+<div><p class="kicker">Personal chronicle</p><h2>Record a shared moment</h2><p class="muted">Write a note about a conversation, visit, or creative moment. These are your memories, not automatically remembered by the character.</p></div>
+<form id="bondMomentForm">
+<label for="momentCompanion">Companion</label><select id="momentCompanion" required></select>
+<label for="momentType">Moment type</label><select id="momentType"><option value="conversation">Conversation</option><option value="exploration">Exploration</option><option value="creative">Creative moment</option><option value="milestone">Personal milestone</option><option value="reflection">Reflection</option></select>
+<label for="momentNote">Your note <span class="muted">· up to 500 characters</span></label><textarea id="momentNote" maxlength="500" rows="3" required placeholder="What made this moment meaningful to you?"></textarea>
+<button class="btn" type="submit">Save to my chronicle</button><p id="momentFormStatus" class="muted" role="status" aria-live="polite"></p>
+</form>
+</section>
+<section class="bond-archive"><div class="bond-archive-head"><div><p class="kicker">Your history</p><h2>Relationship journal</h2></div><div class="bond-tools"><button class="chip" id="exportBondJournal" type="button">Export backup</button><button class="chip" id="resetBondJournal" type="button">Clear journal</button></div></div>
+<div id="bondTimeline" class="bond-timeline"><p class="muted">No moments recorded yet. Your first entry will appear here.</p></div></section>
+<p class="bond-disclaimer">Prototype boundaries: browser-local storage only; no account sync, cloud persistence, AI memory, voice service, automatic sentiment analysis, or multiplayer relationship state. Relationship levels shown for YouthSpark are existing interface progression, not canonical affection or trust ratings.</p>
+</main>
+<footer><div class="bond-wrap"><p>Mayflower Sanctuary · Companion Bonds · Phase 2.4</p><p><a href="game-dashboard.html">Return to Command Deck</a></p></div></footer>
+<script src="assets/js/companion-bonds.js" defer></script><script src="assets/js/site-navigation.js?v=phase1" defer></script>
+</body></html>
