@@ -46,11 +46,14 @@
   function stateFor(quest) {
     return save.quests[quest.id] || {status:"not-started",objectives:{}};
   }
-  function prerequisitesMet(quest) {\n    return (quest.prerequisiteQuestIds || []).every(id => save.quests[id] && save.quests[id].status === "completed");\n  }\n  function categoryLabel(value) {
+  function prerequisitesMet(quest) {
+    return (quest.prerequisiteQuestIds || []).every(id => save.quests[id] && save.quests[id].status === "completed");
+  }
+  function categoryLabel(value) {
     return ({main:"Main Story",side:"Side Story",character:"Character Quest",exploration:"Exploration",collection:"Collection"})[value] || "Quest";
   }
   function statusLabel(value) {
-    return ({available:"Available",active:"In Progress",completed:"Completed",abandoned:"Abandoned", "not-started":"Available"})[value] || value;
+    return ({available:"Available",active:"In Progress",completed:"Completed",abandoned:"Abandoned",locked:"Locked · prerequisites", "not-started":"Available"})[value] || value;
   }
   function relatedNames(ids, records) {
     const index = Object.fromEntries(records.map(item => [item.id,item.name]));
@@ -75,11 +78,13 @@
       const state = stateFor(quest);
       if (state.status === "completed") completed++;
       else if (state.status === "active") active++;
-      else available++;
+      else if (prerequisitesMet(quest)) available++;
+      else locked++;
     });
     $("availableCount").textContent = available;
     $("activeCount").textContent = active;
-    $("completedCount").textContent = completed;\n    $("lockedCount").textContent = locked;
+    $("completedCount").textContent = completed;
+    $("lockedCount").textContent = locked;
   }
   function makeQuestCard(quest) {
     const state = stateFor(quest);
@@ -87,7 +92,9 @@
     const card = make("article","quest-card");
     const top = make("div","quest-card-top");
     top.append(make("span","quest-category",categoryLabel(quest.category)));
-    const locked = state.status !== "active" && state.status !== "completed" && !prerequisitesMet(quest);\n    const visibleStatus = locked ? "locked" : (state.status === "not-started" ? "available" : state.status);\n    top.append(make("span","quest-status",statusLabel(visibleStatus)));
+    const locked = state.status !== "active" && state.status !== "completed" && !prerequisitesMet(quest);
+    const visibleStatus = locked ? "locked" : (state.status === "not-started" ? "available" : state.status);
+    top.append(make("span","quest-status",statusLabel(visibleStatus)));
     card.append(top,make("h3","",quest.title),make("p","",quest.summary || "Quest details will be added to the world journal."));
     const meta = make("div","quest-meta");
     (quest.recommendedLevel ? ["Recommended level "+quest.recommendedLevel] : []).forEach(t=>meta.append(make("span","",t)));
@@ -128,11 +135,16 @@
     }
     const actions=make("div","quest-card-actions");
     if(state.status==="not-started" || state.status==="abandoned") {
-      const start=make("button","btn","Begin quest");
-      start.type="button";start.addEventListener("click",()=>{
-        const next=stateFor(quest);next.status="active";next.startedAt=next.startedAt||new Date().toISOString();next.objectives=next.objectives||{};
-        save.quests[quest.id]=next;persist();
-      });actions.append(start);
+      if (locked) {
+        const needed=(quest.prerequisiteQuestIds || []).filter(id=>!save.quests[id] || save.quests[id].status!=="completed").map(id=>quests.find(item=>item.id===id)?.title || id);
+        card.append(make("p","quest-related","Complete first: "+needed.join(", ")));
+      } else {
+        const start=make("button","btn","Begin quest");
+        start.type="button";start.addEventListener("click",()=>{
+          const next=stateFor(quest);next.status="active";next.startedAt=next.startedAt||new Date().toISOString();next.objectives=next.objectives||{};
+          save.quests[quest.id]=next;persist();
+        });actions.append(start);
+      }
     } else if(state.status==="active") {
       const abandon=make("button","chip","Abandon quest");
       abandon.type="button";abandon.addEventListener("click",()=>{
