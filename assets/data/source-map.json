@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "1.0.0",
+  "canonical": {
+    "characters": "assets/data/characters.json",
+    "games": "assets/data/games.json",
+    "navigation": "assets/data/routes.json"
+  },
+  "legacy": {
+    "data/characters.json": {
+      "replacedBy": "assets/data/characters.json",
+      "status": "read-only-compatibility",
+      "removeOnlyAfter": "all readers and inbound references are verified"
+    },
+    "data/games.json": {
+      "replacedBy": "assets/data/games.json",
+      "status": "read-only-compatibility",
+      "removeOnlyAfter": "all readers and inbound references are verified"
+    }
+  },
+  "rules": [
+    "Do not write new content to legacy data/ files.",
+    "Do not delete legacy data/ files during Phase 1.",
+    "Preserve source-specific differences until reviewed against owner-approved canon.",
+    "Use stable IDs for cross-system references; display names are not keys."
+  ]
+}
