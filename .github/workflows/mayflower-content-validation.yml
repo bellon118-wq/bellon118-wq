@@ -22,5 +22,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+      - name: Check JavaScript syntax
+        run: node --check game.js && node --check assets/js/site-navigation.js
       - name: Validate canonical content and routes
         run: node scripts/validate-content.mjs
