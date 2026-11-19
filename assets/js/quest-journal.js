@@ -46,7 +46,7 @@
   function stateFor(quest) {
     return save.quests[quest.id] || {status:"not-started",objectives:{}};
   }
-  function categoryLabel(value) {
+  function prerequisitesMet(quest) {\n    return (quest.prerequisiteQuestIds || []).every(id => save.quests[id] && save.quests[id].status === "completed");\n  }\n  function categoryLabel(value) {
     return ({main:"Main Story",side:"Side Story",character:"Character Quest",exploration:"Exploration",collection:"Collection"})[value] || "Quest";
   }
   function statusLabel(value) {
@@ -69,7 +69,7 @@
     return {total,done,percent:total ? Math.round(done / total * 100) : 0};
   }
   function updateOverview() {
-    let available=0,active=0,completed=0;
+    let available=0,active=0,completed=0,locked=0;
     quests.forEach(quest => {
       if (quest.status !== "available") return;
       const state = stateFor(quest);
@@ -79,7 +79,7 @@
     });
     $("availableCount").textContent = available;
     $("activeCount").textContent = active;
-    $("completedCount").textContent = completed;
+    $("completedCount").textContent = completed;\n    $("lockedCount").textContent = locked;
   }
   function makeQuestCard(quest) {
     const state = stateFor(quest);
@@ -87,7 +87,7 @@
     const card = make("article","quest-card");
     const top = make("div","quest-card-top");
     top.append(make("span","quest-category",categoryLabel(quest.category)));
-    top.append(make("span","quest-status",statusLabel(state.status === "not-started" ? "available" : state.status)));
+    const locked = state.status !== "active" && state.status !== "completed" && !prerequisitesMet(quest);\n    const visibleStatus = locked ? "locked" : (state.status === "not-started" ? "available" : state.status);\n    top.append(make("span","quest-status",statusLabel(visibleStatus)));
     card.append(top,make("h3","",quest.title),make("p","",quest.summary || "Quest details will be added to the world journal."));
     const meta = make("div","quest-meta");
     (quest.recommendedLevel ? ["Recommended level "+quest.recommendedLevel] : []).forEach(t=>meta.append(make("span","",t)));
@@ -150,7 +150,7 @@
     const visible=quests.filter(quest=>{
       if(quest.status!=="available") return false;
       const state=stateFor(quest);
-      const actual=state.status==="not-started"?"available":state.status;
+      const actual=(state.status==="not-started" || state.status==="abandoned") && !prerequisitesMet(quest) ? "locked" : (state.status==="not-started" || state.status==="abandoned" ? "available" : state.status);
       if(selectedCategory!=="all" && quest.category!==selectedCategory) return false;
       if(selectedStatus!=="all" && actual!==selectedStatus) return false;
       const haystack=[quest.title,quest.summary,...relatedNames(quest.characterIds,characters),...relatedNames(quest.locationIds,locations)].join(" ").toLowerCase();
