@@ -85,6 +85,12 @@ if (dialogueProfile.dialogue?.memoryContext?.defaultEnabled !== false || dialogu
 if (dialogueProfile.voice?.enabled !== false || dialogueProfile.voice?.consentRequired !== true) fail("youthspark-dialogue-profile.json: voice must remain disabled and consent-gated");
 for (const key of ["liveLanguageModel","cloudMemory","voiceSynthesis","speechRecognition","backend"]) if (dialogueProfile.integrationStatus?.[key] !== "not-connected") fail("youthspark-dialogue-profile.json: "+key+" must remain marked not-connected");
 pass("youthspark-dialogue-profile.json: local dialogue, memory consent and voice boundaries checked");
+const aiRuntime = readJson("assets/data/youthspark-ai-runtime.json");
+if (aiRuntime.schemaVersion !== "1.0.0" || aiRuntime.enabled !== false || aiRuntime.endpoint !== null || aiRuntime.requireExplicitConsent !== true) fail("youthspark-ai-runtime.json: gateway must remain disabled with no endpoint and explicit consent required");
+if (JSON.stringify(aiRuntime).match(/(api[_-]?key|secret|bearer|token)\\s*["']?\\s*:/i)) fail("youthspark-ai-runtime.json: public runtime config must not contain credentials");
+for (const path of ["schemas/youthspark-chat-request.schema.json","schemas/youthspark-chat-response.schema.json","assets/js/youthspark-ai-gateway.js","docs/PHASE_2_7_YOUTHSPARK_AI_GATEWAY.md"]) if (!existsSync(resolve(root,path))) fail("Phase 2.7 required file missing: "+path);
+pass("youthspark-ai-runtime.json: disabled-by-default gateway and public-config boundaries checked");
+
 
 const characterIds = new Set(characters.map(x => x.id));
 const locationIds = new Set(locations.map(x => x.id));
