@@ -52,6 +52,9 @@ if (typeof itemData.schemaVersion !== "string") fail("items.json: missing schema
 const items = validateCatalogue("assets/data/items.json", "items", ["id","name","category","rarity","description"]);
 const currencies = validateCatalogue("assets/data/items.json", "currencies", ["id","name","description"]);
 const collections = validateCatalogue("assets/data/items.json", "collections", ["id","name"]);
+const discoveryData = readJson("assets/data/discoveries.json");
+const locationDiscoveries = validateCatalogue("assets/data/discoveries.json", "locations", ["id","locationId"]);
+const collectibleDiscoveries = validateCatalogue("assets/data/discoveries.json", "collectibles", ["id","itemId"]);
 
 const characterIds = new Set(characters.map(x => x.id));
 const locationIds = new Set(locations.map(x => x.id));
@@ -59,6 +62,8 @@ const questIds = new Set(quests.map(x => x.id));
 const itemIds = new Set(items.map(x => x.id));
 const currencyIds = new Set(currencies.map(x => x.id));
 const collectionIds = new Set(collections.map(x => x.id));
+for (const entry of locationDiscoveries) if (!locationIds.has(entry.locationId)) fail("discoveries.json: "+entry.id+" references unknown location "+entry.locationId);
+for (const entry of collectibleDiscoveries) if (!itemIds.has(entry.itemId)) fail("discoveries.json: "+entry.id+" references unknown item "+entry.itemId);
 const mapMarkerIds = new Set();
 const mapHtml = readFileSync(resolve(root, "index.html"), "utf8");
 
@@ -110,6 +115,7 @@ for (const collection of collections) {
 }
 for (const quest of quests) for (const id of quest.rewardItemIds || []) if (!itemIds.has(id)) fail("quests.json: "+quest.id+" references unknown reward item "+id);
 pass("items.json: item, currency and collection references checked");
+pass("discoveries.json: location and collectible references checked");
 const visiting = new Set(), visited = new Set();
 function checkQuestCycle(id) {
   if (visiting.has(id)) { fail("quests.json: prerequisite cycle detected at " + id); return; }
