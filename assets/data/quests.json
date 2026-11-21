@@ -1,0 +1,9 @@
+{
+  "schemaVersion": "1.0.0",
+  "quests": [],
+  "notes": [
+    "No canonical in-game quest records have been authored in this catalogue yet.",
+    "The Command Deck development checklist and interface achievements are not automatically treated as in-world quests.",
+    "Add quest records only after their titles, objectives, prerequisites, character links, location links, and rewards are confirmed."
+  ]
+}

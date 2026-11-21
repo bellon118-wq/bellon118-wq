@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mayflower-sanctuary.local/schemas/relationships.schema.json",
+  "title": "Mayflower Sanctuary Relationship Catalogue",
+  "type": "object",
+  "required": ["schemaVersion", "relationships"],
+  "properties": {
+    "schemaVersion": {"type": "string"},
+    "relationships": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "characterId", "mode", "profileHref", "description"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+          "characterId": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+          "mode": {"enum": ["visitor-prototype", "canonical-profile"]},
+          "progressionSource": {"type": "string"},
+          "profileHref": {"type": "string"},
+          "description": {"type": "string", "minLength": 1}
+        },
+        "additionalProperties": false
+      }
+    },
+    "rules": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}

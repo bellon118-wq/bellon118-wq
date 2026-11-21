@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mayflower-sanctuary.local/schemas/muse-memory.schema.json",
+  "title": "Muse-Core Player Memory Record",
+  "type": "object",
+  "required": ["id", "characterId", "category", "title", "content", "scores", "importanceScore", "status", "provenance", "createdAt", "updatedAt"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^memory-[a-z0-9-]+$"},
+    "characterId": {"type": "string"},
+    "category": {"enum": ["core", "relationship", "episodic", "symbolic"]},
+    "title": {"type": "string", "minLength": 1, "maxLength": 90},
+    "content": {"type": "string", "minLength": 1, "maxLength": 1200},
+    "emotionLabel": {"type": "string", "maxLength": 50},
+    "scores": {
+      "type": "object",
+      "required": ["emotionalIntensity", "personalRelevance", "novelty", "repetitionValue"],
+      "properties": {
+        "emotionalIntensity": {"type": "integer", "minimum": 0, "maximum": 10},
+        "personalRelevance": {"type": "integer", "minimum": 0, "maximum": 10},
+        "novelty": {"type": "integer", "minimum": 0, "maximum": 10},
+        "repetitionValue": {"type": "integer", "minimum": 0, "maximum": 10}
+      },
+      "additionalProperties": false
+    },
+    "importanceScore": {"type": "integer", "minimum": 0, "maximum": 100},
+    "status": {"enum": ["candidate", "retained", "archived"]},
+    "provenance": {"const": "player-authored-local"},
+    "createdAt": {"type": "string", "format": "date-time"},
+    "updatedAt": {"type": "string", "format": "date-time"}
+  },
+  "additionalProperties": false
+}

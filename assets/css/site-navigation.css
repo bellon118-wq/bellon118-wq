@@ -1,0 +1,12 @@
+/* Shared Mayflower navigation menu — additive; existing page links remain intact. */
+.site-nav-menu{position:relative;display:inline-flex;align-items:center;flex:0 0 auto;color:inherit;font:inherit}
+.site-nav-menu>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:.45rem;padding:.45rem .8rem;border:1px solid rgba(143,183,255,.38);border-radius:999px;background:rgba(25,199,194,.09);color:#eaf5ff;font-size:.9rem;font-weight:650;white-space:nowrap}
+.site-nav-menu>summary::-webkit-details-marker{display:none}
+.site-nav-menu>summary::after{content:"⌄";color:#8fb7ff;font-size:1rem}
+.site-nav-menu[open]>summary{border-color:#19c7c2;background:rgba(25,199,194,.17)}
+.site-nav-panel{position:absolute;top:calc(100% + .55rem);left:0;z-index:1000;display:grid;grid-template-columns:repeat(2,minmax(145px,1fr));gap:.2rem;min-width:min(360px,calc(100vw - 28px));max-height:min(70vh,480px);overflow:auto;padding:.55rem;border:1px solid rgba(143,183,255,.28);border-radius:14px;background:rgba(7,19,35,.97);box-shadow:0 18px 48px rgba(0,0,0,.48);backdrop-filter:blur(16px)}
+.site-nav-panel a{display:block;padding:.65rem .75rem;border-radius:9px;color:#dce9f8;text-decoration:none;font-size:.9rem;line-height:1.25}
+.site-nav-panel a:hover,.site-nav-panel a:focus-visible{background:rgba(25,199,194,.15);color:#fff;outline:1px solid rgba(25,199,194,.45)}
+.site-nav-panel a[aria-current=page]{color:#8debe2;background:rgba(25,199,194,.1)}
+@media(max-width:560px){.site-nav-panel{grid-template-columns:1fr;left:auto;right:0;min-width:min(300px,calc(100vw - 28px))}.site-nav-menu>summary{font-size:.85rem;padding:.4rem .65rem}}
+@media(prefers-reduced-motion:reduce){.site-nav-panel *{scroll-behavior:auto!important;transition:none!important}}

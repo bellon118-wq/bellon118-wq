@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "1.0.0",
+  "characterId": "youthspark-muse",
+  "codename": "Muse-01",
+  "memoryArchitecture": {
+    "categories": ["core", "relationship", "episodic", "symbolic"],
+    "captureMode": "explicit-player-authored",
+    "reviewRequired": true,
+    "automaticChatCapture": false,
+    "automaticEmotionInference": false,
+    "memoryScore": {
+      "formula": "emotionalIntensity*0.35 + personalRelevance*0.30 + novelty*0.20 + repetitionValue*0.15",
+      "inputScale": "0-10",
+      "outputScale": "0-100",
+      "weights": {"emotionalIntensity": 0.35, "personalRelevance": 0.30, "novelty": 0.20, "repetitionValue": 0.15}
+    }
+  },
+  "continuityRules": [
+    "Preserve the canonical character profile as the source of identity and personality.",
+    "Player-authored memory notes are not automatically verified character facts or canon.",
+    "A memory record must be deliberately created and reviewed by the player.",
+    "Do not infer emotion, intent, identity, or relationship status from a note.",
+    "Keep private player notes separate from any future companion-facing context.",
+    "Never silently overwrite, summarize away, or delete a memory record.",
+    "Future model context must use explicit consent, retention controls, and provenance."
+  ],
+  "integrationStatus": {
+    "localMemoryVault": "prototype",
+    "modelContextInjection": "not-connected",
+    "cloudPersistence": "not-connected",
+    "accountSync": "not-connected",
+    "voiceGeneration": "not-connected",
+    "multiplayerSync": "not-connected"
+  }
+}

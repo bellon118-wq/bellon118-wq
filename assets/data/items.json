@@ -1,0 +1,12 @@
+{
+  "schemaVersion": "1.0.0",
+  "items": [],
+  "currencies": [],
+  "collections": [],
+  "notes": [
+    "No canonical items, currencies, or collection sets have been approved yet.",
+    "Do not invent item records, currency names, drop rates, values, or collection rewards.",
+    "Quest reward references must resolve to item IDs in this catalogue before reward granting is enabled.",
+    "Player holdings belong in browser-local player state until an authenticated backend is approved."
+  ]
+}
